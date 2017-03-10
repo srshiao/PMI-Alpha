@@ -1,4 +1,4 @@
-#!/home/jared/PMI-Alpha/PMI-Alpha/myvenv/bin/python
+#!/home/jared/PMI-Alpha/PMI-Alpha/pmi_alpha/myvenv/bin/python
 
 import sys
 import getopt
