@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',       #Filter/Search tables
     'crispy_forms',         #Helps generate search/filter forms
     'bootstrap3',           #css purposes.
+    'database'
 ]
 
 MIDDLEWARE = [
