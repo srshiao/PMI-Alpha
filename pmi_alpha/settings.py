@@ -25,7 +25,7 @@ SECRET_KEY = '3%%glo(mp0z()b*@vnj-0a_liem!%$=&+3-nq%74u(xx!1m_&e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost']
 
 
 # Application definition
