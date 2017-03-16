@@ -116,26 +116,6 @@ class Contract(models.Model):
 	Status = models.CharField(_("Status"), max_length = 50)
 	Comments = models.CharField(_("Status"), max_length = 1000)
 
-class Contract_Employee(models.Model):
-	ContractID = models.ForeignKey(Contract)
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Vendor(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Employee(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Partner(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	PartnerID = models.ForeignKey(Partner)
-
-
 class Customer(models.Model):
 	LegalName = models.CharField(_("Legal Name"), max_length = 50)
 	DBA = models.CharField(_("DBA"), max_length = 50)
@@ -170,6 +150,25 @@ class Partner(models.Model):
 	TIN = models.CharField(_("TIN"), max_length=11)
 	Type = models.CharField(_("Type"), max_length=20)
 
+class Contract_Employee(models.Model):
+	ContractID = models.ForeignKey(Contract)
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendors)
+
+class Customer_Vendor(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	VendorID = models.ForeignKey(Vendors)
+
+class Customer_Employee(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendors)
+
+class Customer_Partner(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	PartnerID = models.ForeignKey(Partner)
+	
 class POC(models.Model):
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
