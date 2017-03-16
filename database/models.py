@@ -11,10 +11,24 @@ GENDERCHOICE = (
 	('F', 'Female'),
 	('O', 'Other'),
 	)
-
+class Vendors(models.Model):
+	ZipCode = models.CharField(_("Zip code"), max_length = 10)
+	TIN = models.IntegerField(_("TIN"))
+	State = models.CharField(_("State"), max_length = 10)
+	POC = models.CharField(_("Point of Contact"), max_length = 50)
+	Phone = models.CharField(_("Phone"), max_length = 20)
+	LegalName = models.CharField(_("Legal Name"), max_length = 50)
+	Fax = models.CharField(_("Fax"), max_length = 50)
+	Email = models.CharField(_("Email"), max_length = 50)
+	DUNs = models.CharField(_("DUNs"), max_length = 50)
+	DBA = models.CharField(_("DBA"), max_length = 50)
+	Country = models.CharField(_("Country"), max_length = 20)
+	City = models.CharField(_("City"), max_length = 20)
+	CAGE = models.CharField(_("CAGE"), max_length = 50)
+	Address = models.CharField(_("Address"), max_length = 50)
 
 class Employee(models.Model):
-	VendorID = models.ForeignKey(Vendor)
+	VendorID = models.ForeignKey(Vendors)
 	FName = models.CharField(_("Resource Last Name"), max_length = 20)
 	MName = models.CharField(_("Resource First Name"), max_length = 20)
 	LName = models.CharField(_("Resource First Name"), max_length = 20)
@@ -62,59 +76,9 @@ class Employee(models.Model):
 	Computer = models.CharField(_("Computer"), max_length=50)
 	BusinessCard = models.CharField(_("Business Card"), max_length=50)
 
-class Vendors(models.Model):
-	ZipCode = models.CharField(_("Zip code"), max_length = 10)
-	TIN = models.IntegerField(_("TIN"))
-	State = models.CharField(_("State"), max_length = 10)
-	POC = models.CharField(_("Point of Contact"), max_length = 50)
-	Phone = models.CharField(_("Phone"), max_length = 20)
-	LegalName = models.CharField(_("Legal Name"), max_length = 50)
-	Fax = models.CharField(_("Fax"), max_length = 50)
-	Email = models.CharField(_("Email"), max_length = 50)
-	DUNs = models.CharField(_("DUNs"), max_length = 50)
-	DBA = models.CharField(_("DBA"), max_length = 50)
-	Country = models.CharField(_("Country"), max_length = 20)
-	City = models.CharField(_("City"), max_length = 20)
-	CAGE = models.CharField(_("CAGE"), max_length = 50)
-	Address = models.CharField(_("Address"), max_length = 50)
-
-class GoogleGroup_Employee(models.Model):
-	GoogleGroupID = models.ForeignKey(GoogleGroup)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
 class GoogleGroup(models.Model):
 	Name = models.CharField(_("Name"), max_length = 50)
 	Admin = models.CharField(_("Admin"), max_length = 50)
-
-class Department_Employee(models.Model):
-	DepartmentID = models.ForeignKey(Department)
-	ContractID = models.ForeignKey(Contract)
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
-class Department(models.Model):
-	ContractID = models.ForeignKey(Contract)
-	CustomerID = models.ForeignKey(Customer)
-	Name = models.CharField(_("Name"), max_length = 50)
-	Location = models.CharField(_("Location"), max_length = 50)
-	Fax = models.CharField(_("Fax"), max_length = 50)
-	Supervisor = models.CharField(_("Supervisor"), max_length = 50)
-	Phone = models.CharField(_("Phone"), max_length = 50)
-
-class Contract(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50)
-	ContractNumber = models.CharField(_("Contract Number"), max_length = 50)
-	DocumentLocation = models.CharField(_("Document Location"), max_length = 50)
-	OrganizationType = models.CharField(_("Organization Type"), max_length = 50)
-	POC = models.CharField(_("Point of Contact"), max_length = 50)
-	EffectiveDate = models.DateField(_("Effective Date"), default=datetime.date.today)
-	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
-	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
-	Status = models.CharField(_("Status"), max_length = 50)
-	Comments = models.CharField(_("Status"), max_length = 1000)
 
 class Customer(models.Model):
 	LegalName = models.CharField(_("Legal Name"), max_length = 50)
@@ -133,6 +97,19 @@ class Customer(models.Model):
 	POC = models.CharField(_("Point of Contact"), max_length = 50)
 	TIN = models.CharField(_("TIN"), max_length=11)
 
+class Contract(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50)
+	ContractNumber = models.CharField(_("Contract Number"), max_length = 50)
+	DocumentLocation = models.CharField(_("Document Location"), max_length = 50)
+	OrganizationType = models.CharField(_("Organization Type"), max_length = 50)
+	POC = models.CharField(_("Point of Contact"), max_length = 50)
+	EffectiveDate = models.DateField(_("Effective Date"), default=datetime.date.today)
+	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
+	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
+	Status = models.CharField(_("Status"), max_length = 50)
+	Comments = models.CharField(_("Status"), max_length = 1000)
+
 class Partner(models.Model):
 	Address = models.CharField(_("Address"), max_length = 50)
 	CAGE = models.CharField(_("CAGE"), max_length = 50)
@@ -150,6 +127,21 @@ class Partner(models.Model):
 	TIN = models.CharField(_("TIN"), max_length=11)
 	Type = models.CharField(_("Type"), max_length=20)
 
+class Department(models.Model):
+	ContractID = models.ForeignKey(Contract)
+	CustomerID = models.ForeignKey(Customer)
+	Name = models.CharField(_("Name"), max_length = 50)
+	Location = models.CharField(_("Location"), max_length = 50)
+	Fax = models.CharField(_("Fax"), max_length = 50)
+	Supervisor = models.CharField(_("Supervisor"), max_length = 50)
+	Phone = models.CharField(_("Phone"), max_length = 50)
+
+class Department_Employee(models.Model):
+	DepartmentID = models.ForeignKey(Department)
+	ContractID = models.ForeignKey(Contract)
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendors)
 class Contract_Employee(models.Model):
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
@@ -168,7 +160,7 @@ class Customer_Employee(models.Model):
 class Customer_Partner(models.Model):
 	CustomerID = models.ForeignKey(Customer)
 	PartnerID = models.ForeignKey(Partner)
-	
+
 class POC(models.Model):
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
@@ -185,7 +177,10 @@ class Vendor_Contract(models.Model):
 	VendorID = models.ForeignKey(Vendors)
 
 
-
+class GoogleGroup_Employee(models.Model):
+	GoogleGroupID = models.ForeignKey(GoogleGroup)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendors)
 
 
 
