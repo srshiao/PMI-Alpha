@@ -29,9 +29,28 @@ class Vendors(models.Model):
 
 class Employee(models.Model):
 	VendorID = models.ForeignKey(Vendors)
+	SubmittedViaWebform = models.BooleanField(_("Submitted Via Webform (T/F)"), default = True)
 	FName = models.CharField(_("Resource Last Name"), max_length = 20)
 	MName = models.CharField(_("Resource First Name"), max_length = 20)
 	LName = models.CharField(_("Resource First Name"), max_length = 20)
+	
+	CreatedBy = models.CharField(_("Created By"), max_length = 20)
+	Created = models.DateField(_("Created"), default=datetime.date.today)
+	RequestType = models.CharField(_("Request Type"), max_length = 20)
+	ClockSequence = models.CharField(_("Clock Sequence"), max_length = 20)
+	EffectiveDate = models.DateField(_("Effective Date of Change in Record"), default=datetime.date.today)
+	PayrollCompany = models.CharField(_("Payroll Company"), max_length = 20)
+	ProbationAlert = models.DateField(_("Probation Alert"), default=datetime.date.today)
+	ProjectFunctionalTitle = models.CharField(_("Project Functional Title"), max_length = 50)
+	GbSecruityAccessRequest = models.CharField(_("Gb Security Access Request"), max_length = 50)
+	OfferContractSent = models.BooleanField(_("Offer Contract Sent"), default = True)
+	OfferContractNDAFE = models.DateField(_("Offer Contract NDA FE"), default=datetime.date.today)
+	CommissionLogged = models.BooleanField(_("Commision Logged"), default = True)
+	CommissionDueDate = models.DateField(_("Commission Due Date"), default=datetime.date.today)
+	ToolKit = models.BooleanField(_("Tool Kit"), default = True)
+	SoftwareRequest = models.CharField(_("Software Request"), max_length = 50)
+	ClockSequenceHistoric = models.CharField(_("ClockSequenceHistoric"), max_length = 50)
+
 	Gender = models.CharField(_("Gender"), max_length = 10, choices=GENDERCHOICE)
 	PersonalEmail = models.CharField(_("Personal Email"), max_length = 50)
 	PMIEmail = models.CharField(_("PMI Email"), max_length = 50)
