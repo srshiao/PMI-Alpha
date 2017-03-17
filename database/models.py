@@ -75,6 +75,8 @@ class Employee(models.Model):
 	eFAACT = models.CharField(_("eFAACT"), max_length=50)
 	Computer = models.CharField(_("Computer"), max_length=50)
 	BusinessCard = models.CharField(_("Business Card"), max_length=50)
+	Comments = models.CharField(_("Comments"), max_length = 1000)
+
 
 class GoogleGroup(models.Model):
 	Name = models.CharField(_("Name"), max_length = 50)
@@ -108,7 +110,7 @@ class Contract(models.Model):
 	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
 	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
 	Status = models.CharField(_("Status"), max_length = 50)
-	Comments = models.CharField(_("Status"), max_length = 1000)
+	Comments = models.CharField(_("Comments"), max_length = 1000)
 
 class Partner(models.Model):
 	Address = models.CharField(_("Address"), max_length = 50)
@@ -175,7 +177,6 @@ class Vendor_Contract(models.Model):
 	CustomerID = models.ForeignKey(Customer)
 	ContractID = models.ForeignKey(Contract)
 	VendorID = models.ForeignKey(Vendors)
-
 
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup)
