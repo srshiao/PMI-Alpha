@@ -31,13 +31,13 @@ ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     #added packages
     'django_tables2',       #Generate tables.
     'django_filters',       #Filter/Search tables
@@ -142,13 +142,15 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'index'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-    os.path.join(BASE_DIR,'static')
 )
