@@ -1,0 +1,60 @@
+{# database/templates/tables.html #}
+{% load render_table from django_tables2 %}
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+<<<<<<< HEAD:database/templates/tables.html
+        <link rel="stylesheet" href ="/static/django_tables2/themes/paleblue/css/screen.css" />
+=======
+        <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
+>>>>>>> 63c940d4899b05eab60fedd7248157e9f1f6cd88:database/templates/database/tables.html
+    </head>
+    <body>
+    	<h3>Vendors</h3>
+        {% render_table vendors %}
+
+        <h3>Employee</h3>
+        {% render_table employee %}
+
+        <h3>GoogleGroup</h3>
+        {% render_table googlegroup %}
+
+        <h3>Customer</h3>
+        {% render_table customer %}
+
+        <h3>Contract</h3>
+        {% render_table contract %}
+
+        <h3>partner</h3>
+        {% render_table partner %}
+
+        <h3>department</h3>
+        {% render_table department %}
+
+        <h3>department_employee</h3>
+        {% render_table department_employee %}
+
+        <h3>contract_employee</h3>
+        {% render_table contract_employee %}
+
+        <h3>customer_vendor</h3>
+        {% render_table customer_vendor %}
+
+        <h3>customer_employee</h3>
+        {% render_table customer_employee %}
+
+        <h3>customer_partner</h3>
+        {% render_table customer_partner %}
+
+        <h3>poc</h3>
+        {% render_table poc %}
+
+        <h3>vendor_contract</h3>
+        {% render_table vendor_contract %}
+
+        <h3>googlegroup_employee</h3>
+        {% render_table googlegroup_employee %}
+
+    </body>
+</html>

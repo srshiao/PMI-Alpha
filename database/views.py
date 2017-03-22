@@ -38,7 +38,7 @@ def tables(request):
     RequestConfig(request).configure(googlegroup_employee_table)
 
 
-    return render(request, 'tables.html', 
+    return render(request, 'database/tables.html', 
     	{'vendors': vendors_table, 
     	'employee':employee_table, 
     	'googlegroup':googlegroup_table,
@@ -54,3 +54,4 @@ def tables(request):
     	'poc': poc_table, 
     	'vendor_contract':vendor_contract_table, 
     	'googlegroup_employee':googlegroup_employee_table, })
+
