@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+        <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
     </head>
     <body>
     	<h3>Vendors</h3>
@@ -24,7 +24,7 @@
 
         <h3>partner</h3>
         {% render_table partner %}
-        
+
         <h3>department</h3>
         {% render_table department %}
 
@@ -33,7 +33,7 @@
 
         <h3>contract_employee</h3>
         {% render_table contract_employee %}
-        
+
         <h3>customer_vendor</h3>
         {% render_table customer_vendor %}
 
@@ -42,7 +42,7 @@
 
         <h3>customer_partner</h3>
         {% render_table customer_partner %}
-        
+
         <h3>poc</h3>
         {% render_table poc %}
 
@@ -51,6 +51,6 @@
 
         <h3>googlegroup_employee</h3>
         {% render_table googlegroup_employee %}
-        
+
     </body>
 </html>
