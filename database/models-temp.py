@@ -16,7 +16,7 @@ GENDERCHOICE = (
 # ie. want  models.ManyToManyField in Pizza for FK to toppings
 # Can't use add(), create(), set(), use Intermediary_name(person, group, ...) 
 # - RA
-class Vendors(models.Model):
+class Vendor(models.Model):
 	ZipCode = models.CharField(_("Zip code"), max_length = 10)
 	TIN = models.IntegerField(_("TIN"))
 	State = models.CharField(_("State"), max_length = 10)
@@ -33,7 +33,7 @@ class Vendors(models.Model):
 	Address = models.CharField(_("Address"), max_length = 50)
 
 class Employee(models.Model):
-	VendorID = models.ManyToManyField(Vendors, through='Customer_Employee')
+	VendorID = models.ManyToManyField(Vendor, through='Customer_Employee')
 	FName = models.CharField(_("Resource Last Name"), max_length = 20)
 	MName = models.CharField(_("Resource First Name"), max_length = 20)
 	LName = models.CharField(_("Resource First Name"), max_length = 20)
@@ -151,21 +151,21 @@ class Department_Employee(models.Model):
 	ContractID = models.ManyToManyField(Contract, through='Department',  on_delete=models.CASCADE)
 	CustomerID = models.ManyToManyField(Customer, through='Department',  on_delete=models.CASCADE)
 	EmployeeID = models.ManyToManyField(Employee, through='Customer_Employee',  on_delete=models.CASCADE)
-	VendorID = models.ManyToManyField(Vendors, through='Customer_Employee',  on_delete=models.CASCADE)
+	VendorID = models.ManyToManyField(Vendor, through='Customer_Employee',  on_delete=models.CASCADE)
 class Contract_Employee(models.Model):
 	ContractID = models.ForeignKey(Contract,  on_delete=models.CASCADE)
 	CustomerID = models.ManyToManyField(Customer, through='Department',  on_delete=models.CASCADE)
 	EmployeeID = models.ManyToManyField(Employee, through='Customer_Employee',  on_delete=models.CASCADE)
-	VendorID = models.ManyToManyField(Vendors, through='Customer_Employee',  on_delete=models.CASCADE)
+	VendorID = models.ManyToManyField(Vendor, through='Customer_Employee',  on_delete=models.CASCADE)
 
 class Customer_Vendor(models.Model):
 	CustomerID = models.ForeignKey(Customer,  on_delete=models.CASCADE)
-	VendorID = models.ForeignKey(Vendors,  on_delete=models.CASCADE)
+	VendorID = models.ForeignKey(Vendor,  on_delete=models.CASCADE)
 
 class Customer_Employee(models.Model):
 	CustomerID = models.ForeignKey(Customer,  on_delete=models.CASCADE)
 	EmployeeID = models.ForeignKey(Employee,  on_delete=models.CASCADE)
-	VendorID = models.ForeignKey(Vendors,  on_delete=models.CASCADE)
+	VendorID = models.ForeignKey(Vendor,  on_delete=models.CASCADE)
 
 class Customer_Partner(models.Model):
 	CustomerID = models.ForeignKey(Customer,  on_delete=models.CASCADE)
@@ -184,10 +184,10 @@ class POC(models.Model):
 class Vendor_Contract(models.Model):
 	CustomerID = models.ForeignKey(Customer,  on_delete=models.CASCADE)
 	ContractID = models.ManyToManyField(Contract, through='Department',  on_delete=models.CASCADE)
-	VendorID = models.ManyToManyField(Vendors, through='Customer_Vendor',  on_delete=models.CASCADE)
+	VendorID = models.ManyToManyField(Vendor, through='Customer_Vendor',  on_delete=models.CASCADE)
 
 
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup,  on_delete=models.CASCADE)
 	EmployeeID = models.ForeignKey(Employee,  on_delete=models.CASCADE)
-	VendorID = models.ManyToManyField(Vendors, through='Customer_Employee',  on_delete=models.CASCADE)
+	VendorID = models.ManyToManyField(Vendor, through='Customer_Employee',  on_delete=models.CASCADE)

@@ -1,9 +1,9 @@
 import django_tables2 as tables
 from .models import *
 
-class VendorsTable(tables.Table):
+class VendorTable(tables.Table):
     class Meta:
-        model = Vendors
+        model = Vendor
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 

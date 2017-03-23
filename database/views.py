@@ -4,7 +4,7 @@ from .models import *
 from .tables import *
 
 def tables(request):
-    vendors_table = VendorsTable(Vendors.objects.all())
+    vendor_table = VendorTable(Vendor.objects.all())
     employee_table = EmployeeTable(Employee.objects.all())
     googlegroup_table = GoogleGroupTable(GoogleGroup.objects.all())
     customer_table = CustomerTable(Customer.objects.all())
@@ -21,7 +21,7 @@ def tables(request):
     googlegroup_employee_table = GoogleGroup_EmployeeTable(GoogleGroup_Employee.objects.all())
 
 
-    RequestConfig(request).configure(vendors_table)
+    RequestConfig(request).configure(vendor_table)
     RequestConfig(request).configure(employee_table)
     RequestConfig(request).configure(googlegroup_table)
     RequestConfig(request).configure(customer_table)
@@ -39,7 +39,7 @@ def tables(request):
 
 
     return render(request, 'database/tables.html', 
-    	{'vendors': vendors_table, 
+    	{'vendor': vendor_table, 
     	'employee':employee_table, 
     	'googlegroup':googlegroup_table,
     	'customer': customer_table, 

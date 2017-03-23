@@ -11,7 +11,7 @@ GENDERCHOICE = (
 	('F', 'Female'),
 	('O', 'Other'),
 	)
-class Vendors(models.Model):
+class Vendor(models.Model):
 	ZipCode = models.CharField(_("Zip code"), max_length = 10, default = None)
 	TIN = models.IntegerField(_("TIN"), default = None)
 	State = models.CharField(_("State"), max_length = 10, default = None)
@@ -28,7 +28,7 @@ class Vendors(models.Model):
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
 
 class Employee(models.Model):
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 	SubmittedViaWebform = models.BooleanField(_("Submitted Via Webform (T/F)"), default = True)
 	FName = models.CharField(_("Resource Last Name"), max_length = 20, default = None)
 	MName = models.CharField(_("Resource First Name"), max_length = 20, default = None)
@@ -162,21 +162,21 @@ class Department_Employee(models.Model):
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
 	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 class Contract_Employee(models.Model):
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
 	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 class Customer_Vendor(models.Model):
 	CustomerID = models.ForeignKey(Customer)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 class Customer_Employee(models.Model):
 	CustomerID = models.ForeignKey(Customer)
 	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 class Customer_Partner(models.Model):
 	CustomerID = models.ForeignKey(Customer)
@@ -195,12 +195,12 @@ class POC(models.Model):
 class Vendor_Contract(models.Model):
 	CustomerID = models.ForeignKey(Customer)
 	ContractID = models.ForeignKey(Contract)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup)
 	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 
 
