@@ -11,7 +11,19 @@ GENDERCHOICE = (
 	('F', 'Female'),
 	('O', 'Other'),
 	)
-class Vendors(models.Model):
+class Vendor(models.Model):
+	
+	def __str__(self):
+		# Class Name: name
+   		# return self.__class__.__name__ + ": " + self.LegalName
+   		return self.LegalName
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
+
 	ZipCode = models.CharField(_("Zip code"), max_length = 10, default = None)
 	TIN = models.IntegerField(_("TIN"), default = None)
 	State = models.CharField(_("State"), max_length = 10, default = None)
@@ -26,13 +38,22 @@ class Vendors(models.Model):
 	City = models.CharField(_("City"), max_length = 20, default = None)
 	CAGE = models.CharField(_("CAGE"), max_length = 50, default = None)
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
+	
 
 class Employee(models.Model):
-	VendorID = models.ForeignKey(Vendors)
+	def __str__(self):
+   		return self.FName + " " + self.MName + " " + self.LName
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
+	VendorID = models.ForeignKey(Vendor)
 	SubmittedViaWebform = models.BooleanField(_("Submitted Via Webform (T/F)"), default = True)
-	FName = models.CharField(_("Resource Last Name"), max_length = 20, default = None)
-	MName = models.CharField(_("Resource First Name"), max_length = 20, default = None)
-	LName = models.CharField(_("Resource First Name"), max_length = 20, default = None)
+	FName = models.CharField(_("Resource First Name"), max_length = 20, default = None)
+	MName = models.CharField(_("Resource Middle Name"), max_length = 20, default = None)
+	LName = models.CharField(_("Resource Last Name"), max_length = 20, default = None)
 	
 	CreatedBy = models.CharField(_("Created By"), max_length = 20, default = None)
 	Created = models.DateField(_("Created"), default=datetime.date.today)
@@ -98,10 +119,26 @@ class Employee(models.Model):
 
 
 class GoogleGroup(models.Model):
+	def __str__(self):
+   		return self.Name
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	Name = models.CharField(_("Name"), max_length = 50, default = None)
 	Admin = models.CharField(_("Admin"), max_length = 50, default = None)
 
 class Customer(models.Model):
+	def __str__(self):
+   		return self.LegalName
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	DBA = models.CharField(_("DBA"), max_length = 50, default = None)
 	Address = models.CharField(_("Address"), max_length = 50,  default = None)
@@ -119,6 +156,14 @@ class Customer(models.Model):
 	TIN = models.CharField(_("TIN"), max_length=11, default = None)
 
 class Contract(models.Model):
+	def __str__(self):
+   		return self.ContractNumber
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	CustomerID = models.ForeignKey(Customer)
 	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
 	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
@@ -132,6 +177,14 @@ class Contract(models.Model):
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 class Partner(models.Model):
+	def __str__(self):
+   		return self.LegalName
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
 	CAGE = models.CharField(_("CAGE"), max_length = 50, default = None)
 	City = models.CharField(_("City"), max_length = 20, default = None)
@@ -149,6 +202,14 @@ class Partner(models.Model):
 	Type = models.CharField(_("Type"), max_length=20, default = None)
 
 class Department(models.Model):
+	def __str__(self):
+   		return self.Name
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
 	Name = models.CharField(_("Name"), max_length = 50, default = None)
@@ -157,50 +218,61 @@ class Department(models.Model):
 	Supervisor = models.CharField(_("Supervisor"), max_length = 50, default = None)
 	Phone = models.CharField(_("Phone"), max_length = 50, default = None)
 
-class Department_Employee(models.Model):
-	DepartmentID = models.ForeignKey(Department)
-	ContractID = models.ForeignKey(Contract)
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-class Contract_Employee(models.Model):
-	ContractID = models.ForeignKey(Contract)
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Vendor(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Employee(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
-
-class Customer_Partner(models.Model):
-	CustomerID = models.ForeignKey(Customer)
-	PartnerID = models.ForeignKey(Partner)
-
 class POC(models.Model):
+	def __str__(self):
+   		return self.FName + " " + self.LName
+
+	def __iter__(self):
+		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
+			value = getattr(self, field.name, None)
+			yield (field, value)
+
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
 	Address = models.CharField(_("Address"), max_length = 50)
 	Phone = models.CharField(_("Phone"), max_length = 20)
 	Email = models.CharField(_("Email"), max_length = 50)
-	LName = models.CharField(_("Resource First Name"), max_length = 20)
-	FName = models.CharField(_("Resource Last Name"), max_length = 20)
+	FName = models.CharField(_("Resource First Name"), max_length = 20)
+	LName = models.CharField(_("Resource Last Name"), max_length = 20)
+
+# INTERMEDIARY TABLES
+
+class Department_Employee(models.Model):
+	DepartmentID = models.ForeignKey(Department)
+	ContractID = models.ForeignKey(Contract)
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendor)
+class Contract_Employee(models.Model):
+	ContractID = models.ForeignKey(Contract)
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendor)
+
+class Customer_Vendor(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	VendorID = models.ForeignKey(Vendor)
+
+class Customer_Employee(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	EmployeeID = models.ForeignKey(Employee)
+	VendorID = models.ForeignKey(Vendor)
+
+class Customer_Partner(models.Model):
+	CustomerID = models.ForeignKey(Customer)
+	PartnerID = models.ForeignKey(Partner)
+
 
 class Vendor_Contract(models.Model):
 	CustomerID = models.ForeignKey(Customer)
 	ContractID = models.ForeignKey(Contract)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup)
 	EmployeeID = models.ForeignKey(Employee)
-	VendorID = models.ForeignKey(Vendors)
+	VendorID = models.ForeignKey(Vendor)
 
 
 

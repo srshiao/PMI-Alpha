@@ -23,28 +23,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3%%glo(mp0z()b*@vnj-0a_liem!%$=&+3-nq%74u(xx!1m_&e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     #added packages
     'django_tables2',       #Generate tables.
     'django_filters',       #Filter/Search tables
     'crispy_forms',         #Helps generate search/filter forms
     'bootstrap3',           #css purposes.
-    'database',
-    'pmi_alpha.images'
+    'database'
 ]
 
 MIDDLEWARE = [
@@ -137,14 +136,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_URL = '/static/'
+
+
 LOGIN_REDIRECT_URL = 'index'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR,"..","www","static")
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
 )
