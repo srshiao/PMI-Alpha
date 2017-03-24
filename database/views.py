@@ -2,6 +2,39 @@ from django.shortcuts import render
 from django_tables2 import RequestConfig
 from .models import *
 from .tables import *
+from django.views import generic
+
+class Vendor_DetailView(generic.DetailView):
+    model = Vendor
+    template_name = 'database/detail.html'
+
+class Employee_DetailView(generic.DetailView):
+    model = Employee
+    template_name = 'database/detail.html'
+
+class GoogleGroup_DetailView(generic.DetailView):
+    model = GoogleGroup
+    template_name = 'database/detail.html'
+
+class Customer_DetailView(generic.DetailView):
+    model = Customer
+    template_name = 'database/detail.html'
+
+class Contract_DetailView(generic.DetailView):
+    model = Contract
+    template_name = 'database/detail.html'
+
+class Partner_DetailView(generic.DetailView):
+    model = Partner
+    template_name = 'database/detail.html'
+
+class Department_DetailView(generic.DetailView):
+    model = Department
+    template_name = 'database/detail.html'
+
+class POC_DetailView(generic.DetailView):
+    model = POC
+    template_name = 'database/detail.html'
 
 def tables(request):
     vendor_table = VendorTable(Vendor.objects.all())
@@ -54,6 +87,7 @@ def tables(request):
     	'poc': poc_table, 
     	'vendor_contract':vendor_contract_table, 
     	'googlegroup_employee':googlegroup_employee_table, })
+
 
 
 

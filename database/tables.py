@@ -1,5 +1,6 @@
 import django_tables2 as tables
 from .models import *
+from django_tables2.utils import A  # alias for Accessor
 
 class VendorTable(tables.Table):
     class Meta:
@@ -8,10 +9,12 @@ class VendorTable(tables.Table):
         attrs = {'class': 'paleblue'}
 
 class EmployeeTable(tables.Table):
+    VendorID = tables.LinkColumn('detail', args=[A('pk')])
     class Meta:
         model = Employee
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
+    
 
 class GoogleGroupTable(tables.Table):
     class Meta:
