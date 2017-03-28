@@ -1,17 +1,22 @@
 {% extends 'database/sidebar.html' %}
 
+{% load django_tables2 %}
 
 	{% block content %}
 
 	 <h3>{{ object }}</h3>
-	        
+	 	Some "fields" are blank because they don't have a verbose name. Foreign keys are considered fields so not sure how to change their verbose name when they aren't declared in the model or to not call them at all... :(</br>
 	    {% for field, val in object %}
 	    	<!-- Assuming we don't need to display these fields... -->
 	    	{% if field.name != "department_employee" and field.name != "contract_employee" and field.name != "customer_vendor" and field.name != "customer_employee" and field.name != "vendor_contract" and field.name != "googlegroup_employee"%}
 
-	    		{{ field.name }} : {{ val }} </br>
+	    		{{ field.verbose_name }} : {{ val }} </br>
 
+	    	{% elif field.verbose_name == "Employees" %}
+	    		{{ field.verbose_name }}:</br>
+	    		{% render_table val %}
 	    	{% endif %}
+
 	
 
 	    {% endfor %}
