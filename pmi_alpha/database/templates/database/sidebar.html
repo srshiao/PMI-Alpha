@@ -1,27 +1,51 @@
-{% load staticfiles %}
-<html>
+{% load static %}
+
+<html lang="en">
 <head>
     <title>Paradyme</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
+
+    <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
+    <!--<link rel="stylesheet" type="text/css" href="{ % static 'database/css/sidebar.css' % }">
+    <link href="{ % static 'database/js/sidebar.js' % }">-->
+
+    <script src="../../static/database/js/sidebar.js"></script>
+    <link rel="stylesheet" href="../../static/database/css/sidebar.css">
 
 </head>
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2" style="background-color: #FF9999">Left</div>
-            <div class="col-md-10" style="background-color: #99CCFF">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+<div id="mySidenav" class="sidenav">
+    <img src="../../static/database/images/paradyme_management.png" height="49" width="231" style="padding-left: 6px"/>
+    <hr>
+    <ul>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/home.svg" alt="home">Home</a><hr>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/user.svg" alt="user">New Record</a><hr>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/search.svg" alt="search">Basic Search</a><hr>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/advanced_search.svg" alt="adv search">Advanced Search</a><hr>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/tables.svg" alt="tables">View Tables</a><hr>
+        <li><a href="#"><img class ="icon" src="../../static/database/images/view.svg" alt="view">Create View</a><hr>
+        <!-- if they have permissions-->
+        <li><a href="#"><img class ="icon" src="../../static/database/images/admin.svg" alt="admin">Admin</a><hr>
+    </ul>
 
-    </div>
+
+
+
+</div>
+
+<div id="main">
+    <!--<h2>Sidenav Push Example</h2>
+    <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>-->
+    {% block content %}
+    {% endblock %}
+</div>
+
+
 
 </body>
 </html>
