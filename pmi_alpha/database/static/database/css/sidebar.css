@@ -36,9 +36,8 @@
 
 
 }
-.icon {
+.sidenav i {
     padding: 0px 10px 0px 4px; /*top right bottom left*/
-    width: 45px;
     vertical-align: middle;
 }
 /* Position and style the close button (top right corner) */
