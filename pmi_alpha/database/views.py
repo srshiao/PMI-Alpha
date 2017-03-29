@@ -4,6 +4,7 @@ from .forms import *
 from .models import *
 from .tables import *
 from django.views import generic
+from django.http import HttpResponseRedirect
 
 class Vendor_DetailView(generic.DetailView):
     model = Vendor
@@ -72,21 +73,21 @@ def tables(request):
     RequestConfig(request).configure(googlegroup_employee_table)
 
 
-    return render(request, 'database/tables.html', 
-    	{'vendor': vendor_table, 
-    	'employee':employee_table, 
+    return render(request, 'database/tables.html',
+    	{'vendor': vendor_table,
+    	'employee':employee_table,
     	'googlegroup':googlegroup_table,
-    	'customer': customer_table, 
-    	'contract':contract_table, 
+    	'customer': customer_table,
+    	'contract':contract_table,
     	'partner':partner_table,
-    	'department': department_table, 
-    	'department_employee':department_employee_table, 
+    	'department': department_table,
+    	'department_employee':department_employee_table,
     	'contract_employee':contract_employee_table,
-    	'customer_vendor': customer_vendor_table, 
-    	'customer_employee':customer_employee_table, 
+    	'customer_vendor': customer_vendor_table,
+    	'customer_employee':customer_employee_table,
     	'customer_partner':customer_partner_table,
-    	'poc': poc_table, 
-    	'vendor_contract':vendor_contract_table, 
+    	'poc': poc_table,
+    	'vendor_contract':vendor_contract_table,
     	'googlegroup_employee':googlegroup_employee_table, })
 
 
@@ -97,7 +98,7 @@ def add_vendor(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -109,7 +110,7 @@ def add_employee(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -121,7 +122,7 @@ def add_gg(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -134,7 +135,7 @@ def add_customer(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -146,7 +147,7 @@ def add_contract(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -158,7 +159,7 @@ def add_partner(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -171,7 +172,7 @@ def add_department(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -183,11 +184,7 @@ def add_poc(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('database/')
+        return HttpResponseRedirect('/database/')
 
 
     return render(request, 'database/add_new.html', context)
-
-
-
-
