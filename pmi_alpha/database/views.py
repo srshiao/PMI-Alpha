@@ -90,8 +90,94 @@ def tables(request):
     	'googlegroup_employee':googlegroup_employee_table, })
 
 
+def add_vendor(request):
+    form = VendorForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
 def add_employee(request):
     form = EmployeeForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+def add_gg(request):
+    form = GoogleGroupForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+
+def add_customer(request):
+    form = CustomerForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+def add_contract(request):
+    form = ContractForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+def add_partner(request):
+    form = PartnerForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+
+def add_department(request):
+    form = DepartmentForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
+
+def add_poc(request):
+    form = POCForm(request.POST or None);
     context = {
         'form' : form
     }
