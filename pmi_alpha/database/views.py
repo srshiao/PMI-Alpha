@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django_tables2 import RequestConfig
+from .forms import *
 from .models import *
 from .tables import *
 from django.views import generic
@@ -87,6 +88,19 @@ def tables(request):
     	'poc': poc_table, 
     	'vendor_contract':vendor_contract_table, 
     	'googlegroup_employee':googlegroup_employee_table, })
+
+
+def add_employee(request):
+    form = EmployeeForm(request.POST or None);
+    context = {
+        'form' : form
+    }
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('database/')
+
+
+    return render(request, 'database/add_new.html', context)
 
 
 
