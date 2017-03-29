@@ -22,20 +22,23 @@ class Vendor(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			if field.name == "employee":
 				field.verbose_name = "Employees"
-				value = Employee.objects.filter(VendorID = self.id)
+				employee_set = Employee.objects.filter(VendorID = self.id)
+
+				#iterates over given query set and returns string representations. 
+				for employee in employee_set:
+					yield(field, employee.__str__())
 				# Returns a QuerySet for value, needs to be changed at some point
-				yield(field,value)
+				#yield(field,value)
 			else:
 				value = getattr(self, field.name, None)
 				yield (field, value)
 
-
+	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	ZipCode = models.CharField(_("Zip Code"), max_length = 10, default = None)
 	TIN = models.IntegerField(default = None)
 	State = models.CharField(max_length = 10, default = None)
 	POC = models.CharField(_("Point of Contact"), max_length = 50, default = None)
 	Phone = models.CharField(_("phone"), max_length = 20, default = None)
-	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	Fax = models.CharField(_("Fax"), max_length = 50, default = None)
 	Email = models.CharField(_("Email"), max_length = 50, default = None)
 	DUNs = models.CharField(_("DUNs"), max_length = 50, default = None)
@@ -55,12 +58,13 @@ class Employee(models.Model):
 			value = getattr(self, field.name, None)
 			yield (field, value)
 
-	VendorID = models.ForeignKey(Vendor)
-
 	SubmittedViaWebform = models.BooleanField(_("Submitted Via Webform (T/F)"), default = True)
 	FName = models.CharField(_("Resource First Name"), max_length = 20, default = None)
 	MName = models.CharField(_("Resource Middle Name"), max_length = 20, default = None)
 	LName = models.CharField(_("Resource Last Name"), max_length = 20, default = None)
+
+	VendorID = models.ForeignKey(Vendor)
+
 	
 	CreatedBy = models.CharField(_("Created By"), max_length = 20, default = None)
 	Created = models.DateField(_("Created"), default=datetime.date.today)
@@ -147,6 +151,7 @@ class Partner(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			value = getattr(self, field.name, None)
 			yield (field, value)
+	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
 	CAGE = models.CharField(_("CAGE"), max_length = 50, default = None)
@@ -155,7 +160,6 @@ class Partner(models.Model):
 	State = models.CharField(_("State"), max_length = 10, default = None)
 	Country = models.CharField(_("Country"), max_length = 20, default = None)
 	Phone = models.CharField(_("Phone"), max_length = 20, default = None)
-	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	Fax = models.CharField(_("Fax"), max_length = 50, default = None)
 	Email = models.CharField(_("Email"), max_length = 50, default = None)
 	DBA = models.CharField(_("DBA"), max_length = 50, default = None)
@@ -174,11 +178,12 @@ class Customer(models.Model):
 			value = getattr(self, field.name, None)
 			yield (field, value)
 
+	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
+
 	Vendors = models.ManyToManyField(Vendor, through='Customer_Vendor')
 	Employees = models.ManyToManyField(Employee, through='Customer_Employee')
 	Partners = models.ManyToManyField(Partner, through='Customer_Partner')
 
-	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	DBA = models.CharField(_("DBA"), max_length = 50, default = None)
 	Address = models.CharField(_("Address"), max_length = 50,  default = None)
 	City = models.CharField(_("City"), max_length = 20, default = None)
@@ -202,15 +207,15 @@ class Contract(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			value = getattr(self, field.name, None)
 			yield (field, value)
+	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
+	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
+	DocumentLocation = models.CharField(_("Document Location"), max_length = 50, default = None)
+	OrganizationType = models.CharField(_("Organization Type"), max_length = 50, default = None)
 
 	CustomerID = models.ForeignKey(Customer)
 	Employees = models.ManyToManyField(Employee, through='Contract_Employee')
 	Vendors = models.ManyToManyField(Vendor, through='Vendor_Contract')
 
-	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
-	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
-	DocumentLocation = models.CharField(_("Document Location"), max_length = 50, default = None)
-	OrganizationType = models.CharField(_("Organization Type"), max_length = 50, default = None)
 	POC = models.CharField(_("Point of Contact"), max_length = 50, default = None)
 	EffectiveDate = models.DateField(_("Effective Date"), default=datetime.date.today)
 	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
@@ -247,6 +252,9 @@ class POC(models.Model):
 			value = getattr(self, field.name, None)
 			yield (field, value)
 
+	FName = models.CharField(_("Resource First Name"), max_length = 20)
+	LName = models.CharField(_("Resource Last Name"), max_length = 20)
+
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
@@ -254,8 +262,7 @@ class POC(models.Model):
 	Address = models.CharField(_("Address"), max_length = 50)
 	Phone = models.CharField(_("Phone"), max_length = 20)
 	Email = models.CharField(_("Email"), max_length = 50)
-	FName = models.CharField(_("Resource First Name"), max_length = 20)
-	LName = models.CharField(_("Resource Last Name"), max_length = 20)
+
 
 # INTERMEDIARY TABLES
 
