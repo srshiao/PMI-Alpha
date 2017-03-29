@@ -12,4 +12,6 @@ urlpatterns = [
    url(r'^partner/(?P<pk>[0-9]+)/$', views.Partner_DetailView.as_view(), name='detail'),
    url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='detail'),
    url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='detail'),
+
+   url(r'^add_employee/$', views.add_employee, name= 'add employee'),
 ]
