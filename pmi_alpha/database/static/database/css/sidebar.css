@@ -1,5 +1,5 @@
 /* The side navigation menu */
-.sidenav {
+#mySidenav {
     height: 100%; /* 100% Full-height */
     width: 250px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
@@ -14,34 +14,34 @@
 }
 
 /* The navigation menu links */
-.sidenav a {
+#mySidenav a {
 
     color: #25e53e;
     display: inline-block;
-    transition: 0.3s
+    transition: 0.3s;
+    text-decoration: none;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
+#mySidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
-.sidenav ul{
+#mySidenav ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-.sidenav li{
+#mySidenav li{
     font-size: 22px;
     color: #25e53e;
-
-
 }
-.sidenav i {
-    padding: 0px 10px 0px 4px; /*top right bottom left*/
-    vertical-align: middle;
+
+#mySidenav i{
+    padding-left: 10px;
 }
+
 /* Position and style the close button (top right corner) */
-/*.sidenav .closebtn {
+/*#mySidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -60,6 +60,6 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    #mySidenav {padding-top: 15px;}
+    #mySidenav a {font-size: 18px;}
 }
