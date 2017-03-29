@@ -11,25 +11,30 @@
     <!--<link rel="stylesheet" type="text/css" href="{ % static 'database/css/sidebar.css' % }">
     <link href="{ % static 'database/js/sidebar.js' % }">-->
 
-    <script src="../../static/database/js/sidebar.js"></script>
-    <link rel="stylesheet" href="../../static/css/sidebar.css">
+    <link rel="stylesheet" href="../../static/database/css/sidebar.css">
+    <link rel="stylesheet" href="../../static/database/css/font-awesome.min.css">
 
 </head>
 
 <body>
-
+<!--<div class="list-group" id="mySidenav">
+    <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+    <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Library</a>
+    <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Applications</a>
+    <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Settings</a>
+</div>-->
 <div id="mySidenav" class="sidenav">
-    <img src="../../static/database/images/paradyme_management.png" height="49" width="231" style="padding-left: 6px"/>
+    <img src="../../static/images/paradyme-management.png" height="49" width="231" style="padding-left: 10px"/>
     <hr>
     <ul>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/home.svg" alt="home">Home</a><hr>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/user.svg" alt="user">New Record</a><hr>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/search.svg" alt="search">Basic Search</a><hr>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/advanced_search.svg" alt="adv search">Advanced Search</a><hr>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/tables.svg" alt="tables">View Tables</a><hr>
-        <li><a href="#"><img class ="icon" src="../../static/database/images/view.svg" alt="view">Create View</a><hr>
-        <!-- if they have permissions-->
-        <li><a href="#"><img class ="icon" src="../../static/database/images/admin.svg" alt="admin">Admin</a><hr>
+        <li><a href="#"><i class="fa fa-home fa-lg fa-fw" aria-hidden="true"></i>&nbsp; Home</a><hr>
+        <li><a href="#"><i class="fa fa-user-plus fa-lg fa-fw" aria-hidden="true"></i>&nbsp; New Record</a><hr>
+        <li><a href="#"><i class="fa fa-search fa-lg" aria-hidden="true"></i>&nbsp; Basic Search</a><hr>
+        <li><a href="#"><i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>&nbsp; Advanced Search</a><hr>
+        <li><a href="#"><i class="fa fa-th fa-lg" aria-hidden="true"></i> &nbsp; View Tables</a><hr>
+        <li><a href="#"><i class="fa fa-align-justify fa-lg" aria-hidden="true"></i>&nbsp; Create View</a><hr>
+        <!--if they have permissions&ndash-->
+        <li><a href="#"><i class="fa fa-gears fa-lg" aria-hidden="true"></i>&nbsp; Admin</a><hr>
     </ul>
 
 

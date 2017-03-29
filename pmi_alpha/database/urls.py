@@ -13,5 +13,13 @@ urlpatterns = [
    url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='detail'),
    url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='detail'),
 
+   url(r'^add_vendor/$', views.add_vendor, name= 'add vendor'),
    url(r'^add_employee/$', views.add_employee, name= 'add employee'),
+   url(r'^add_gg/$', views.add_gg, name= 'add googlegroup'),
+   url(r'^add_customer/$', views.add_customer, name= 'add customer'),
+   url(r'^add_contract/$', views.add_contract, name= 'add contract'),
+   url(r'^add_partner/$', views.add_partner, name= 'add partner'),
+   url(r'^add_department/$', views.add_department, name= 'add department'),
+   url(r'^add_poc/$', views.add_poc, name= 'add poc'),
+
 ]
