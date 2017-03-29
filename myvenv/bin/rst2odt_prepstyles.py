@@ -1,4 +1,4 @@
-#!/home/jared/PMI-Alpha/PMI-Alpha/pmi_alpha/myvenv/bin/python3
+#!/home/jared/PMI-Alpha/PMI-Alpha/myvenv/bin/python3
 
 # $Id: rst2odt_prepstyles.py 5839 2009-01-07 19:09:28Z dkuhlman $
 # Author: Dave Kuhlman <dkuhlman@rexx.com>

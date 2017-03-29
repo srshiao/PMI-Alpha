@@ -1,4 +1,4 @@
-#!/home/jared/PMI-Alpha/PMI-Alpha/pmi_alpha/myvenv/bin/python3
+#!/home/jared/PMI-Alpha/PMI-Alpha/myvenv/bin/python3
 
 # $Id: rst2latex.py 5905 2009-04-16 12:04:49Z milde $
 # Author: David Goodger <goodger@python.org>

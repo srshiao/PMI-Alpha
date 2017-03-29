@@ -1,4 +1,4 @@
-#!/home/jared/PMI-Alpha/PMI-Alpha/pmi_alpha/myvenv/bin/python3
+#!/home/jared/PMI-Alpha/PMI-Alpha/myvenv/bin/python3
 
 # Author: 
 # Contact: grubert@users.sf.net
