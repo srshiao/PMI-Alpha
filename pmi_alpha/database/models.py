@@ -51,7 +51,7 @@ class Vendor(models.Model):
 
 class Employee(models.Model):
 	def __str__(self):
-   		return self.FName + " " + self.MName + " " + self.LName
+   		return self.FName + " " + self.LName
 
 	def __iter__(self):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):

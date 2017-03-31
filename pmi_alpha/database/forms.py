@@ -34,7 +34,7 @@ class CustomerForm(forms.ModelForm):
     class Meta:
 
         model = Customer
-        fields = '__all__'     
+        fields = '__all__'
 
 class ContractForm(forms.ModelForm):
     class Meta:

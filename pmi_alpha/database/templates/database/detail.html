@@ -4,7 +4,7 @@
 
 	{% block content %}
 
-	 <h3>{{ object }}</h3>
+	 
 	 	Some "fields" are blank because they don't have a verbose name. Foreign keys are considered fields so not sure how to change their verbose name when they aren't declared in the model or to not call them at all... :(</br>
 	    {% for field, val in object %}
 	    	<!-- Assuming we don't need to display these fields... -->
