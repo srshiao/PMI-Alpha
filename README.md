@@ -2,9 +2,12 @@
 
 Current Ver. -> 
 
-First draft of Models Complete. 
+Models complete.
+Add New Data pages complete for each Constituent table.
+CSS added.
 
-URGENT TODO: Test models, make sure they are properly creating tables.
-
-NEXT TODO: Write views to display models, work with Alex. 
+To Do ->
+Link sidebar to views.py
+Create selection pages/search pages
+Admin/group priveldges
 
