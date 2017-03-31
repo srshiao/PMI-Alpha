@@ -1,0 +1,29 @@
+body{
+    background-color: #172755;
+    color: #25e53e;
+
+    font-size: 3em;
+}
+
+
+/* The navigation menu links */
+a {
+    color: #25e53e;
+    display: inline-block;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* When you mouse over the navigation links, change their color */
+a:hover, .offcanvas a:focus {
+    color: #f1f1f1;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    margin-left: 250px;
+    transition: margin-left .5s;
+    padding: 20px;
+    color: #0C5404;
+
+}
