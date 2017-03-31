@@ -21,7 +21,7 @@ class Vendor(models.Model):
 	def __iter__(self):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			if field.name == "employee":
-				field.verbose_name = "Employees"
+				field.verbose_name = "Employee"
 				employee_set = Employee.objects.filter(VendorID = self.id)
 
 				#iterates over given query set and returns string representations. 
