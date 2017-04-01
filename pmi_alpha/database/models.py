@@ -24,11 +24,11 @@ class Vendor(models.Model):
 				field.verbose_name = "Employees"
 				employee_set = Employee.objects.filter(VendorID = self.id)
 
-				#iterates over given query set and returns string representations. 
+				#iterates over given query set and returns string representations.
+				values = ""
 				for employee in employee_set:
-					yield(field, employee.__str__())
-				# Returns a QuerySet for value, needs to be changed at some point
-				#yield(field,value)
+					values = values + " \n " + employee.__str__()
+				yield(field,values)
 			else:
 				value = getattr(self, field.name, None)
 				yield (field, value)
