@@ -12,7 +12,7 @@ GENDERCHOICE = (
 	('O', 'Other'),
 	)
 class Vendor(models.Model):
-	
+
 	def __str__(self):
 		# Class Name: name
    		# return self.__class__.__name__ + ": " + self.LegalName
@@ -24,7 +24,7 @@ class Vendor(models.Model):
 				field.verbose_name = "Employees"
 				employee_set = Employee.objects.filter(VendorID = self.id)
 
-				#iterates over given query set and returns string representations. 
+				#iterates over given query set and returns string representations.
 				for employee in employee_set:
 					yield(field, employee.__str__())
 				# Returns a QuerySet for value, needs to be changed at some point
@@ -47,7 +47,7 @@ class Vendor(models.Model):
 	City = models.CharField(_("City"), max_length = 20, default = None)
 	CAGE = models.CharField(_("CAGE"), max_length = 50, default = None)
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
-	
+
 
 class Employee(models.Model):
 	def __str__(self):
@@ -65,7 +65,7 @@ class Employee(models.Model):
 
 	VendorID = models.ForeignKey(Vendor)
 
-	
+
 	CreatedBy = models.CharField(_("Created By"), max_length = 20, default = None)
 	Created = models.DateField(_("Created"), default=datetime.date.today)
 	RequestType = models.CharField(_("Request Type"), max_length = 20, default = None)
@@ -258,7 +258,7 @@ class POC(models.Model):
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
-	
+
 	Address = models.CharField(_("Address"), max_length = 50)
 	Phone = models.CharField(_("Phone"), max_length = 20)
 	Email = models.CharField(_("Email"), max_length = 50)
@@ -293,11 +293,3 @@ class Vendor_Contract(models.Model):
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup)
 	EmployeeID = models.ForeignKey(Employee)
-
-
-
-
-
-
-
-	
