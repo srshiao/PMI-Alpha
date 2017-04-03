@@ -9,7 +9,8 @@ class VendorTable(tables.Table):
         attrs = {'class': 'paleblue'}
 
 class EmployeeTable(tables.Table):
-    VendorID = tables.LinkColumn('vendor_detail', args=[A('pk')])
+    id = tables.LinkColumn('employee_detail', args=[A('pk')])
+    VendorID = tables.LinkColumn('vendor_detail', args=[A('VendorID_id')])
     class Meta:
         model = Employee
         # add class="paleblue" to <table> tag
