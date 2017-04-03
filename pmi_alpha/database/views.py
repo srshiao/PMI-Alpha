@@ -188,3 +188,7 @@ def add_poc(request):
 
 
     return render(request, 'database/add_new.html', context)
+
+
+def dashboard(request):
+    return render(request, 'database/dashboard.html', {})
