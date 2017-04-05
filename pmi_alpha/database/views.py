@@ -75,7 +75,7 @@ def tables(request):
     RequestConfig(request).configure(vendor_contract_table)
     RequestConfig(request).configure(googlegroup_employee_table)
 
-    search_results = watson.search("Vendor")
+    search_results = watson.search("Noah")
 
     for result in search_results:
         print (result.title, result.url)
@@ -200,7 +200,7 @@ def add_poc(request):
 def search (request):
 
     return render(request, 'database/search.html')
-    
+
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
 

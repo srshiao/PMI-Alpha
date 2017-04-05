@@ -23,7 +23,7 @@ urlpatterns = [
    url(r'^add_department/$', views.add_department, name= 'add department'),
    url(r'^add_poc/$', views.add_poc, name= 'add poc'),
 
-   url(r'^search/$', include("watson.urls", namespace="watson")),
+   url(r'^search/', include("watson.urls", namespace="watson")),
 
 
    url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
