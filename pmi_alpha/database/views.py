@@ -197,7 +197,10 @@ def add_poc(request):
 
     return render(request, 'database/add_new.html', context)
 
+def search (request):
 
+    return render(request, 'database/search.html')
+    
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
 

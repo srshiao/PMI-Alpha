@@ -6,7 +6,10 @@
 
 
         {% block content %}
-
+        <form action="{% url 'watson:search' %}">
+    <input name="q" value="{{request.GET.q}}">
+    <input type="submit" value="Go">
+</form>
 
         <h3>Vendor</h3>
         {% render_table vendor %}
