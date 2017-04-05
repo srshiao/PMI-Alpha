@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',         #Helps generate search/filter forms
     'bootstrap3',           #css purposes.
     'database',
-    'images'
+    'images',
+    'watson',
 ]
 
 MIDDLEWARE = [

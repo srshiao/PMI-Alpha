@@ -5,8 +5,11 @@ from .models import *
 from .tables import *
 from django.views import generic
 from django.http import HttpResponseRedirect
+from watson import search as watson
+
 
 class Vendor_DetailView(generic.DetailView):
+    
     model = Vendor
     template_name = 'database/detail.html'
 
@@ -72,6 +75,10 @@ def tables(request):
     RequestConfig(request).configure(vendor_contract_table)
     RequestConfig(request).configure(googlegroup_employee_table)
 
+    search_results = watson.search("Vendor")
+
+    for result in search_results:
+        print (result.title, result.url)
 
     return render(request, 'database/tables.html',
     	{'vendor': vendor_table,
@@ -88,7 +95,8 @@ def tables(request):
     	'customer_partner':customer_partner_table,
     	'poc': poc_table,
     	'vendor_contract':vendor_contract_table,
-    	'googlegroup_employee':googlegroup_employee_table, })
+    	'googlegroup_employee':googlegroup_employee_table, 
+        'search_results':search_results,})
 
 
 def add_vendor(request):
@@ -192,3 +200,7 @@ def add_poc(request):
 
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
+
+
+
+
