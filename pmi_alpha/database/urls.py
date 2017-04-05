@@ -26,8 +26,14 @@ urlpatterns = [
    url(r'^search/', include("watson.urls", namespace="watson")),
 
 
+
+
    url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
 
+
+   #CHANGES
+    url(r'^vendors/$', views.VendorListView.as_view(), name="vendor table"),
+    url(r'^employees/$', views.EmployeeListView.as_view(), name="employee table"),
 
 
 

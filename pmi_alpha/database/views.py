@@ -3,9 +3,13 @@ from django_tables2 import RequestConfig
 from .forms import *
 from .models import *
 from .tables import *
+from .filters import *
 from django.views import generic
 from django.http import HttpResponseRedirect
 from watson import search as watson
+from django.views.generic import ListView
+from django.views.generic import TemplateView
+from django_tables2 import SingleTableView
 
 
 class Vendor_DetailView(generic.DetailView):
@@ -204,6 +208,39 @@ def search (request):
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
 
+
+#CHANGES
+class VendorListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Vendor.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(VendorListView, self).get_context_data(**kwargs)
+        filter = VendorListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = VendorListFormHelper()
+        table = VendorTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class EmployeeListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Employee.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(EmployeeListView, self).get_context_data(**kwargs)
+        filter = EmployeeListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = EmployeeListFormHelper()
+        table = EmployeeTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
 
 
 

@@ -1,8 +1,9 @@
 from django import forms
 from .models import *
-#from crispy_forms.helper import FormHelper
-#from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
-#from crispy_forms.bootstrap import InlineField, FormActions, StrictButton
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
+from crispy_forms.bootstrap import InlineField, FormActions, StrictButton
+
 
 class VendorForm(forms.ModelForm):
     class Meta:
@@ -53,3 +54,62 @@ class POCForm(forms.ModelForm):
 
         model = POC
         fields = '__all__'
+
+class VendorListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Vendor Records',       
+                    InlineField('Legal Name"'),
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+class VendorListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Vendor Records',       
+                    InlineField('LegalName'),
+                    'POC'
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class EmployeeListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Employee Records',       
+                    InlineField('FName'),
+                    InlineField('LName'),
+                    'HUBzone',
+                    'VendorID',
+                    'DateOfHire',
+                    'EmployementStatus',
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )

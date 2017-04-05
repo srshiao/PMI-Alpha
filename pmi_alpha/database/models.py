@@ -242,6 +242,9 @@ class Contract(models.Model):
 	#ContractValue = models.CharField(_("Contract Value"), max_length = 50, default = None)
 	#PlaceOfPerformance = models.CharField(_("Place Of Performance"), max_length = 100, default = None)
 
+
+	#http://stackoverflow.com/questions/5090047/django-create-a-model-that-lets-you-insert-multiple-values-for-the-same-field
+	
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 
