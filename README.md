@@ -1,13 +1,15 @@
-# PMI-Alpha
+yo do this or your code wont run
 
-Current Ver. -> 
+To install django-watson, follow these steps:
 
-Models complete.
-Add New Data pages complete for each Constituent table.
-CSS added.
+Install django-watson using pip: pip3 install django-watson.
 
-To Do ->
-Link sidebar to views.py
-Create selection pages/search pages
-Admin/group priveldges
+
+Update your Database:
+
+python3 manage.py migrate.
+
+python3 manage.py installwatson.
+
+python3 manage.py buildwatson
 

@@ -26,6 +26,7 @@ SECRET_KEY = '3%%glo(mp0z()b*@vnj-0a_liem!%$=&+3-nq%74u(xx!1m_&e'
 DEBUG = True
 
 ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1']
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 # Application definition
@@ -44,7 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',         #Helps generate search/filter forms
     'bootstrap3',           #css purposes.
     'database',
-    'images'
+    'images',
+    'watson',
 ]
 
 MIDDLEWARE = [

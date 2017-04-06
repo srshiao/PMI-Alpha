@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from . import views
+from django.conf.urls import include
+
 
 urlpatterns = [
    url(r'^$', views.tables, name='tables'),
@@ -20,5 +22,19 @@ urlpatterns = [
    url(r'^add_partner/$', views.add_partner, name= 'add partner'),
    url(r'^add_department/$', views.add_department, name= 'add department'),
    url(r'^add_poc/$', views.add_poc, name= 'add poc'),
+
+   url(r'^search/', include("watson.urls", namespace="watson")),
+
+
+
+
+   url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
+
+
+   #CHANGES
+    url(r'^vendors/$', views.VendorListView.as_view(), name="vendor table"),
+    url(r'^employees/$', views.EmployeeListView.as_view(), name="employee table"),
+
+
 
 ]

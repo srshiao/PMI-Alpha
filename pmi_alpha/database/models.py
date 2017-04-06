@@ -11,8 +11,21 @@ GENDERCHOICE = (
 	('F', 'Female'),
 	('O', 'Other'),
 	)
-class Vendor(models.Model):
+CTYPE = (
+	('LH', 'Labor Hour'),
+	('T', 'TNM'),
+	('F','FFP'),
 
+	)
+class Vendor(models.Model):
+<<<<<<< HEAD
+
+=======
+	def get_absolute_url(self):
+		from django.urls import reverse
+		return reverse('vendor_detail', args=[str(self.id)])
+	
+>>>>>>> 1a099aa4271bec91e73170742a030e3790659d1d
 	def __str__(self):
 		# Class Name: name
    		# return self.__class__.__name__ + ": " + self.LegalName
@@ -50,6 +63,10 @@ class Vendor(models.Model):
 
 
 class Employee(models.Model):
+	def get_absolute_url(self):
+		from django.urls import reverse
+		return reverse('employee_detail', args=[str(self.id)])
+
 	def __str__(self):
    		return self.FName + " " + self.LName
 
@@ -131,7 +148,7 @@ class Employee(models.Model):
 
 class GoogleGroup(models.Model):
 	def __str__(self):
-   		return self.Name
+		return self.Name
 
 	def __iter__(self):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
@@ -145,7 +162,7 @@ class GoogleGroup(models.Model):
 
 class Partner(models.Model):
 	def __str__(self):
-   		return self.LegalName
+		return self.LegalName
 
 	def __iter__(self):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
@@ -191,7 +208,6 @@ class Customer(models.Model):
 	State = models.CharField(_("State"), max_length = 10, default = None)
 	Country = models.CharField(_("Country"), max_length = 20, default = None)
 	Phone = models.CharField(_("Phone"), max_length = 20, default = None)
-	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	Fax = models.CharField(_("Fax"), max_length = 50, default = None)
 	Email = models.CharField(_("Email"), max_length = 50, default = None)
 	DUNs = models.CharField(_("DUNs"), max_length = 9, default = None)
@@ -209,6 +225,9 @@ class Contract(models.Model):
 			yield (field, value)
 	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
 	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
+	
+	#ContractName = models.CharField(_("Contract Name"), max_length = 50, default = None)
+	#ContractType = models.CharField(_("Contract Type"), max_length = 50, default = None, choices = CTYPE)
 	DocumentLocation = models.CharField(_("Document Location"), max_length = 50, default = None)
 	OrganizationType = models.CharField(_("Organization Type"), max_length = 50, default = None)
 
@@ -221,6 +240,15 @@ class Contract(models.Model):
 	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
 	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
 	Status = models.CharField(_("Status"), max_length = 50, default = None)
+	
+	#Clearance = models.CharField(_("Clearance"), max_length = 50, default = None)
+	#Scope = models.CharField(_("Scope"), max_length = 50, default = None)
+	#ContractValue = models.CharField(_("Contract Value"), max_length = 50, default = None)
+	#PlaceOfPerformance = models.CharField(_("Place Of Performance"), max_length = 100, default = None)
+
+
+	#http://stackoverflow.com/questions/5090047/django-create-a-model-that-lets-you-insert-multiple-values-for-the-same-field
+	
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 

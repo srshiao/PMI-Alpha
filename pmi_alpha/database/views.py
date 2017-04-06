@@ -3,10 +3,17 @@ from django_tables2 import RequestConfig
 from .forms import *
 from .models import *
 from .tables import *
+from .filters import *
 from django.views import generic
 from django.http import HttpResponseRedirect
+from watson import search as watson
+from django.views.generic import ListView
+from django.views.generic import TemplateView
+from django_tables2 import SingleTableView
+
 
 class Vendor_DetailView(generic.DetailView):
+    
     model = Vendor
     template_name = 'database/detail.html'
 
@@ -72,6 +79,10 @@ def tables(request):
     RequestConfig(request).configure(vendor_contract_table)
     RequestConfig(request).configure(googlegroup_employee_table)
 
+    search_results = watson.search("Noah")
+
+    for result in search_results:
+        print (result.title, result.url)
 
     return render(request, 'database/tables.html',
     	{'vendor': vendor_table,
@@ -88,7 +99,8 @@ def tables(request):
     	'customer_partner':customer_partner_table,
     	'poc': poc_table,
     	'vendor_contract':vendor_contract_table,
-    	'googlegroup_employee':googlegroup_employee_table, })
+    	'googlegroup_employee':googlegroup_employee_table, 
+        'search_results':search_results,})
 
 
 def add_vendor(request):
@@ -188,3 +200,47 @@ def add_poc(request):
 
 
     return render(request, 'database/add_new.html', context)
+
+def search (request):
+
+    return render(request, 'database/search.html')
+
+def dashboard(request):
+    return render(request, 'database/dashboard.html', {})
+
+
+#CHANGES
+class VendorListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Vendor.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(VendorListView, self).get_context_data(**kwargs)
+        filter = VendorListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = VendorListFormHelper()
+        table = VendorTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class EmployeeListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Employee.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(EmployeeListView, self).get_context_data(**kwargs)
+        filter = EmployeeListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = EmployeeListFormHelper()
+        table = EmployeeTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+
+
