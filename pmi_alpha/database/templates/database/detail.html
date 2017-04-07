@@ -1,0 +1,31 @@
+{% extends 'database/sidebar.html' %}
+
+{% load django_tables2 %}
+
+	{% block content %}
+
+
+
+	 	{% autoescape on %}
+	    {% for field, val in object %}
+	    	<!-- Assuming we don't need to display these fields... -->
+	    	{% if field.name != "department_employee" and field.name != "contract_employee" and field.name != "customer_vendor" and field.name != "customer_employee" and field.name != "vendor_contract" and field.name != "googlegroup_employee"%}
+	    		{% if val != Null %}
+	    		{{ field.verbose_name }} : {{ val | linebreaksbr }} </br>
+	    		{% endif %}
+	 
+	    	{% endif %}
+
+	
+
+	    {% endfor %}
+		{% endautoescape %}
+
+
+	
+	    </br>* Stuff *</br>
+
+
+
+	{% endblock %}
+

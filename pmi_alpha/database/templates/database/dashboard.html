@@ -1,0 +1,51 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Database Dashboard</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+
+    <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
+
+    <link rel="stylesheet" href="../../static/database/css/dashboard.css">
+    <link rel="stylesheet" href="../../static/database/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <div class="text-center">
+        <h1>Welcome to the Paradyme <br> Management  Database Application!</h1><br><br>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'add employee' %}"><i class="fa fa-user-plus fa-4x" aria-hidden="true"></i><br> New Record</a>
+                <br><br><br>
+                <a href="{% url 'tables' %}"><i class="fa fa-th fa-4x" aria-hidden="true"></i><br> View Tables</a>
+                <br><br><br>
+            </div>
+            <div class="col-md-4">
+               <a href="{% url 'basic search' %}"><i class="fa fa-search fa-4x" aria-hidden="true"></i><br> Basic Search</a>
+                <br><br><br>
+                <a href="#"><i class="fa fa-align-justify fa-4x" aria-hidden="true"></i><br> Create View</a>
+                <br><br><br>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'advanced search' %}"><i class="fa fa-search-plus fa-4x" aria-hidden="true"></i><br> Advanced Search</a>
+                <br><br><br>
+                <a href="#"><i class="fa fa-gears fa-4x" aria-hidden="true"></i><br> Admin</a>
+                <br><br><br>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
