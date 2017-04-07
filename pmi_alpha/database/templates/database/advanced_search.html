@@ -1,0 +1,78 @@
+{% extends 'database/sidebar.html' %}
+ 
+ {% block content %}
+ <div>
+     <h3>Search for multiple records by several fields</h3>
+ 
+     <select id="record_type">
+         <option value="add employee">Employee</option>
+         <option value="add 1">Vendor</option>
+         <option value="add 2">Customer</option>
+         <option value="add 3">Contract</option>
+         <option value="add 4">Department</option>
+         <option value="add 5">Partner</option>
+     </select>
+ </div>
+ <br>
+ <div class="form-group">
+     <span class = "small">Based on selection, dropdown will be potentaill be dynamincally generated</span>
+     <br>
+     <select id="search1">
+         <option value="a">Record</option>
+         <option value="b">specific</option>
+         <option value="c">fields</option>
+         <option value="d">go</option>
+         <option value="e">here</option>
+     </select>&nbsp;
+     <select id="condition">
+         <option value="equal">Is Equals to</option>
+         <option value="less">Is Less than</option>
+         <option value="greater">Is Greater than</option>
+         <option value="not equal">Is Not Equals to</option>
+         <option value="blank">Is Blank</option>
+     </select>
+     &nbsp;&nbsp;<input type="text" id="param1">
+ </div>
+ <div>
+     Additional condition?<input type="checkbox" id="add_condition" onclick="showMore()">
+ 
+     <fieldset id="rad" hidden="true" class="form-group">
+         <div class="form-check">
+             <label class="form-check-label">
+                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                 Option one is this and that&mdash;be sure to include why it's great
+             </label>
+         </div>
+         <div class="form-check">
+             <label class="form-check-label">
+                 <input type="radio" class="form-check-input" name="optionsRadios" id=optionsRadios2" value="option2">
+                 Option two can be something else and selecting it will deselect option one
+             </label>
+         </div>
+     </fieldset>
+ </div>
+ 
+ 
+ <div>
+ 
+     <br>
+     <button>Submit</button>
+    <br>
+     <br><p>
+         <strong>returns a list of records</strong>
+     </p>
+ </div>
+ <script>
+     function showMore() {
+         //document.getElementById("optionsRadios1").setAttribute("disabled", "true");
+         if(document.getElementById("rad").getAttribute("hidden") == "true"){
+             document.getElementById("rad").setAttribute("hidden", "true");
+         } else {
+             document.getElementById("rad").setAttribute("hidden", "false");
+         }
+ 
+         //document.getElementsByName("optionsRadios")[0].disabled = "true";
+         //document.getElementsByName("optionsRadios")[0].hidden. = "true";
+     }
+ </script>
+ {% endblock %}

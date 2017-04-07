@@ -29,6 +29,9 @@ urlpatterns = [
 
 
    url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
+   url(r'^add_record/$', views.add_record, name= 'add record'),
+   url(r'^basic_search/$', views.basic_search, name= 'basic search'),
+   url(r'^advanced_search/$', views.advanced_search, name= 'advanced search'),
 
 
    #CHANGES

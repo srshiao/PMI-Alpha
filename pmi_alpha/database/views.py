@@ -208,7 +208,13 @@ def search (request):
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
 
-
+def add_record(request):
+    return render(request, 'database/add_record.html', {})
+def basic_search(request):
+    return render(request, 'database/basic_search.html', {})
+def advanced_search(request):
+    return render(request, 'database/advanced_search.html', {})
+    
 #CHANGES
 class VendorListView(TemplateView):
     template_name = 'database/searchable.html'
