@@ -48,6 +48,11 @@ class DepartmentForm(forms.ModelForm):
 
         model = Department
         fields = '__all__'
+    def __init__(self, *args, **kwargs):
+
+        super(DepartmentForm, self).__init__(*args, **kwargs)
+        # CHECK: TypedMultipleChoiceField
+        self.fields['Employees']=forms.ModelChoiceField(queryset=Employee.objects.all())
 
 class POCForm(forms.ModelForm):
     class Meta:

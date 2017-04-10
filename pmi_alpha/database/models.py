@@ -31,12 +31,11 @@ class Vendor(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			if field.name == "employee":
 				field.verbose_name = "Employees"
-				employee_set = Employee.objects.filter(VendorID = self.id)
-
+				# employee_set = Employee.objects.filter(VendorID = self.id)
 				#iterates over given query set and returns string representations.
 				values = ""
-				for employee in employee_set:
-					values = values + " \n " + employee.__str__()
+				for employee in self.employee_set.all():
+					values = values + " \n " + "\xa0\xa0\xa0\xa0" + employee.__str__()
 				yield(field,values)
 			else:
 				value = getattr(self, field.name, None)
