@@ -32,11 +32,19 @@ urlpatterns = [
    url(r'^add_record/$', views.add_record, name= 'add record'),
    url(r'^basic_search/$', views.basic_search, name= 'basic search'),
    url(r'^advanced_search/$', views.advanced_search, name= 'advanced search'),
+      url(r'^select/$', views.select_table, name= 'select table'),
+
 
 
    #CHANGES
     url(r'^vendors/$', views.VendorListView.as_view(), name="vendor table"),
     url(r'^employees/$', views.EmployeeListView.as_view(), name="employee table"),
+    url(r'^GoogleGroups/$', views.GGListView.as_view(), name="google table"),
+    url(r'^Customers/$', views.CustomerListView.as_view(), name="customer table"),
+    url(r'^Contracts/$', views.ContractListView.as_view(), name="contract table"),
+    url(r'^Partners/$', views.PartnerListView.as_view(), name="partner table"),
+    url(r'^departments/$', views.DepartmentListView.as_view(), name="department table"),
+    url(r'^POCs/$', views.POCListView.as_view(), name="poc table"),
 
 
 

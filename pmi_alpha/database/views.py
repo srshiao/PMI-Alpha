@@ -214,7 +214,8 @@ def basic_search(request):
     return render(request, 'database/basic_search.html', {})
 def advanced_search(request):
     return render(request, 'database/advanced_search.html', {})
-    
+def select_table(request):
+    return render(request, 'database/select_view.html', {})
 #CHANGES
 class VendorListView(TemplateView):
     template_name = 'database/searchable.html'
@@ -248,5 +249,99 @@ class EmployeeListView(TemplateView):
         context['table'] = table
         return context
 
+class GGListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return GoogleGroup.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(GGListView, self).get_context_data(**kwargs)
+        filter = GGListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = GGListFormHelper()
+        table = GoogleGroupTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class CustomerListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Customer.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomerListView, self).get_context_data(**kwargs)
+        filter = CustomerListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = CustomerListFormHelper()
+        table = CustomerTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+class ContractListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Contract.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(ContractListView, self).get_context_data(**kwargs)
+        filter = ContractListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = ContractListFormHelper()
+        table = ContractTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class PartnerListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Partner.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(PartnerListView, self).get_context_data(**kwargs)
+        filter = PartnerListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = PartnerListFormHelper()
+        table = PartnerTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class DepartmentListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return Department.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(DepartmentListView, self).get_context_data(**kwargs)
+        filter = DepartmentListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = DepartmentListFormHelper()
+        table = DepartmentTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
+
+class POCListView(TemplateView):
+    template_name = 'database/searchable.html'
+
+    def get_queryset(self, **kwargs):
+        return POC.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(POCListView, self).get_context_data(**kwargs)
+        filter = POCListFilter(self.request.GET, queryset=self.get_queryset(**kwargs))
+        filter.form.helper = POCListFormHelper()
+        table = POCTable(filter.qs)
+        RequestConfig(self.request).configure(table)
+        context['filter'] = filter
+        context['table'] = table
+        return context
 
 
