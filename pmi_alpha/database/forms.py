@@ -94,6 +94,7 @@ class EmployeeListFormHelper(FormHelper):
                     'VendorID',
                     'DateOfHire',
                     'EmployementStatus',
+                    #'date_between',
 
                 ),
                 #'resource_first_name',

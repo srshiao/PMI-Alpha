@@ -14,6 +14,8 @@ class EmployeeListFilter(django_filters.FilterSet):
   class Meta:
     model = Employee
     fields =  '__all__'
+    date_between = django_filters.DateFromToRangeFilter(name='DateOfHire',
+                                                             label='Date of Hire (Between)')
     order_by = ['pk']
 class GGListFilter(django_filters.FilterSet):
 
@@ -35,7 +37,7 @@ class ContractListFilter(django_filters.FilterSet):
     fields =  '__all__'
     order_by = ['pk']
 
-class PartnersListFilter(django_filters.FilterSet):
+class PartnerListFilter(django_filters.FilterSet):
 
   class Meta:
     model = Partner
