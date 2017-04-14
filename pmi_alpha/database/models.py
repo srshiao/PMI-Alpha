@@ -18,14 +18,11 @@ CTYPE = (
 
 	)
 class Vendor(models.Model):
-<<<<<<< HEAD
 
-=======
 	def get_absolute_url(self):
 		from django.urls import reverse
 		return reverse('vendor_detail', args=[str(self.id)])
-	
->>>>>>> 1a099aa4271bec91e73170742a030e3790659d1d
+
 	def __str__(self):
 		# Class Name: name
    		# return self.__class__.__name__ + ": " + self.LegalName
@@ -225,7 +222,7 @@ class Contract(models.Model):
 			yield (field, value)
 	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
 	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
-	
+
 	#ContractName = models.CharField(_("Contract Name"), max_length = 50, default = None)
 	#ContractType = models.CharField(_("Contract Type"), max_length = 50, default = None, choices = CTYPE)
 	DocumentLocation = models.CharField(_("Document Location"), max_length = 50, default = None)
@@ -240,7 +237,7 @@ class Contract(models.Model):
 	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
 	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
 	Status = models.CharField(_("Status"), max_length = 50, default = None)
-	
+
 	#Clearance = models.CharField(_("Clearance"), max_length = 50, default = None)
 	#Scope = models.CharField(_("Scope"), max_length = 50, default = None)
 	#ContractValue = models.CharField(_("Contract Value"), max_length = 50, default = None)
@@ -248,7 +245,7 @@ class Contract(models.Model):
 
 
 	#http://stackoverflow.com/questions/5090047/django-create-a-model-that-lets-you-insert-multiple-values-for-the-same-field
-	
+
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 
