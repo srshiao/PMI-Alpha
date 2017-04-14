@@ -3,6 +3,7 @@ from . import views
 from django.conf.urls import include
 
 
+
 urlpatterns = [
    url(r'^$', views.tables, name='tables'),
    url(r'^vendor/(?P<pk>[0-9]+)/$', views.Vendor_DetailView.as_view(), name='vendor_detail'),
