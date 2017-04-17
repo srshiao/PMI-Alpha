@@ -10,39 +10,47 @@ from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
-
-#Detail Views -> Shows detailed Object Info from table. 
-class Vendor_DetailView(generic.DetailView):
-    
+#Detail Views -> Shows detailed Object Info from table.
+class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Vendor'
     model = Vendor
     template_name = 'database/detail.html'
 
-class Employee_DetailView(generic.DetailView):
+class Employee_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Employee'
     model = Employee
     template_name = 'database/detail.html'
 
-class GoogleGroup_DetailView(generic.DetailView):
+class GoogleGroup_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.GoogleGroup'
     model = GoogleGroup
     template_name = 'database/detail.html'
 
-class Customer_DetailView(generic.DetailView):
+class Customer_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Customer'
     model = Customer
     template_name = 'database/detail.html'
 
-class Contract_DetailView(generic.DetailView):
+class Contract_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Contract'
     model = Contract
     template_name = 'database/detail.html'
 
-class Partner_DetailView(generic.DetailView):
+class Partner_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Partner'
     model = Partner
     template_name = 'database/detail.html'
 
-class Department_DetailView(generic.DetailView):
+class Department_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.Department'
     model = Department
     template_name = 'database/detail.html'
 
-class POC_DetailView(generic.DetailView):
+class POC_DetailView(PermissionRequiredMixin,generic.DetailView):
+    permission_required = 'database.POC'
     model = POC
     template_name = 'database/detail.html'
 
@@ -101,11 +109,12 @@ def tables(request):
     	'customer_partner':customer_partner_table,
     	'poc': poc_table,
     	'vendor_contract':vendor_contract_table,
-    	'googlegroup_employee':googlegroup_employee_table, 
+    	'googlegroup_employee':googlegroup_employee_table,
         'search_results':search_results,})
 
 
 #add_* --> renders add page to add new objects to database
+@login_required
 def add_vendor(request):
     form = VendorForm(request.POST or None);
     context = {
@@ -118,6 +127,7 @@ def add_vendor(request):
 
     return render(request, 'database/add_new.html', context)
 
+@login_required
 def add_employee(request):
     form = EmployeeForm(request.POST or None);
     context = {
@@ -127,9 +137,9 @@ def add_employee(request):
         form.save()
         return HttpResponseRedirect('/database/')
 
-
     return render(request, 'database/add_new.html', context)
 
+@login_required
 def add_gg(request):
     form = GoogleGroupForm(request.POST or None);
     context = {
@@ -144,6 +154,7 @@ def add_gg(request):
 
 
 def add_customer(request):
+    permission_required = 'database.Customer'
     form = CustomerForm(request.POST or None);
     context = {
         'form' : form
@@ -155,6 +166,7 @@ def add_customer(request):
 
     return render(request, 'database/add_new.html', context)
 
+@login_required
 def add_contract(request):
     form = ContractForm(request.POST or None);
     context = {
@@ -167,6 +179,7 @@ def add_contract(request):
 
     return render(request, 'database/add_new.html', context)
 
+@login_required
 def add_partner(request):
     form = PartnerForm(request.POST or None);
     context = {
@@ -180,6 +193,7 @@ def add_partner(request):
     return render(request, 'database/add_new.html', context)
 
 
+@login_required
 def add_department(request):
     form = DepartmentForm(request.POST or None);
     context = {
@@ -192,6 +206,7 @@ def add_department(request):
 
     return render(request, 'database/add_new.html', context)
 
+@login_required
 def add_poc(request):
     form = POCForm(request.POST or None);
     context = {
@@ -207,7 +222,6 @@ def add_poc(request):
 
 #HTML PAGES USED FOR REDIRECTION
 def search (request):
-
     return render(request, 'database/search.html')
 
 def dashboard(request):
@@ -222,9 +236,9 @@ def advanced_search(request):
 def select_table(request):
     return render(request, 'database/select_view.html', {})
 
-
 #ADVANCED TABLES, SEARCH/FILTER
-class VendorListView(TemplateView):
+class VendorListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Vendor'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -240,7 +254,8 @@ class VendorListView(TemplateView):
         context['table'] = table
         return context
 
-class EmployeeListView(TemplateView):
+class EmployeeListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Employee'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -256,7 +271,8 @@ class EmployeeListView(TemplateView):
         context['table'] = table
         return context
 
-class GGListView(TemplateView):
+class GGListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.GoogleGroup'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -272,7 +288,8 @@ class GGListView(TemplateView):
         context['table'] = table
         return context
 
-class CustomerListView(TemplateView):
+class CustomerListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Customer'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -287,7 +304,8 @@ class CustomerListView(TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
-class ContractListView(TemplateView):
+class ContractListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Contract'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -303,7 +321,8 @@ class ContractListView(TemplateView):
         context['table'] = table
         return context
 
-class PartnerListView(TemplateView):
+class PartnerListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Partner'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -319,7 +338,8 @@ class PartnerListView(TemplateView):
         context['table'] = table
         return context
 
-class DepartmentListView(TemplateView):
+class DepartmentListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.Department'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -335,7 +355,8 @@ class DepartmentListView(TemplateView):
         context['table'] = table
         return context
 
-class POCListView(TemplateView):
+class POCListView(PermissionRequiredMixin,TemplateView):
+    permission_required = 'database.POC'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
@@ -350,5 +371,3 @@ class POCListView(TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
-
-
