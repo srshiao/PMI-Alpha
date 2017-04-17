@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'bootstrap3',           #css purposes.
     'database',
     'images',
-    'watson',
+    'watson',               #Basic Search
 ]
 
 MIDDLEWARE = [
