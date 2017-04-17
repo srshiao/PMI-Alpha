@@ -1,3 +1,9 @@
+#Create Django-Generated forms. Used for adding/editing objects in database. 
+#Second section of forms.py used for generating searchable tables. 
+
+#TODO CORRESPOND WITH USERS, CHANGE WHICH FIELDS ARE AVAILABLE TO BE SEARCHED BY
+#ACCORDINGLY
+
 from django import forms
 from .models import *
 from crispy_forms.helper import FormHelper
@@ -61,6 +67,8 @@ class POCForm(forms.ModelForm):
         fields = '__all__'
 
 
+#KEY COMPONENT TO SEARCH TABLES. TO ADD/CHANGE SEARCH-BY-FIELDS EDIT THE ITEMS IN THE "FIELDSET"
+
 class VendorListFormHelper(FormHelper):    
     form_method = 'GET'
     field_template = 'bootstrap3/layout/inline_field.html'
@@ -112,7 +120,7 @@ class GGListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Vendor Records',       
+                    '<i class="fa fa-search"></i> Search Google Group Records',       
                     InlineField('Name'),
                     'Admin'
 
@@ -131,7 +139,7 @@ class CustomerListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Employee Records',       
+                    '<i class="fa fa-search"></i> Search Customer Records',       
                     InlineField('LegalName'),
 
 
@@ -150,7 +158,7 @@ class ContractListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Vendor Records',       
+                    '<i class="fa fa-search"></i> Search Contract Records',       
                     InlineField('IssuingCompany'),
                     InlineField('ContractNumber'),
 
@@ -169,7 +177,7 @@ class PartnerListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Employee Records',       
+                    '<i class="fa fa-search"></i> Search Partner Records',       
                     InlineField('LegalName'),
 
 
@@ -188,7 +196,7 @@ class DepartmentListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Vendor Records',       
+                    '<i class="fa fa-search"></i> Search Department Records',       
                     InlineField('ContractID'),
                     'CustomerID',
                     'Name',
@@ -209,7 +217,7 @@ class POCListFormHelper(FormHelper):
     label_class = 'col-xs-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Employee Records',       
+                    '<i class="fa fa-search"></i> Search Point of Contact Records',       
                     InlineField('FName'),
                     InlineField('LName'),
                     'PartnerID',

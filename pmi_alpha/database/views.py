@@ -12,6 +12,7 @@ from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
 
 
+#Detail Views -> Shows detailed Object Info from table. 
 class Vendor_DetailView(generic.DetailView):
     
     model = Vendor
@@ -45,6 +46,7 @@ class POC_DetailView(generic.DetailView):
     model = POC
     template_name = 'database/detail.html'
 
+#Shows All Tables in One Page
 def tables(request):
     vendor_table = VendorTable(Vendor.objects.all())
     employee_table = EmployeeTable(Employee.objects.all())
@@ -103,6 +105,7 @@ def tables(request):
         'search_results':search_results,})
 
 
+#add_* --> renders add page to add new objects to database
 def add_vendor(request):
     form = VendorForm(request.POST or None);
     context = {
@@ -201,6 +204,8 @@ def add_poc(request):
 
     return render(request, 'database/add_new.html', context)
 
+
+#HTML PAGES USED FOR REDIRECTION
 def search (request):
 
     return render(request, 'database/search.html')
@@ -216,7 +221,9 @@ def advanced_search(request):
     return render(request, 'database/advanced_search.html', {})
 def select_table(request):
     return render(request, 'database/select_view.html', {})
-#CHANGES
+
+
+#ADVANCED TABLES, SEARCH/FILTER
 class VendorListView(TemplateView):
     template_name = 'database/searchable.html'
 
