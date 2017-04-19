@@ -18,10 +18,11 @@ CTYPE = (
 
 	)
 class Vendor(models.Model):
+
 	def get_absolute_url(self):
 		from django.urls import reverse
 		return reverse('vendor_detail', args=[str(self.id)])
-	
+
 	def __str__(self):
 		# Class Name: name
    		# return self.__class__.__name__ + ": " + self.LegalName
@@ -55,7 +56,7 @@ class Vendor(models.Model):
 	City = models.CharField(_("City"), max_length = 20, default = None)
 	CAGE = models.CharField(_("CAGE"), max_length = 50, default = None)
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
-	
+
 
 class Employee(models.Model):
 	def get_absolute_url(self):
@@ -77,7 +78,7 @@ class Employee(models.Model):
 
 	VendorID = models.ForeignKey(Vendor)
 
-	
+
 	CreatedBy = models.CharField(_("Created By"), max_length = 20, default = None)
 	Created = models.DateField(_("Created"), default=datetime.date.today)
 	RequestType = models.CharField(_("Request Type"), max_length = 20, default = None)
@@ -220,7 +221,7 @@ class Contract(models.Model):
 			yield (field, value)
 	IssuingCompany = models.CharField(_("Issuing Company"), max_length = 50, default = None)
 	ContractNumber = models.CharField(_("Contract Number"), max_length = 50, default = None)
-	
+
 	#ContractName = models.CharField(_("Contract Name"), max_length = 50, default = None)
 	#ContractType = models.CharField(_("Contract Type"), max_length = 50, default = None, choices = CTYPE)
 	DocumentLocation = models.CharField(_("Document Location"), max_length = 50, default = None)
@@ -235,7 +236,7 @@ class Contract(models.Model):
 	EndDate = models.DateField(_("End Date"), default=datetime.date.today)
 	StartDate = models.DateField(_("Start Date"), default=datetime.date.today)
 	Status = models.CharField(_("Status"), max_length = 50, default = None)
-	
+
 	#Clearance = models.CharField(_("Clearance"), max_length = 50, default = None)
 	#Scope = models.CharField(_("Scope"), max_length = 50, default = None)
 	#ContractValue = models.CharField(_("Contract Value"), max_length = 50, default = None)
@@ -243,7 +244,7 @@ class Contract(models.Model):
 
 
 	#http://stackoverflow.com/questions/5090047/django-create-a-model-that-lets-you-insert-multiple-values-for-the-same-field
-	
+
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 
@@ -281,7 +282,7 @@ class POC(models.Model):
 	PartnerID = models.ForeignKey(Partner)
 	ContractID = models.ForeignKey(Contract)
 	CustomerID = models.ForeignKey(Customer)
-	
+
 	Address = models.CharField(_("Address"), max_length = 50)
 	Phone = models.CharField(_("Phone"), max_length = 20)
 	Email = models.CharField(_("Email"), max_length = 50)
@@ -316,11 +317,3 @@ class Vendor_Contract(models.Model):
 class GoogleGroup_Employee(models.Model):
 	GoogleGroupID = models.ForeignKey(GoogleGroup)
 	EmployeeID = models.ForeignKey(Employee)
-
-
-
-
-
-
-
-	

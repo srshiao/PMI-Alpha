@@ -6,6 +6,8 @@ from django.conf.urls import include
 
 urlpatterns = [
    url(r'^$', views.tables, name='tables'),
+   url(r'^home/$', views.dashboard, name= 'home'),
+
    url(r'^vendor/(?P<pk>[0-9]+)/$', views.Vendor_DetailView.as_view(), name='vendor_detail'),
    url(r'^employee/(?P<pk>[0-9]+)/$', views.Employee_DetailView.as_view(), name='employee_detail'),
    url(r'^googlegroup/(?P<pk>[0-9]+)/$', views.GoogleGroup_DetailView.as_view(), name='detail'),
@@ -15,6 +17,7 @@ urlpatterns = [
    url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='detail'),
    url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='detail'),
 
+   #RENDERS ADD OBJECT PAGES USING MODELFORMS
    url(r'^add_vendor/$', views.add_vendor, name= 'add vendor'),
    url(r'^add_employee/$', views.add_employee, name= 'add employee'),
    url(r'^add_gg/$', views.add_gg, name= 'add googlegroup'),
@@ -24,20 +27,22 @@ urlpatterns = [
    url(r'^add_department/$', views.add_department, name= 'add department'),
    url(r'^add_poc/$', views.add_poc, name= 'add poc'),
 
+
+   #BASIC SEARCH
    url(r'^search/', include("watson.urls", namespace="watson"), {'template_name' : 'database/search_results.html'}),
 
 
 
-
+   #USD WITH SIDE BAR TO REDIRECT
    url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
    url(r'^add_record/$', views.add_record, name= 'add record'),
    url(r'^basic_search/$', views.basic_search, name= 'basic search'),
    url(r'^advanced_search/$', views.advanced_search, name= 'advanced search'),
-      url(r'^select/$', views.select_table, name= 'select table'),
+   url(r'^select/$', views.select_table, name= 'select table'),
 
 
 
-   #CHANGES
+   #SELECT TABLE, DISPLAYS SEARCHABLE TABLE
     url(r'^vendors/$', views.VendorListView.as_view(), name="vendor table"),
     url(r'^employees/$', views.EmployeeListView.as_view(), name="employee table"),
     url(r'^GoogleGroups/$', views.GGListView.as_view(), name="google table"),

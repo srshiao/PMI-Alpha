@@ -1,3 +1,7 @@
+#RENDERING TABLES USING DJANGO-TABLES2
+
+#TODO, ADD LINKCOLUMNS / DYNAMICALLY HIDE or SHOW TABLES BASED ON PERMISSIONS
+
 import django_tables2 as tables
 from .models import *
 from django_tables2.utils import A  # alias for Accessor
