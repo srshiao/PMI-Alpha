@@ -142,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
