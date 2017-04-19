@@ -1,0 +1,24 @@
+{% extends 'database/sidebar.html' %}
+ 
+ {% block content %}
+ <div>
+     <!-- <h3>Search for a record by name</h3>
+     <br> Name  <input type="text" name="keywords">
+     (specify type of record you are searching for?)
+     <br>
+     <br> Watson forms?
+     <button>Submit</button>
+    <br>
+     <br><p>
+         <strong>returns zero to several records</strong>
+     </p> -->
+
+     <h3>Search for a record by keyword(ID, name, address, etc)</h3>
+
+    <form action="{% url 'watson:search' %}">
+    Keywords <input  type="text" name="q" value="{{request.GET.q}}">
+    <input type="submit" value="Go">
+    <br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com 1")</i>
+    </form>
+ </div>
+ {% endblock %}

@@ -1,0 +1,64 @@
+
+
+{% extends 'database/sidebar.html' %}
+
+{% load render_table from django_tables2 %}
+
+    
+        {% block content %}
+        <form action="{% url 'watson:search' %}">
+            <input name="q" value="{{request.GET.q}}">
+            <input type="submit" value="Go">
+        </form>
+
+        
+   
+        <h3>Vendor</h3>
+        {% render_table vendor %}
+
+
+        <h3>Employee</h3>
+        {% render_table employee %}
+
+        <h3>GoogleGroup</h3>
+        {% render_table googlegroup %}
+
+        <h3>Customer</h3>
+        {% render_table customer %}
+
+        <h3>Contract</h3>
+        {% render_table contract %}
+
+        <h3>Partners</h3>
+        {% render_table partner %}
+        
+        <h3>Department</h3>
+        {% render_table department %}
+
+        <h3>Point of Contacts</h3>
+        {% render_table poc %}
+
+
+        <!--</br> <h2> Intermediaries </h2>
+
+        <h3>department_employee</h3>
+        {% render_table department_employee %}
+
+        <h3>contract_employee</h3>
+        {% render_table contract_employee %}
+        
+        <h3>customer_vendor</h3>
+        {% render_table customer_vendor %}
+
+        <h3>customer_employee</h3>
+        {% render_table customer_employee %}
+
+        <h3>customer_partner</h3>
+        {% render_table customer_partner %}
+
+        <h3>vendor_contract</h3>
+        {% render_table vendor_contract %}
+
+        <h3>googlegroup_employee</h3>
+        {% render_table googlegroup_employee %} -->
+            {% endblock %}

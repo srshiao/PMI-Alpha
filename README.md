@@ -1,10 +1,15 @@
-# PMI-Alpha
+yo do this or your code wont run
 
-Current Ver. -> 
+To install django-watson, follow these steps:
 
-First draft of Models Complete. 
+Install django-watson using pip: pip3 install django-watson.
 
-URGENT TODO: Test models, make sure they are properly creating tables.
 
-NEXT TODO: Write views to display models, work with Alex. 
+Update your Database:
+
+python3 manage.py migrate.
+
+python3 manage.py installwatson.
+
+python3 manage.py buildwatson
 
