@@ -55,6 +55,7 @@ class POC_DetailView(PermissionRequiredMixin,generic.DetailView):
     template_name = 'database/detail.html'
 
 #Shows All Tables in One Page
+@login_required
 def tables(request):
     vendor_table = VendorTable(Vendor.objects.all())
     employee_table = EmployeeTable(Employee.objects.all())
@@ -152,7 +153,7 @@ def add_gg(request):
 
     return render(request, 'database/add_new.html', context)
 
-
+@login_required
 def add_customer(request):
     permission_required = 'database.Customer'
     form = CustomerForm(request.POST or None);
@@ -221,18 +222,22 @@ def add_poc(request):
 
 
 #HTML PAGES USED FOR REDIRECTION
+@login_required
 def search (request):
     return render(request, 'database/search.html')
-
+@login_required
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
-
+@login_required
 def add_record(request):
     return render(request, 'database/add_record.html', {})
+@login_required
 def basic_search(request):
     return render(request, 'database/basic_search.html', {})
+@login_required
 def advanced_search(request):
     return render(request, 'database/advanced_search.html', {})
+@login_required
 def select_table(request):
     return render(request, 'database/select_view.html', {})
 

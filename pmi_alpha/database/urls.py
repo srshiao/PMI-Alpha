@@ -6,6 +6,8 @@ from django.conf.urls import include
 
 urlpatterns = [
    url(r'^$', views.tables, name='tables'),
+   url(r'^home/$', views.dashboard, name= 'home'),
+
    url(r'^vendor/(?P<pk>[0-9]+)/$', views.Vendor_DetailView.as_view(), name='vendor_detail'),
    url(r'^employee/(?P<pk>[0-9]+)/$', views.Employee_DetailView.as_view(), name='employee_detail'),
    url(r'^googlegroup/(?P<pk>[0-9]+)/$', views.GoogleGroup_DetailView.as_view(), name='detail'),
