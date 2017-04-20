@@ -17,6 +17,8 @@ CTYPE = (
 	('F','FFP'),
 
 	)
+
+# REMINDER: python manage.py buildwatson whenever you add stuff to models.
 class Vendor(models.Model):
 
 	def get_absolute_url(self):
@@ -172,7 +174,7 @@ class Partner(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			value = getattr(self, field.name, None)
 			yield (field, value)
-			
+
 	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
