@@ -2,6 +2,14 @@
  
  {% block content %}
  <div>
+    <h3>We can specify what to search and still use the same template by specifying namespace...</h3>
+    According to the watson, the models parameter in urls should specify what models to search from but it doesnt work....this should do only employees
+    <form action="{% url 'advanced:search' %}">
+        <input  type="text" name="q" value="{{request.GET.q}}" placeholder="Keywords">
+        <input type="submit" value="Go" >
+        <br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com")</i>
+    </form>
+    Maybe we need a view to decide what kind of search to do?
      <h3>Search for multiple records by several fields</h3>
  
      <select id="record_type">
