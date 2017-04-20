@@ -10,12 +10,12 @@ urlpatterns = [
 
    url(r'^vendor/(?P<pk>[0-9]+)/$', views.Vendor_DetailView.as_view(), name='vendor_detail'),
    url(r'^employee/(?P<pk>[0-9]+)/$', views.Employee_DetailView.as_view(), name='employee_detail'),
-   url(r'^googlegroup/(?P<pk>[0-9]+)/$', views.GoogleGroup_DetailView.as_view(), name='detail'),
-   url(r'^customer/(?P<pk>[0-9]+)/$', views.Customer_DetailView.as_view(), name='detail'),
-   url(r'^contract/(?P<pk>[0-9]+)/$', views.Contract_DetailView.as_view(), name='detail'),
-   url(r'^partner/(?P<pk>[0-9]+)/$', views.Partner_DetailView.as_view(), name='detail'),
-   url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='detail'),
-   url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='detail'),
+   url(r'^googlegroup/(?P<pk>[0-9]+)/$', views.GoogleGroup_DetailView.as_view(), name='googlegroup_detail'),
+   url(r'^customer/(?P<pk>[0-9]+)/$', views.Customer_DetailView.as_view(), name='customer_detail'),
+   url(r'^contract/(?P<pk>[0-9]+)/$', views.Contract_DetailView.as_view(), name='contract_detail'),
+   url(r'^partner/(?P<pk>[0-9]+)/$', views.Partner_DetailView.as_view(), name='partner_detail'),
+   url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='department_detail'),
+   url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='poc_detail'),
 
    #RENDERS ADD OBJECT PAGES USING MODELFORMS
    url(r'^add_vendor/$', views.add_vendor, name= 'add vendor'),

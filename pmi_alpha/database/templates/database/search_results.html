@@ -7,8 +7,8 @@
 	        <li>
 	            <article>
 	                
-	                    {% if result.url %}<a href="{{result.url}}">{% endif %}
-	                    {{result.title}}
+	                    {% if result.url %}<a href="{{result.get_absolute_url}}">{% endif %}
+	                    	{{result.title}}
 	                    {% if result.url %}</a>{% endif %}
 	                
 	                {% if result.description %}
