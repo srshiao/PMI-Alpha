@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="../../static/database/css/dashboard.css">
     <link rel="stylesheet" href="../../static/database/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -18,10 +20,11 @@
 
 <div class="container-fluid">
 
-    <div class="text-center">
+    <div class="text-center" id="pad">
         <h1>Welcome to the Paradyme <br> Management  Database Application!</h1><br><br>
-        <div class="row">
-            <div class="col-md-4">
+
+        <div class="row mygrid">
+            <div class="col-md-4 ">
                 <a href="{% url 'add record' %}"><i class="fa fa-user-plus fa-4x" aria-hidden="true"></i><br> New Record</a>
                 <br><br><br>
                 <a href="{% url 'tables' %}"><i class="fa fa-th fa-4x" aria-hidden="true"></i><br> View Tables</a>
@@ -46,6 +49,10 @@
 </div>
 
 
-
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">This website was created by the Paradyme Spring 2017 intern database team</p>
+    </div>
+</footer>
 </body>
 </html>
