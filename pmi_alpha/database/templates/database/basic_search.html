@@ -15,7 +15,7 @@
 
      <h3>Search for a record by keyword(Name, Address, DUNs, etc)</h3>
 
-    <form action="{% url 'basic:search' %}">
+    <form action="{% url 'watson:search' %}">
         <input  type="text" name="q" value="{{request.GET.q}}" placeholder="Keywords">
         <input type="submit" value="Go" >
         <br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com")</i>
