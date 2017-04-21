@@ -6,7 +6,9 @@
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #172755;
+    /*background-color: #172755;*/
+    background: linear-gradient(lightgray, #2aabd2);
+    background: -moz-linear-gradient(lightgray, #2aabd2);
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 30px; /* Place content 60px from the top */
     /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -16,7 +18,7 @@
 /* The navigation menu links */
 #mySidenav a {
 
-    color: #25e53e;
+    color: black;
     display: inline-block;
     transition: 0.3s;
     text-decoration: none;
@@ -33,7 +35,7 @@
 }
 #mySidenav li{
     font-size: 22px;
-    color: #25e53e;
+    color: black;
 }
 
 #mySidenav i{
@@ -54,10 +56,31 @@
     margin-left: 250px;
     transition: margin-left .5s;
     padding: 20px;
-    color: #0C5404;
+    color: black;
+    background-color: white;
+    margin-bottom: 50px;
+
 
 }
+html {
+    position: relative;
+    min-height: 100%;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    margin-left: 250px;
 
+    background-color: transparent;
+}
+
+.text-muted{
+    font-size: .75em;
+    color: black;
+}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     #mySidenav {padding-top: 15px;}
