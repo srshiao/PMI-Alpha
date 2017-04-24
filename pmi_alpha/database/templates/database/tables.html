@@ -6,7 +6,7 @@
 
     
         {% block content %}
-        <form action="{% url 'watson:search' %}">
+        <form action="{% url 'basic:search' %}">
             <input name="q" value="{{request.GET.q}}">
             <input type="submit" value="Go">
         </form>

@@ -22,6 +22,7 @@ class EmployeeTable(tables.Table):
     
 
 class GoogleGroupTable(tables.Table):
+    id = tables.LinkColumn('googlegroup_detail', args=[A('pk')])
     class Meta:
         model = GoogleGroup
         # add class="paleblue" to <table> tag
