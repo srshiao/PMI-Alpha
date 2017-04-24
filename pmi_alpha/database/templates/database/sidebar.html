@@ -6,8 +6,6 @@
 
 
     <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
-    <!--<link rel="stylesheet" type="text/css" href="{ % static 'database/css/sidebar.css' % }">
-    <link href="{ % static 'database/js/sidebar.js' % }">-->
 
     <link rel="stylesheet" type="text/css" href="/static/database/css/sidebar.css">
     <link rel="stylesheet" type="text/css" href="/static/database/css/font-awesome.min.css">
@@ -35,8 +33,14 @@
 
 
 </div>
-
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted ">This website was created by the Paradyme Spring 2017 intern database team</p>
+    </div>
+</footer>
 <div id="main">
+    <!-- This block content allows us to apply this sidebar to any other html page that has
+    extends 'database/sidebar.html' near the top of the code. -->
     {% block content %}
     {% endblock %}
 </div>
