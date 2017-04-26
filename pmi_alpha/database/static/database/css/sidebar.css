@@ -11,7 +11,6 @@
     background: -moz-linear-gradient(lightgray, #2aabd2);
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 30px; /* Place content 60px from the top */
-    /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 
 }
 
@@ -34,22 +33,13 @@
     padding: 0;
 }
 #mySidenav li{
-    font-size: 22px;
+    font-size: 20px;
     color: black;
 }
 
 #mySidenav i{
     padding-left: 10px;
 }
-
-/* Position and style the close button (top right corner) */
-/*#mySidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}*/
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
@@ -59,6 +49,8 @@
     color: black;
     background-color: white;
     margin-bottom: 50px;
+    font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
+
 
 
 }
@@ -69,7 +61,6 @@ html {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
     /* Set the fixed height of the footer here */
     height: 40px;
     margin-left: 250px;
@@ -85,4 +76,21 @@ html {
 @media screen and (max-height: 450px) {
     #mySidenav {padding-top: 15px;}
     #mySidenav a {font-size: 18px;}
+}
+#myform{
+    width: 100%;
+}
+#myform ul{
+}
+#myform li{
+    width: 45%;
+    margin: 10px;
+}
+
+#myform label {
+    width: 140px;
+
+}
+
+#myform input {
 }
