@@ -118,8 +118,10 @@ def tables(request):
 @login_required
 def add_vendor(request):
     form = VendorForm(request.POST or None);
+    name = "Vendor";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -131,8 +133,10 @@ def add_vendor(request):
 @login_required
 def add_employee(request):
     form = EmployeeForm(request.POST or None);
+    name = "Employee";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -143,8 +147,10 @@ def add_employee(request):
 @login_required
 def add_gg(request):
     form = GoogleGroupForm(request.POST or None);
+    name = "Google Group";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -157,8 +163,10 @@ def add_gg(request):
 def add_customer(request):
     permission_required = 'database.Customer'
     form = CustomerForm(request.POST or None);
+    name = "Customer";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -170,8 +178,10 @@ def add_customer(request):
 @login_required
 def add_contract(request):
     form = ContractForm(request.POST or None);
+    name = "Contract";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -183,8 +193,11 @@ def add_contract(request):
 @login_required
 def add_partner(request):
     form = PartnerForm(request.POST or None);
+    name = "Partner";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
+
     }
     if form.is_valid():
         form.save()
@@ -197,8 +210,10 @@ def add_partner(request):
 @login_required
 def add_department(request):
     form = DepartmentForm(request.POST or None);
+    name = "Department";
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
@@ -210,8 +225,10 @@ def add_department(request):
 @login_required
 def add_poc(request):
     form = POCForm(request.POST or None);
+    name = "POC"
     context = {
-        'form' : form
+        'form' : form,
+        'name' : name
     }
     if form.is_valid():
         form.save()
