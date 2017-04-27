@@ -28,7 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1']
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -142,7 +141,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
