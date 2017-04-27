@@ -30,7 +30,10 @@ urlpatterns = [
 
 
    #BASIC SEARCH
-   url(r'^search/', include("watson.urls", namespace="watson"), {'template_name' : 'database/search_results.html',}),
+   url(r'^search/', include("watson.urls", namespace="basic"), {'template_name' : 'database/search_results.html', 'paginate_by' : '10'}),
+   #AVANCED SEARCH
+   url(r'^search/', include("watson.urls", namespace="advanced"), 
+         {'template_name' : 'database/search_results.html', 'models': [Employee] , 'paginate_by' : '10'}),
 
 
    #USD WITH SIDE BAR TO REDIRECT
