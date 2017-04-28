@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
+from django.contrib import admin
+admin.site.site_url = '/database/dashboard'
 
 import os
 
