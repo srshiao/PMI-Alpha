@@ -1,3 +1,9 @@
+#Create Django-Generated forms. Used for adding/editing objects in database. 
+#Second section of forms.py used for generating searchable tables. 
+
+#TODO CORRESPOND WITH USERS, CHANGE WHICH FIELDS ARE AVAILABLE TO BE SEARCHED BY
+#ACCORDINGLY
+
 from django import forms
 from .models import *
 from crispy_forms.helper import FormHelper
@@ -60,23 +66,9 @@ class POCForm(forms.ModelForm):
         model = POC
         fields = '__all__'
 
-class VendorListFormHelper(FormHelper):    
-    form_method = 'GET'
-    field_template = 'bootstrap3/layout/inline_field.html'
-    field_class = 'col-xs-3'
-    label_class = 'col-xs-3'
-    layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Vendor Records',       
-                    InlineField('Legal Name"'),
 
-                ),
-                #'resource_first_name',
-                #'resource_last_name',
-                #'HUBzone',
-                #'employment_status',
-              Submit('submit', 'Apply Filter'),
-    )
+#KEY COMPONENT TO SEARCH TABLES. TO ADD/CHANGE SEARCH-BY-FIELDS EDIT THE ITEMS IN THE "FIELDSET"
+
 class VendorListFormHelper(FormHelper):    
     form_method = 'GET'
     field_template = 'bootstrap3/layout/inline_field.html'
@@ -110,6 +102,127 @@ class EmployeeListFormHelper(FormHelper):
                     'VendorID',
                     'DateOfHire',
                     'EmployementStatus',
+                    #'date_between',
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+
+class GGListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Google Group Records',       
+                    InlineField('Name'),
+                    'Admin'
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class CustomerListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Customer Records',       
+                    InlineField('LegalName'),
+
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class ContractListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Contract Records',       
+                    InlineField('IssuingCompany'),
+                    InlineField('ContractNumber'),
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class PartnerListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Partner Records',       
+                    InlineField('LegalName'),
+
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class DepartmentListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Department Records',       
+                    InlineField('ContractID'),
+                    'CustomerID',
+                    'Name',
+                    'Supervisor'
+
+                ),
+                #'resource_first_name',
+                #'resource_last_name',
+                #'HUBzone',
+                #'employment_status',
+              Submit('submit', 'Apply Filter'),
+    )
+
+class POCListFormHelper(FormHelper):    
+    form_method = 'GET'
+    field_template = 'bootstrap3/layout/inline_field.html'
+    field_class = 'col-xs-3'
+    label_class = 'col-xs-3'
+    layout = Layout(
+         Fieldset(
+                    '<i class="fa fa-search"></i> Search Point of Contact Records',       
+                    InlineField('FName'),
+                    InlineField('LName'),
+                    'PartnerID',
+                    'ContractID',
+                    'CustomerID',
 
                 ),
                 #'resource_first_name',

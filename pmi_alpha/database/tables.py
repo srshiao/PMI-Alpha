@@ -1,3 +1,7 @@
+#RENDERING TABLES USING DJANGO-TABLES2
+
+#TODO, ADD LINKCOLUMNS / DYNAMICALLY HIDE or SHOW TABLES BASED ON PERMISSIONS
+
 import django_tables2 as tables
 from .models import *
 from django_tables2.utils import A  # alias for Accessor
@@ -6,7 +10,7 @@ class VendorTable(tables.Table):
     class Meta:
         model = Vendor
         # add class="paleblue" to <table> tag
-        attrs = {'class': 'paleblue'}
+        attrs = {'class': 'paleblue', }
 
 class EmployeeTable(tables.Table):
     id = tables.LinkColumn('employee_detail', args=[A('pk')])
@@ -18,6 +22,7 @@ class EmployeeTable(tables.Table):
     
 
 class GoogleGroupTable(tables.Table):
+    id = tables.LinkColumn('googlegroup_detail', args=[A('pk')])
     class Meta:
         model = GoogleGroup
         # add class="paleblue" to <table> tag

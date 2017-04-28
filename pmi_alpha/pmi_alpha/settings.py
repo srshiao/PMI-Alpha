@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
+from django.contrib import admin
+admin.site.site_url = '/database/dashboard'
 
 import os
 
@@ -28,7 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1']
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'bootstrap3',           #css purposes.
     'database',
     'images',
-    'watson',
+    'watson',               #Basic Search
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 

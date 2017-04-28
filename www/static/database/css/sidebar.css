@@ -6,7 +6,9 @@
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #172755;
+    /*background-color: #172755;*/
+    background: linear-gradient(lightgray, #2aabd2);
+    background: -moz-linear-gradient(lightgray, #2aabd2);
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 30px; /* Place content 60px from the top */
     /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -54,7 +56,8 @@
     margin-left: 250px;
     transition: margin-left .5s;
     padding: 20px;
-    color: #0C5404;
+    color: black;
+    background-color: white;
 
 }
 

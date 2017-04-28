@@ -1,0 +1,25 @@
+{% extends 'database/sidebar.html' %}
+
+{% block content %}
+
+<p>Select View:</p>
+<a href="{% url 'employee table' %}" class='btn btn-default'>Employee</a>
+<a href="{% url 'vendor table' %}" class='btn btn-default'>Vendor</a>
+<a href="{% url 'customer table' %}" class='btn btn-default'>Customer</a>
+<a href="{% url 'contract table' %}" class='btn btn-default'>Contract</a>
+<a href="{% url 'department table' %}" class='btn btn-default'>Department</a>
+<a href="{% url 'partner table' %}" class='btn btn-default'>Partner</a>
+<a href="{% url 'google table' %}" class='btn btn-default'>Google Group</a>
+
+<!--
+<br>
+    <select id="record_type">
+        <option value="add employee">Employee</option>
+        <option value="add 1">Vendor</option>
+        <option value="add 2">Customer</option>
+        <option value="add 3">Contract</option>
+        <option value="add 4">Department</option>
+        <option value="add 5">Partner</option>
+    </select>
+-->
+{% endblock %}
