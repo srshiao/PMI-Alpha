@@ -3,14 +3,18 @@
 <html lang="en">
 <head>
     <title>Database Dashboard</title>
+    <!-- bootstrap css -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
 
     <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
 
+    <!-- The custom css is found in the dashoboard.css file -->
     <link rel="stylesheet" href="../../static/database/css/dashboard.css">
     <link rel="stylesheet" href="../../static/database/css/font-awesome.min.css">
+
+
     <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -23,7 +27,7 @@
     <div class="text-center">
         <h1>Welcome to the Paradyme <br> Management  Database Application!</h1><br>
 
-        <div class="row mygrid">
+        <div class="row">
             <div class="col-md-4 ">
                 <a href="{% url 'add record' %}"><i class="fa fa-user-plus fa-4x" aria-hidden="true"></i><br> New Record</a>
                 <br><br>
