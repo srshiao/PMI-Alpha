@@ -23,6 +23,7 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields = '__all__'
 
+
 class GoogleGroupForm(forms.ModelForm):
     class Meta:
 
