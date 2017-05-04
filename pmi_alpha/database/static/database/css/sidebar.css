@@ -77,6 +77,10 @@ html {
     #mySidenav {padding-top: 15px;}
     #mySidenav a {font-size: 18px;}
 }
+
+/* This part relates to the add_new.html page, and allows the add new record page
+    to show up nicely in 2 columns.
+ */
 #myform{
     width: 100%;
 }
@@ -93,4 +97,12 @@ html {
 }
 
 #myform input {
+}
+
+#details td{
+    padding: 10px;
+}
+
+#details tr{
+    width:100%;
 }
