@@ -7,6 +7,7 @@ from .models import *
 from django_tables2.utils import A  # alias for Accessor
 
 class VendorTable(tables.Table):
+    id = tables.LinkColumn('vendor_detail', args=[A('pk')])
     class Meta:
         model = Vendor
         # add class="paleblue" to <table> tag
@@ -29,26 +30,43 @@ class GoogleGroupTable(tables.Table):
         attrs = {'class': 'paleblue'}
 
 class CustomerTable(tables.Table):
+    id = tables.LinkColumn('customer_detail', args=[A('pk')])
     class Meta:
         model = Customer
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 
 class ContractTable(tables.Table):
+    id = tables.LinkColumn('contract_detail', args=[A('pk')])
+    CustomerID = tables.LinkColumn('customer_detail', args=[A('CustomerID_id')])
     class Meta:
         model = Contract
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 
 class PartnerTable(tables.Table):
+    id = tables.LinkColumn('partner_detail', args=[A('pk')])
     class Meta:
         model = Partner
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 
 class DepartmentTable(tables.Table):
+    id = tables.LinkColumn('department_detail', args=[A('pk')])
+    CustomerID = tables.LinkColumn('customer_detail', args=[A('CustomerID_id')])
+    ContractID = tables.LinkColumn('customer_detail', args=[A('ContractID_id')])
     class Meta:
         model = Department
+        # add class="paleblue" to <table> tag
+        attrs = {'class': 'paleblue'}
+
+class POCTable(tables.Table):
+    id = tables.LinkColumn('poc_detail', args=[A('pk')])
+    CustomerID = tables.LinkColumn('customer_detail', args=[A('CustomerID_id')])
+    ContractID = tables.LinkColumn('customer_detail', args=[A('ContractID_id')])
+    PartnerID = tables.LinkColumn('customer_detail', args=[A('PartnerID_id')])
+    class Meta:
+        model = POC
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 
@@ -79,13 +97,6 @@ class Customer_EmployeeTable(tables.Table):
 class Customer_PartnerTable(tables.Table):
     class Meta:
         model = Customer_Partner
-        # add class="paleblue" to <table> tag
-        attrs = {'class': 'paleblue'}
-
-
-class POCTable(tables.Table):
-    class Meta:
-        model = POC
         # add class="paleblue" to <table> tag
         attrs = {'class': 'paleblue'}
 
