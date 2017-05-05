@@ -251,11 +251,12 @@ def add_record(request):
 @login_required
 def basic_search(request):
     return render(request, 'database/basic_search.html', {})
+# Scrap for now: select_table is now advanced search
 @login_required
 def advanced_search(request):
     return render(request, 'database/advanced_search.html', {})
 @login_required
-def select_table(request):
+def select_table(request): # this is now advanced search
     return render(request, 'database/select_view.html', {})
 
 #ADVANCED TABLES, SEARCH/FILTER
