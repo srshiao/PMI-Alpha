@@ -22,15 +22,26 @@
 <img src="/static/database/images/paradyme-management.png" height="49" width="231" style="padding-left: 10px"/>
 <hr>
 <ul>
-    <li><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg fa-fw" aria-hidden="true"></i>&nbsp; Home</a><hr>
-    <li><a href="{% url 'add record' %}"><i class="fa fa-user-plus fa-lg fa-fw" aria-hidden="true"></i>&nbsp; New Record</a><hr>
-     <li><a href="{% url 'basic search' %}"><i class="fa fa-search fa-lg" aria-hidden="true"></i>&nbsp; Basic Search</a><hr>
-     <!-- <li><a href="{% url 'advanced search' %}"><i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>&nbsp; Advanced Search</a><hr> -->
-     <li><a href="{% url 'select table' %}"><i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>&nbsp; Advanced Search</a><hr>
-    <li><a href="{% url 'tables' %}"><i class="fa fa-th fa-lg" aria-hidden="true"></i> &nbsp; View Tables</a><hr>
+    <li><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg fa-fw" aria-hidden="true"></i>Home</a><hr>
+    <!-- links to dashboard.html -->
+
+    <li><a href="{% url 'add record' %}"><i class="fa fa-user-plus fa-lg fa-fw" aria-hidden="true"></i>New Record</a><hr>
+    <!-- links to add_record.html which goes to add_new after choosing a type -->
+
+    <li><a href="{% url 'basic search' %}"><i class="fa fa-search fa-lg" aria-hidden="true"></i>Basic Search</a><hr>
+    <!-- links to basic_search.html -->
+
+    <!-- <li><a href="{% url 'advanced search' %}"><i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>&nbsp; Advanced Search</a><hr> -->
+     <li><a href="{% url 'select table' %}"><i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>Advanced Search</a><hr>
+    <!-- links to select_view.html -->
+
+    <li><a href="{% url 'tables' %}"><i class="fa fa-th fa-lg" aria-hidden="true"></i>View Tables</a><hr>
+    <!-- links to tables.html -->
+
     <!-- <li><a href="{% url 'select table' %}"><i class="fa fa-align-justify fa-lg" aria-hidden="true"></i>&nbsp; Select View</a><hr> -->
+
     <!--if they have permissions-->
-        <li><a href="../admin"><i class="fa fa-gears fa-lg" aria-hidden="true"></i>&nbsp; Admin</a><hr>
+    <li><a href="../admin"><i class="fa fa-gears fa-lg" aria-hidden="true"></i>Admin</a><hr>
     </ul>
 
 
