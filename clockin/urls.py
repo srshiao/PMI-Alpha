@@ -11,6 +11,9 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)/$', views.workDelete.as_view(model = Work), name="person_delete"),
     url(r'^test/$', views.WorkListView.as_view(), name="person_list_2"),
     url(r'^adminhome/$', views.AdminView, name= 'adminhome'),
+    url(r'^logout/$', views.logout_page, name = 'logout'),
+    url(r'^history/$', views.past_time, name= 'past'),
+
 
 
 

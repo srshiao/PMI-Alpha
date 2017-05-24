@@ -17,7 +17,11 @@ from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
 import datetime
 
+from django.contrib.auth import logout
 
+def logout_page(request):
+    logout(request)
+    return HttpResponseRedirect('/clockin/')
 
 
 # Create your views here.
@@ -36,16 +40,42 @@ def index(request):
 #TGENERATES MAIN PAGE. TABLE. 
 @login_required
 def work_list(request):
-	table = WorkTable(Work.objects.filter(user = request.user).filter(active_session=True))
+	if request.user.is_superuser:
+		return HttpResponseRedirect('/clockin/adminhome')
 	filter = Work.objects.filter(user=request.user).filter(active_session=True)
-	table.exclude = ('user','active_session','duration','id','time_out')
+
+	intern_obj = Intern.objects.filter(username = request.user)
+	name = intern_obj[0]
 	context = {
-		'table': table,
 		'filter':filter,
+		'name' : name,
 	}
 
-	RequestConfig(request).configure(table)
+###
+	if request.POST.get('mybtn'):
+			ch = request.POST.get('checkbox','')
+			if not ch == '':
+				url = reverse_lazy ('item_edit', kwargs = {'work_id':ch})
+				return HttpResponseRedirect(url)
+###
+
+
 	return render(request, 'ogdb/person_list.html', context)
+
+@login_required
+def past_time(request):
+	filter1 = Work.objects.filter(user=request.user).filter(active_session=False)
+
+	intern_obj = Intern.objects.filter(username = request.user)
+	name = intern_obj[0]
+	context = {
+		'filter1':filter1,
+		'name' : name,
+	}
+
+###
+###
+	return render(request, 'ogdb/past_time.html', context)
 
 #not in current use. will be used as a Constituent Details Page
 @login_required
@@ -69,13 +99,14 @@ def add_new(request):
 		obj.time_in = datetime.datetime.now().time()
 		obj.active_session = True
 		obj.user = request.user
-		obj.duration = datetime.timedelta(hours=0,minutes= 0)
+		obj.duration = 0
 		obj.save()
 		return HttpResponseRedirect('/clockin/')
 
 
 	return render(request, 'ogdb/new_person.html', context)
 
+@login_required
 def clockout(request, work_id):
 	instance = get_object_or_404(Work, id=work_id)
 	form = ClockoutForm(request.POST or None, instance=instance)
@@ -88,7 +119,12 @@ def clockout(request, work_id):
 		my_date = datetime.date.today()
 
 		delta = datetime.datetime.combine(my_date,obj.time_out) - datetime.datetime.combine(my_date,obj.time_in)
-		obj.duration = delta
+		totalseconds = delta.total_seconds()
+		hours = totalseconds/3600
+		if hours > 12:
+			obj.duration = 12
+		else:
+			obj.duration = hours
 		obj.save()
 		return HttpResponseRedirect('/clockin/')
 	context = {
@@ -99,23 +135,6 @@ def clockout(request, work_id):
     
 	return render(request, 'ogdb/item_edit.html', context)
 
-#Editing page
-@login_required
-def item_edit(request, work_id):
-	instance = get_object_or_404(Work, id=work_id)
-	form = WorkForm(request.POST or None, instance=instance)
-   
-
-	if form.is_valid():
-		form.save()
-		return HttpResponseRedirect('/clockin/')
-	context = {
-		'form' : form,
-		'pk' : work_id
-	}
-
-    
-	return render(request, 'ogdb/item_edit.html', context)
 
 #Delete Person confirm page
 class workDelete(DeleteView):
@@ -142,7 +161,10 @@ class WorkListView(TemplateView):
         context['table'] = table
         return context
 
+@login_required
 def AdminView(request):
+	if not request.user.is_superuser:
+		return HttpResponseRedirect('/clockin/')
 	f = WorkListFilter(request.GET,queryset = Work.objects.all())
 	table = WorkTable(Work.objects.all())
 	table.exclude = ('id',)

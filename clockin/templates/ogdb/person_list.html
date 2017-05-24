@@ -78,6 +78,7 @@ http://www.tooplate.com/view/2082-pure-mix
                 <a href="{% url 'home' %}">Paradyme Management</a>
               </div>
 
+
              
 
             </div>
@@ -88,6 +89,14 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
+  <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
+      <a href="{% url 'past' %}"><button type="button" class = "btn btn-default">Past Logs</a>
+      <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
+
+  </div>
+
+  
+
 <!-- Header section
 ================================================== -->
 <section id="header" class="header-one">
@@ -96,7 +105,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
             <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
           <div class="header-thumb">
-              <h1 class="wow fadeIn" data-wow-delay="1.6s">Paradyme Management Internship Time Sheet</h1>
+              <h1 class="wow fadeIn" data-wow-delay="1.6s">Welcome {{ name.FName }}</h1>
           </div>
             </div>
 
@@ -109,14 +118,16 @@ http://www.tooplate.com/view/2082-pure-mix
 ================================================== -->
 
 <section id="portfolio">
+    <form action = # method = "POST"> {% csrf_token %}
+
     <div>
       Your Active Session
     </div>
    <div class="container">
-            {% render_table table %}
     <table class="table table-bordered">
     <thead>
       <tr>
+        <th>End Session</th>
         <th>Intern</th>
         <th>Date</th>
         <th>Time In</th>
@@ -125,6 +136,12 @@ http://www.tooplate.com/view/2082-pure-mix
     <tbody>
       {% for user in filter %}
         <tr>
+        
+<td> 
+                <input type="checkbox" name="checkbox" id="checkbox[]" 
+value= {{user.id}}   />  
+                </td> 
+
           <td>{{ user.intern}}</td>
           <td>{{ user.date}}</td>
           <td>{{ user.time_in}}</td>
@@ -138,8 +155,10 @@ http://www.tooplate.com/view/2082-pure-mix
   </table>
    </div>
    <div class = "add">
-      <a href="{% url 'add' %}"><button type="button">Clock In (Start New Session)</a>
+      <a href="{% url 'add' %}"><button type="button" class = "btn btn-default">Clock In (Start New Session)</a>
     </div>
+    <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">End Selected Session</button>
+    </form>
 
 
 </section>

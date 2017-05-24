@@ -22,6 +22,7 @@ urlpatterns = [
 	url(r'^clockin/', include('clockin.urls')),
 	url(r'^admin/', admin.site.urls),
 	url(r'^accounts/login/$', views.login, name='login'),
+  
 	
 
 

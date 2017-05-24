@@ -1,5 +1,4 @@
-
-
+{% load render_table from django_tables2 %}
 {% load static %}
 
 
@@ -10,43 +9,14 @@ div.container {
     display: inline-block;
     position:relative;
     overflow:auto;
-}
-.login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-.form {
-  position: fixed;
-    top: 30%;
 
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-.form button {
-
-
-  width: 75%;
-  height: 50%;
-  border: 0;
-
-  padding: 15px;
-
-  cursor: pointer;
-
-}
-.divider{
-    width:1px;
-    height:1px;
-    display:inline-block;
 }
 </style>
 <head>
+
+ <script type="text/javascript" SRC="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+
+
 <!--
 
 Template 2082 Pure Mix
@@ -62,7 +32,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
     <!-- Site title
    ================================================== -->
-    <title>Login</title>
+    <title>Paradyme Management Database</title>
 
     <!-- Bootstrap CSS
    ================================================== -->
@@ -112,6 +82,7 @@ http://www.tooplate.com/view/2082-pure-mix
                 <a href="{% url 'home' %}">Paradyme Management</a>
               </div>
 
+
              
 
             </div>
@@ -122,37 +93,27 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
+  <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
+      <a href="{% url 'add' %}"><button type="button" class = "btn btn-default">New Session</a>
+      <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
+
+  </div>
+
+  
+
 <!-- Header section
 ================================================== -->
 <section id="header" class="header-one">
     <div class="container">
+        <div class="row">
 
-       <div class="login-page">
-  <div class="form">
+            <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+          <div class="header-thumb">
+              <h1 class="wow fadeIn" data-wow-delay="1.6s">Welcome {{ name.FName }}</h1>
+          </div>
+            </div>
 
-{% block content %}
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
- <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-
-        {{ form.username.label_tag }}
-
-        {{ form.username }}
-
-        {{ form.password.label_tag }}
-
-        {{ form.password }}
-
-        
-        <button>login</button>
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-
-    {% endblock %}
-  </div>
-</div>
+        </div>
     </div>      
 </section>
 
@@ -161,7 +122,74 @@ http://www.tooplate.com/view/2082-pure-mix
 ================================================== -->
 
 
+<section id="portfolio">
 
+    <div>
+    Past Time Sheet
+      </div>
+   <div class="container">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Intern</th>
+        <th>Date</th>
+        <th>Time In</th>
+        <th>Time Out</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for user1 in filter1 %}
+        <tr>
+        
+
+
+          <td>{{ user1.intern}}</td>
+          <td>{{ user1.date}}</td>
+          <td>{{ user1.time_in}}</td>
+          <td>{{ user1.time_out}}</td>
+
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+   <script type="text/javascript">  
+
+ //these will hold the totals
+ var ages = 0;
+ var weights = 0;
+ var benchpresses = 0;
+
+ //reference the rows you want to add
+ //this will not include the header row
+ var rows = $("#data tr:gt(0)");
+ rows.children("td:nth-child(2)").each(function() {
+ //each time we add the cell to the total
+ ages += parseInt($(this).html());
+ });
+ rows.children("td:nth-child(3)").each(function() {
+ weights += parseInt($(this).html());
+ });
+ rows.children("td:nth-child(4)").each(function() {
+ benchpresses += parseInt($(this).html());
+ });
+
+ //then output them to the elements
+ $("#ages").html(ages);
+ $("#weights").html(weights);
+ $("#benchpresses").html(benchpresses);
+ </script>
+
+
+
+   </div>
+  </section>
 
 <!-- Footer section
 ================================================== -->
@@ -170,7 +198,7 @@ http://www.tooplate.com/view/2082-pure-mix
         <div class="row">
 
             <div class="col-md-12 col-sm-12">
-                <p class="wow fadeInUp"  data-wow-delay="0.3s">Proof of Concept Developed by Jee Kang - Techincal Intern</p>
+                <p class="wow fadeInUp"  data-wow-delay="0.3s">Paradyme Internship - Summer 2017 Time Sheet  </p>
 
             </div>
             
