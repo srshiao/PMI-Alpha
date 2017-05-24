@@ -40,7 +40,7 @@ urlpatterns = [
    url(r'^basic_search/$', views.basic_search, name= 'basic search'),
    url(r'^advanced_search/$', views.advanced_search, name= 'advanced search'),
    url(r'^select/$', views.select_table, name= 'select table'),
-   url(r'^admin/$', admin.site.urls ),
+   url(r'^admin/', admin.site.urls ),
 
 
 
