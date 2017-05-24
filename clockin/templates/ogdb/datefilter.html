@@ -1,5 +1,6 @@
 {% load render_table from django_tables2 %}
 {% load static %}
+{% load widget_tweaks %}
 
 
 <!DOCTYPE html>
@@ -103,7 +104,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
             <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
           <div class="header-thumb">
-              <h1 class="wow fadeIn" data-wow-delay="1.6s">Paradyme Management Internship Time Sheet</h1>
+              <h1 class="wow fadeIn" data-wow-delay="1.6s">Paradyme Management Internship Admin Page</h1>
           </div>
             </div>
 
@@ -115,31 +116,59 @@ http://www.tooplate.com/view/2082-pure-mix
 <!-- Portfolio section
 ================================================== -->
 
+
+
+
 <section id="portfolio">
-   <form action="" method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
-    </form>
-    <div class = "container">
-    <table border = "1">
-    <tr>
-  <th>Intern</th>
-  <th>Date</th>
-  <th>Time In</th>
-  <th>Time Out</th>
-  <th>Duration</th>
-</tr>
-    {% for obj in filter.qs %}
-      <tr>
-        <td>{{obj.intern}}</td>
-        <td>{{ obj.date }}</td>
-        <td>{{ obj.time_in }}</td>
-        <td>{{obj.time_out}}</td>
-        <td>{{obj.duration}}</td>
-      </tr>
-    {% endfor %}
-    </table>
+    <form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Filter Interns</h4>
+      <div class="row">
+        <div class="form-group col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+          {{ filter.form.intern.label_tag }}
+          {% render_field filter.form.intern class="form-control" %}
+        </div>
+        <div class="form-group col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+          {{ filter.form.date_between.label_tag }}
+          {% render_field filter.form.date_between class="form-control" %}
+        </div>
+        
+       
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
     </div>
+  </form>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Intern</th>
+        <th>Date</th>
+        <th>Time In</th>
+        <th>Time Out</th>
+        <th>Duration (Days : Hour : Minutes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in filter.qs %}
+        <tr>
+          <td>{{ user.intern}}</td>
+          <td>{{ user.date}}</td>
+          <td>{{ user.time_in}}</td>
+          <td>{{ user.time_out}}</td>
+          <td>
+            {{user.duration}}
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </section>
 
 

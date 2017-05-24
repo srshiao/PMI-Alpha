@@ -114,6 +114,28 @@ http://www.tooplate.com/view/2082-pure-mix
     </div>
    <div class="container">
             {% render_table table %}
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Intern</th>
+        <th>Date</th>
+        <th>Time In</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in filter %}
+        <tr>
+          <td>{{ user.intern}}</td>
+          <td>{{ user.date}}</td>
+          <td>{{ user.time_in}}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
    </div>
    <div class = "add">
       <a href="{% url 'add' %}"><button type="button">Clock In (Start New Session)</a>

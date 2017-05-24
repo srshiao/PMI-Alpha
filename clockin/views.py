@@ -37,9 +37,11 @@ def index(request):
 @login_required
 def work_list(request):
 	table = WorkTable(Work.objects.filter(user = request.user).filter(active_session=True))
+	filter = Work.objects.filter(user=request.user).filter(active_session=True)
 	table.exclude = ('user','active_session','duration','id','time_out')
 	context = {
 		'table': table,
+		'filter':filter,
 	}
 
 	RequestConfig(request).configure(table)
