@@ -2,23 +2,12 @@
  
  {% block content %}
  <div>
-     <!-- <h3>Search for a record by name</h3>
-     <br> Name  <input type="text" name="keywords">
-     (specify type of record you are searching for?)
-     <br>
-     <br> Watson forms?
-     <button>Submit</button>
-    <br>
-     <br><p>
-         <strong>returns zero to several records</strong>
-     </p> -->
-
-     <h3>Search for a record by keyword(Name, Address, DUNs, etc)</h3>
+     <h3>Search for a record by keyword (Name, Address, DUNs, etc)</h3>
 
     <form action="{% url 'watson:search' %}">
-        <input  type="text" name="q" value="{{request.GET.q}}" placeholder="Keywords">
-        <input type="submit" value="Go" >
-        <br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com")</i>
+        <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Keywords">
+        <button type="submit" class="save btn btn-default">Search</button>
+        <br><br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com")</i>
     </form>
  </div>
  {% endblock %}

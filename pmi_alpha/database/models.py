@@ -144,6 +144,7 @@ class Employee(models.Model):
 	Comments = models.CharField(_("Comments"), max_length = 1000, default = None)
 
 
+
 class GoogleGroup(models.Model):
 	def get_absolute_url(self):
 		from django.urls import reverse
