@@ -19,8 +19,8 @@ class Intern(models.Model):
 class Work(models.Model):
 	user = models.CharField(_("User"),  max_length = 50, default = None)
 	intern = models.ForeignKey("Intern", default = 1)
-	date = models.DateField(_("Date"), default= timezone.now().today, blank=True)
-	time_in = models.TimeField(_("Time In"),default= timezone.now().time, blank=True)
-	time_out = models.TimeField(_("Time Out"),default= timezone.now().time, blank=True)
+	date = models.DateField(_("Date"), blank=True)
+	time_in = models.TimeField(_("Time In"), blank=True)
+	time_out = models.TimeField(_("Time Out"), blank=True)
 	active_session = models.BooleanField(_("Active Session"),default = True)
 	duration = models.DecimalField(_("Duration"), max_digits = 10, decimal_places = 2, default = 0)
