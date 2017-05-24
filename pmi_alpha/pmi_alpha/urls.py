@@ -25,7 +25,7 @@ from django.contrib.auth import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls, name = 'admin'),
     url(r'^database/', include('database.urls')),
-    	url(r'^accounts/login/$', views.login, name='login'),
+    url(r'^accounts/login/$', views.login, name='login'),
+    url(r'^clockin/',include('clockin.urls'))
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
