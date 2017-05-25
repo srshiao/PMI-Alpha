@@ -146,10 +146,12 @@ http://www.tooplate.com/view/2082-pure-mix
     </div>
   </form>
 
+    <form action = # method = "POST"> {% csrf_token %}
 
   <table class="table table-bordered" id = "time">
     <thead>
       <tr>
+        <th>Edit</th>
         <th>Intern</th>
         <th>Date</th>
         <th>Time In</th>
@@ -160,6 +162,10 @@ http://www.tooplate.com/view/2082-pure-mix
     <tbody>
       {% for user in filter.qs %}
         <tr>
+        <td> 
+                <input type="radio" name="checkbox" id="checkbox[]" 
+value= {{user.id}}   />  
+                </td> 
           <td>{{ user.intern}}</td>
           <td>{{ user.date}}</td>
           <td>{{ user.time_in}}</td>
@@ -192,6 +198,10 @@ http://www.tooplate.com/view/2082-pure-mix
         
     </tbody>
   </table>
+  <a href="{% url 'add_work' %}" class='btn btn-default'>Add Hours</a>
+
+  <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">Edit</button>
+    </form>
 
 
   

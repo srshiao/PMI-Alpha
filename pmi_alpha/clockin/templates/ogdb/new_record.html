@@ -83,7 +83,7 @@ http://www.tooplate.com/view/2082-pure-mix
     <!-- Google web font 
    ================================================== -->   
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
- 
+
 
 </head>
 <body>
@@ -126,28 +126,24 @@ http://www.tooplate.com/view/2082-pure-mix
 
 <!-- Portfolio section
 ================================================== -->
-
-<section id="portfolio">
-    <div class="container">
+<section id="portfolio">    
+<div class="container">
 	<h1>
-	Paradymer Sign Out <br>
+	Creating New Work Session <br>
 	<br>
 	</h1>
   <h3>
-  Thank You For The Hard Work!
+  Enter Time In XX:XX AM/PM Format
   </h3>
     <div>
-
-
-{% block content %}
+    {% block content %}
 
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Clock Out</button>
-        <a href="{% url 'home' %}" class='btn btn-default'>Return to Work</a>
+        <button type="submit" class="save btn btn-default">Submit</button>
+       	<a href="{% url 'home' %}" class='btn btn-default'>Return</a>
 
-
- </form>
+    </form>
 {% endblock %}
     </div>
 </section>

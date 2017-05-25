@@ -1,3 +1,4 @@
+
 from django import forms
 from .models import Work
 from crispy_forms.helper import FormHelper
@@ -5,17 +6,16 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_forms.bootstrap import InlineField, FormActions, StrictButton
 from django.forms import extras
 
-
 class WorkForm(forms.ModelForm):
 
     class Meta:
 
         model = Work
-        fields = '__all__'
-        date = forms.DateField(widget=extras.SelectDateWidget(empty_label="Nothing"))
+        fields = ('intern', 'date','time_in', 'time_out')
+      
         widgets = {
-          'time_in':forms.TimeInput(format = '%H:%M'),
-          'time_out':forms.TimeInput(format = '%H:%M'),
+          'date' : extras.SelectDateWidget(empty_label="Nothing"),
+
           
         }
 
@@ -47,3 +47,6 @@ class ClockinForm(forms.ModelForm):
 
         model = Work
         fields = ()
+
+
+
