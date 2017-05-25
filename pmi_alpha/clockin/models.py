@@ -19,7 +19,7 @@ class Intern(models.Model):
 class Work(models.Model):
 	user = models.CharField(_("User"),  max_length = 50, default = None)
 	intern = models.ForeignKey("Intern", default = 1)
-	date = models.DateField(_("Date"), default= datetime.date.today,null=True, blank=True)
+	date = models.DateField(_("Date"),null=True, blank=True)
 	time_in = models.TimeField(_("Time In"), blank=True,null=True)
 	time_out = models.TimeField(_("Time Out"),blank=True,null =True)
 	active_session = models.BooleanField(_("Active Session"),default = True)
