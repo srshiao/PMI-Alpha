@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls, name = 'admin'),
     url(r'^database/', include('database.urls')),
     url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^clockin/',include('clockin.urls'))
+    url(r'^clockin/',include('clockin.urls')),
+    url(r'^RSR/',include('RSR.urls')),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

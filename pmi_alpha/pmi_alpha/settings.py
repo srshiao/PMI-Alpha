@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'database',
     'clockin',
     'images',
+    'RSR',
     'watson',
     'widget_tweaks',              #Basic Search
 ]
@@ -151,6 +152,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'home'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -160,3 +162,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..','www','static')
 STATICFILES_DIRS = (
 
 )
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
