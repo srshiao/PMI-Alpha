@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     #added packages
     'django_tables2',       #Generate tables.
     'django_filters',       #Filter/Search tables
@@ -50,7 +49,10 @@ INSTALLED_APPS = [
     'images',
     'RSR',
     'watson',
-    'widget_tweaks',              #Basic Search
+    'widget_tweaks',        #Basic Search
+    'dal',                  #autocomplete
+    'dal_select2',
+
 ]
 
 MIDDLEWARE = [

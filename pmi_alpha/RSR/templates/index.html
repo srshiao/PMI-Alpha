@@ -1,6 +1,8 @@
 {% extends 'navigation.html' %}
 
 {% block content %}
+<div class="container content-section text-center">
+
     <body>
 
            <div class="inner cover">
@@ -15,7 +17,7 @@
 
              {% csrf_token %}
              <span class="btn btn-default btn-file">
-                Browse 
+                Browse
                 <input type="file">
                 {{ form.non_field_errors }}
                 {{ form.docfile.errors }}{{ form.docfile }}
@@ -27,20 +29,20 @@
             <p></p>
                 </div>
 
-                
 
-             
+
+
                     <input type="text" class="form-control" name = "firstname" id="firstname" style="width: 300px; margin:auto;" placeholder="First Name" />
 
                     <br/>
-                       
+
                     <div style = "color:#FFF">
                     <input type="text" class="form-control" name = "lastname" id="lastname" style="width: 300px; margin:auto;" placeholder="Last Name"/>
                     <br/><br/>
                     <input type="radio" name="type" id="pi" value="Prospective Intern" style="margin-left: 12px; margin-right: 10px">Prospective Intern</input><br/>
                     <input type="radio" name="type" id="pe" value="Prospective Employee" style="margin-left: 39px;margin-right: 10px">Prospective Employee</input><br/>
-                    <input type="radio" name="type" id="i" value="Intern" style="margin-left: -68px;margin-right: 10px">Intern</input><br/>
-                    <input type="radio" name="type" id="e" value="Employee" style="margin-left: -41px;margin-right: 10px">Employee</input><br/>
+                    <input type="radio" name="type" id="i" value="Intern" style="margin-left: -64px;margin-right: 10px">Intern</input><br/>
+                    <input type="radio" name="type" id="e" value="Employee" style="margin-left: -37px;margin-right: 10px">Employee</input><br/>
                     <br/>
                     </div>
             <p></p>
@@ -55,6 +57,7 @@
 
            </div>
 </body>
+</div>
 
 
   {% endblock %}
