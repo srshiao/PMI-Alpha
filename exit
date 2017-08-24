@@ -1,0 +1,113 @@
+[33mcommit 6ce94dffe7c28efef4555fe3df81d02e8f5c0784[m
+Author: JaredJRoss <jaredrossj@gmail.com>
+Date:   Wed Jun 14 13:29:10 2017 -0400
+
+    new changes to clockin
+
+[1mdiff --git a/db.sqlite3 b/db.sqlite3[m
+[1mindex caa9176..28f44ec 100644[m
+Binary files a/db.sqlite3 and b/db.sqlite3 differ
+[1mdiff --git a/pmi_alpha/clockin/__pycache__/forms.cpython-36.pyc b/pmi_alpha/clockin/__pycache__/forms.cpython-36.pyc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c61d695[m
+Binary files /dev/null and b/pmi_alpha/clockin/__pycache__/forms.cpython-36.pyc differ
+[1mdiff --git a/pmi_alpha/clockin/__pycache__/models.cpython-35.pyc b/pmi_alpha/clockin/__pycache__/models.cpython-35.pyc[m
+[1mindex 6faf07d..cfd3fcd 100644[m
+Binary files a/pmi_alpha/clockin/__pycache__/models.cpython-35.pyc and b/pmi_alpha/clockin/__pycache__/models.cpython-35.pyc differ
+[1mdiff --git a/pmi_alpha/clockin/__pycache__/views.cpython-35.pyc b/pmi_alpha/clockin/__pycache__/views.cpython-35.pyc[m
+[1mindex a3a5705..a359ed5 100644[m
+Binary files a/pmi_alpha/clockin/__pycache__/views.cpython-35.pyc and b/pmi_alpha/clockin/__pycache__/views.cpython-35.pyc differ
+[1mdiff --git a/pmi_alpha/clockin/__pycache__/views.cpython-36.pyc b/pmi_alpha/clockin/__pycache__/views.cpython-36.pyc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3c8580a[m
+Binary files /dev/null and b/pmi_alpha/clockin/__pycache__/views.cpython-36.pyc differ
+[1mdiff --git a/pmi_alpha/clockin/models.py b/pmi_alpha/clockin/models.py[m
+[1mindex 6a3c584..1c26f8d 100644[m
+[1m--- a/pmi_alpha/clockin/models.py[m
+[1m+++ b/pmi_alpha/clockin/models.py[m
+[36m@@ -7,6 +7,11 @@[m [mfrom django.utils import timezone[m
+ #from django_filters import rest_framework as filters[m
+ [m
+ [m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m
+ class Intern(models.Model):[m
+ 	def __str__(self):[m
+    		return self.FName + " " + self.LName[m
+[36m@@ -15,12 +20,32 @@[m [mclass Intern(models.Model):[m
+ 	LName = models.CharField(_("Last Name"), max_length = 50, default = None)[m
+ 	username = models.CharField(_("Username"), max_length = 50, default = None)[m
+ [m
+[31m-[m
+[32m+[m[41m	[m
+ class Work(models.Model):[m
+ 	user = models.CharField(_("User"),  max_length = 50, default = None)[m
+ 	intern = models.ForeignKey("Intern", default = 1)[m
+[31m-	date = models.DateField(_("Date"),default = datetime.date.today,null=True, blank=True)[m
+[31m-	time_in = models.TimeField(_("Time In"),default = datetime.datetime.now().time(), blank=True,null=True)[m
+[31m-	time_out = models.TimeField(_("Time Out"),default = datetime.datetime.now().time(),blank=True,null =True)[m
+[32m+[m	[32mdate = models.DateField(_("Date"), default= datetime.date.today, blank=True)[m
+[32m+[m	[32mtime_in = models.TimeField(_("Time In"),default= datetime.datetime.now().time(), blank=True)[m
+[32m+[m	[32mtime_out = models.TimeField(_("Time Out"),default= datetime.datetime.now().time(), blank=True)[m
+ 	active_session = models.BooleanField(_("Active Session"),default = True)[m
+ 	duration = models.DecimalField(_("Duration"), max_digits = 10, decimal_places = 2, default = 0)[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[41m+[m
+[1mdiff --git a/pmi_alpha/clockin/views.py b/pmi_alpha/clockin/views.py[m
+[1mindex f46f8dc..327d34b 100644[m
+[1m--- a/pmi_alpha/clockin/views.py[m
+[1m+++ b/pmi_alpha/clockin/views.py[m
+[36m@@ -93,10 +93,14 @@[m [mdef clockout(request, work_id):[m
+ 		my_date = datetime.date.today()[m
+ [m
+ 		delta = datetime.datetime.combine(my_date,obj.time_out) - datetime.datetime.combine(my_date,obj.time_in)[m
+[32m+[m[41m	[m
+ 		totalseconds = delta.total_seconds()[m
+ 		hours = totalseconds/3600[m
+[31m-		if hours > 9 or hours < 0:[m
+[31m-			obj.duration = 9[m
+[32m+[m		[32mif hours > 9:[m
+[32m+[m			[32mobj.duration = 0[m
+[32m+[m		[32melif hours < 0:[m
+[32m+[m			[32mnew_hours = hours+24[m
+[32m+[m			[32mobj.duration = new_hours[m[41m [m
+ 		else:[m
+ 			obj.duration = hours[m
+ 		obj.save()[m
+[36m@@ -146,8 +150,11 @@[m [mdef edit_hours(request,work_id):[m
+ 		delta = datetime.datetime.combine(my_date,obj.time_out) - datetime.datetime.combine(my_date,obj.time_in)[m
+ 		totalseconds = delta.total_seconds()[m
+ 		hours = totalseconds/3600[m
+[31m-		if hours > 10 or hours < 0:[m
+[32m+[m		[32mif hours > 9:[m
+ 			obj.duration = 0[m
+[32m+[m		[32melif hours < 0:[m
+[32m+[m			[32mnew_hours = hours+24[m
+[32m+[m			[32mobj.duration = new_hours[m[41m [m
+ 		else:[m
+ 			obj.duration = hours[m
+ 		obj.save()[m
+[1mdiff --git a/pmi_alpha/db.sqlite3 b/pmi_alpha/db.sqlite3[m
+[1mindex 5e12a04..adec992 100644[m
+Binary files a/pmi_alpha/db.sqlite3 and b/pmi_alpha/db.sqlite3 differ

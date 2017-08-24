@@ -1,0 +1,109 @@
+/* The side navigation menu */
+#mySidenav {
+    height: 100%; /* 100% Full-height */
+    width: 250px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    /*background-color: #172755;*/
+    background: linear-gradient(lightgray, #2aabd2);
+    background: -moz-linear-gradient(lightgray, #2aabd2);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px; /* Place content 60px from the top */
+
+}
+
+/* The navigation menu links */
+#mySidenav a {
+
+    color: black;
+    display: inline-block;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* When you mouse over the navigation links, change their color */
+#mySidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+#mySidenav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#mySidenav li{
+    font-size: 20px;
+    color: black;
+}
+
+#mySidenav i{
+    padding-left: 10px;
+    margin-right: 20px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    margin-left: 250px;
+    transition: margin-left .5s;
+    padding: 20px;
+    color: black;
+    background-color: white;
+    margin-bottom: 50px;
+    font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
+
+
+
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    margin-left: 250px;
+
+    background-color: transparent;
+}
+
+.text-muted{
+    font-size: .75em;
+    color: black;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    #mySidenav {padding-top: 15px;}
+    #mySidenav a {font-size: 18px;}
+}
+
+/* This part relates to the add_new.html page, and allows the add new record page
+    to show up nicely in 2 columns.
+ */
+#myform{
+    width: 100%;
+}
+#myform ul{
+}
+#myform li{
+    width: 45%;
+    margin: 10px;
+}
+
+#myform label {
+    width: 140px;
+
+}
+
+#myform input {
+}
+
+#details td{
+    padding: 10px;
+}
+
+#details tr{
+    width:100%;
+}

@@ -1,0 +1,13 @@
+{% extends 'database/sidebar.html' %}
+ 
+ {% block content %}
+ <div>
+     <h3>Search for a record by keyword (Name, Address, DUNs, etc)</h3>
+
+    <form action="{% url 'watson:search' %}">
+        <input class="form-control" type="text" name="q" value="{{request.GET.q}}" placeholder="Keywords">
+        <button type="submit" class="save btn btn-default">Search</button>
+        <br><br><i>hint: Separate keywords with spaces (Ex: "noah noahparker@paradymemanagement.com")</i>
+    </form>
+ </div>
+ {% endblock %}

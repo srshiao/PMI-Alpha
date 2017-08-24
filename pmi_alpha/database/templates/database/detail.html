@@ -1,0 +1,39 @@
+{% extends 'database/sidebar.html' %}
+
+
+{% load django_tables2 %}
+
+	{% block content %}
+
+		<h3>Viewing Details for {{ object }} </h3>
+
+		<div class="container-fluid">
+	 	{% autoescape on %}
+			<table class="table-striped" id="details">
+				<tr>
+			{% for field, val in object %}
+		   <!-- Assuming we don't need to display these fields... -->
+	    	{% if field.name != "department_employee" and field.name != "contract_employee" and field.name != "customer_vendor" and field.name != "customer_employee" and field.name != "vendor_contract" and field.name != "googlegroup_employee"%}
+	    		{% if val != Null %}
+					{% cycle '</tr><tr>' '' %}
+					<td> <label>{{ field.verbose_name }}</label> : {{ val | linebreaksbr }}</td>
+
+					<!--{% cycle '</tr><tr>' '' %} &lt;!&ndash; alternates between no line break and yes line break &ndash;&gt;-->
+
+				{% endif %}
+	    	{% endif %}
+
+	    {% endfor %}
+	   </table>
+		</div>
+		{% endautoescape %}
+
+	<br>
+
+	<a href="#" class='btn btn-default'>Edit (unimplemented)</a>
+	<a href="{% url 'tables' %}" class='btn btn-default'>Back</a>
+
+
+
+{% endblock %}
+
