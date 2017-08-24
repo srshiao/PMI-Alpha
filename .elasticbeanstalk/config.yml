@@ -1,11 +1,6 @@
 branch-defaults:
   master:
-    environment: PMI-Alpha-dev
-    group_suffix: null
-environment-defaults:
-  PMI-Alpha-dev:
-    branch: null
-    repository: null
+    environment: null
 global:
   application_name: PMI-Alpha
   branch: master
