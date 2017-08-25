@@ -87,7 +87,6 @@ semantic-version==2.5.0
 six==1.10.0
 smart-open==1.5.3
 spacy==1.9.0
-SpeechRecognition==3.6.3
 tabulate==0.7.5
 termcolor==1.1.0
 thinc==6.5.2
