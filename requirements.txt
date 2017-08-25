@@ -90,7 +90,6 @@ spacy==1.9.0
 SpeechRecognition==3.6.3
 tabulate==0.7.5
 termcolor==1.1.0
-textract==1.6.1
 thinc==6.5.2
 toolz==0.8.2
 tqdm==4.15.0
