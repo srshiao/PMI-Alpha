@@ -28,7 +28,6 @@ urlpatterns = [
     url(r'^listdelete/$', listdelete, name="listdelete"),
     url(r'^main/$', main, name = 'main'),
     url(r'^search/$', search, name='search'),
-
     #Edit page
     url(r'^edit/(?P<person_id>\d+)/$', views.person_edit, name='person-edit'),
     url(r'^LA/$', linkanalysis, name='LA'),

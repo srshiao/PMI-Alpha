@@ -1,6 +1,8 @@
 {% extends 'navigation.html' %}
 
 {% block content %}
+
+
 <div class="container content-section text-center">
 
     <body>
@@ -12,7 +14,7 @@
 
 
 
-             <form action="{% url 'RSR:uploaddoc' %}" method="post" enctype="multipart/form-data" align="center">
+             <form action="{% url 'RSR:uploaddoc' %}" method="post" enctype="multipart/form-data" align="center" id = 'uploadForm'>
                          <div align="center">
 
              {% csrf_token %}
@@ -46,7 +48,7 @@
                     <br/>
                     </div>
             <p></p>
-                    <input class = "button-style" type="submit" value="Upload"/>
+                    <input class = "button-style" type="submit" value="Upload" id="submitButton"/>
             </form>
             <p></p>
 
