@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'widget_tweaks',        #Basic Search
     'dal',                  #autocomplete
     'dal_select2',
+    'background_task'      #run code in the background
 
 ]
 
