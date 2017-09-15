@@ -1,7 +1,11 @@
 
 {% load static %}
 
+<<<<<<< HEAD
 {% load widget_tweaks %}
+=======
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -44,8 +48,11 @@ div.container {
     height:1px;
     display:inline-block;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 </style>
 <head>
 <!--
@@ -139,6 +146,7 @@ http://www.tooplate.com/view/2082-pure-mix
   Thank You For The Hard Work!
   </h3>
     <div>
+<<<<<<< HEAD
     </br>
 
 {% block content %}
@@ -151,6 +159,14 @@ http://www.tooplate.com/view/2082-pure-mix
     </br>
 
 </br>
+=======
+
+
+{% block content %}
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
         <button type="submit" class="save btn btn-default">Clock Out</button>
         <a href="{% url 'home' %}" class='btn btn-default'>Return to Work</a>
 

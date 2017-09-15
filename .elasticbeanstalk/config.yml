@@ -1,0 +1,21 @@
+branch-defaults:
+  master:
+    environment: PMI-Alpha-dev
+    group_suffix: null
+environment-defaults:
+  PMI-Alpha-dev:
+    branch: null
+    repository: null
+global:
+  application_name: PMI-Alpha
+  branch: master
+  default_ec2_keyname: aws-eb
+  default_platform: Python 3.4
+  default_region: us-east-1
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: PMI-Alpha
+  sc: git
+  workspace_type: Application

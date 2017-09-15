@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^listdelete/$', listdelete, name="listdelete"),
     url(r'^main/$', main, name = 'main'),
     url(r'^search/$', search, name='search'),
+<<<<<<< HEAD
     #Edit page
     url(r'^edit/(?P<person_id>\d+)/$', views.person_edit, name='person-edit'),
     url(r'^LA/$', linkanalysis, name='LA'),
@@ -82,3 +83,15 @@ urlpatterns = [
         #url for autocomplete function for Company class
     url(r'^search/Company-autocomplete/$', Companyautocomplete.as_view(), name='Company-autocomplete',),
 ]
+=======
+    url(r'^edit/(?P<person_id>\d+)/$', views.person_edit, name='person-edit'),
+
+    url(r'^logout/$', views.logout_page, name = 'logout'),
+
+    #Search/Export Team
+    url(r'^search/person_detail/(?P<pk>[0-9]+)/$', views.detail, name='detail'),
+
+
+]
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f

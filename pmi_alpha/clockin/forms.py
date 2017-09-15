@@ -11,7 +11,11 @@ class WorkForm(forms.ModelForm):
     class Meta:
 
         model = Work
+<<<<<<< HEAD
         fields = ('intern', 'date','time_in', 'time_out', 'summary')
+=======
+        fields = ('intern', 'date','time_in', 'time_out')
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
       
         widgets = {
           'date' : extras.SelectDateWidget(empty_label="Nothing"),
@@ -37,11 +41,18 @@ class WorkListFormHelper(FormHelper):
               Submit('submit', 'Apply Filter'),
     )
 class ClockoutForm(forms.ModelForm):
+<<<<<<< HEAD
     summary = forms.CharField( widget=forms.Textarea )
     class Meta:
 
         model = Work
         fields = ('summary',)
+=======
+    class Meta:
+
+        model = Work
+        fields = ()
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
         
 class ClockinForm(forms.ModelForm):
     class Meta:

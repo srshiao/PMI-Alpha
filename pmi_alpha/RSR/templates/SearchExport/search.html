@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {% extends 'navigation.html' %}
 {% block content %}
@@ -38,17 +39,33 @@
     <div class = body>
         <h1 style = "font-family: Raleway, Arial">Resume Filter System</h1>
 
+=======
+{% extends 'navigation.html' %}
+
+{% block content %}
+
+
+    {% load widget_tweaks %}
+
+    <div class = body>
+        <h1 style = "font-family: Raleway, Arial">Resume Filter System</h1>
+    
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
           <form action="" method="Get" class = "searchform cf">
 
             <br/>
             <!--  Hide Show filters -->
+<<<<<<< HEAD
         <br/>
         <!--  Hide Show filters -->
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
             <a href="#search-div" class="btn btn-default" data-toggle="collapse">Advanced Search</a>
             <div id = "search-div" class = "collapse">
             <br/>
             <br/>
+<<<<<<< HEAD
         <p>Select/type one or more the following fields</p>
 
     <form action="" method="Get">
@@ -106,21 +123,82 @@
                     Skills:
                     {% render_field personFilter.form.Skills class="form-control" %}
                 </div>
+=======
+            <p>Select/type one or more the following fields</p>
+
+            <!-- Search Bar -->
+            <div>
+                Search Bar:
+                <input style="color:#000000" type="text" name="q" placeholder="Input search term" value="{{request.GET.q}}"/>
+            </div>
+            <p></p>
+            <div class="row">
+            <fieldset>
+                <legend style="color:#FFF">Academia</legend>
+              <!-- Filters -->
+                <div class="form-group col-sm-2 col-md-2">
+                    School Attended:
+                    {% render_field personFilter.form.SchoolAttend class="form-control" %}
+                </div>
+                <div class="form-group col-sm-2 col-md-2">
+                    Graduation Date:
+                    {% render_field personFilter.form.GraduateDate class="form-control" %}
+                </div>
+                <div class="form-group col-sm-2 col-md-2">
+                    Degree Level:
+                    {% render_field personFilter.form.DegreeLevel class="form-control" %}
+                </div>
+                <div class="form-group col-sm-2 col-md-2">
+                    Major:
+                    {% render_field personFilter.form.Major class="form-control" %}
+                </div>
+                <div class="form-group col-sm-2 col-md-2">
+                    GPA lower bound:
+                    {% render_field personFilter.form.GPAlb class="form-control" %}
+                </div>
+                <div class="form-group col-sm-2 col-md-2">
+                    GPA upper bound:
+                    {% render_field personFilter.form.GPAub class="form-control" %}
+                </div>
+                </fieldset>
+                </div>
+                <br/>
+
+                <div class = "row">
+                <fieldset>
+                <legend style="color:#FFF">Skills/Awards</legend>
+
+
+                <div class="form-group col-sm-3 col-md-3">
+                    Skill:
+                    {% render_field personFilter.form.Skills class="form-control" %}
+                </div>
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                 <div class="form-group col-sm-3 col-md-3">
                     Year of experience for skill:
                     {% render_field personFilter.form.YearOfExperienceForSkill class="form-control" %}
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                 <div class="form-group col-sm-3 col-md-3">
                     Language Spoken:
                     {% render_field personFilter.form.Language class="form-control" %}
                 </div>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                 <div class="form-group col-sm-3 col-md-3">
                     Awards:
                     {% render_field personFilter.form.Award class="form-control" %}
                 </div>
                 </fieldset>
                 </div>
+<<<<<<< HEAD
             <div class = "row">
                 <fieldset>
                 <legend style="color:#FFF">Professional</legend>
@@ -133,10 +211,27 @@
                     {% render_field personFilter.form.Title class="form-control" %}
                 </div>
                 <div class="form-group col-sm-4 col-md-3">
+=======
+
+                <br/>
+                <div class = "row">
+                <fieldset>
+                <legend style="color:#FFF">Professional Experience</legend>
+                <div class="form-group col-sm-4 col-md-4">
+                    Company worked at:
+                    {% render_field personFilter.form.CompanyWorked class="form-control" %}
+                </div>
+                <div class="form-group col-sm-4 col-md-4">
+                    Title:
+                    {% render_field personFilter.form.Title class="form-control" %}
+                </div>
+                <div class="form-group col-sm-4 col-md-4">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                     Professional Development:
                     {% render_field personFilter.form.ProfessionalDevelopment class="form-control" %}
                 </div>
                 </fieldset>
+<<<<<<< HEAD
             </div>
 
 <div class="row">
@@ -144,15 +239,32 @@
                 <legend style="color:#FFF">Clearance</legend>
 
 
+=======
+                </div>
+                <br/>
+                <div class = "row">
+                <fieldset>
+                <legend style="color:#FFF">Clearance</legend>
+
+       
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
                 <div class="form-group col-sm-12 col-md-12">
                     Security Clearance:
                     {% render_field personFilter.form.SecurityClearance class="form-control" style=" width: 300px; margin:auto;"%}
+<<<<<<< HEAD
 
                 </div>
                 </fieldset>
 				</div>
 
+=======
+                
+                </div>
+                </fieldset>
+				</div>
+				
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 				 <div class = "row">
                 <fieldset>
                 <legend style="color:#FFF">Extracurricular</legend>
@@ -163,6 +275,7 @@
                  <div class="form-group col-sm-6 col-md-6">
                      Club:
                      {% render_field personFilter.form.Club_Hobby class="form-control" style=" width: 300px; margin:auto;"%}
+<<<<<<< HEAD
                   </div>
 				  </fieldset>
 				  </div>
@@ -193,6 +306,29 @@
     {{ form.media }}
     {% load search_tags %}
    <div align="center">
+=======
+                  </div>	
+				  </fieldset>
+				  </div>
+
+            
+            <p></p>
+            <div align="center">
+            <button type="submit" class="button-style">
+                <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+			
+        </div>
+        <br/>
+        </div>
+		
+
+
+    </form>
+
+    <p>   </p>
+    <div align="center">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     <div class = "body">
   <table class = "table-fill">
    <thead>
@@ -202,8 +338,11 @@
        <th style = "padding:14px;"class = "text-left">Resume</th>
        <th style = "padding:14px;"class = "text-left">E-Mail</th>
        <th style = "padding:14px;"class = "text-left">Phone</th>
+<<<<<<< HEAD
          <th style = "padding:14px;"class = "text-left">Major</th>
          <th style = "padding:14px;"class = "text-left">Skills</th>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
      </tr>
 
@@ -213,6 +352,7 @@
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.TypeResume}}</td>
          <td style = "padding:14px;"class = "text-left"> <a  style = "color:#ff7e00;"href="{% url 'RSR:detail' obj.pk %}">{{obj.Name}}</a></td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left"><a class = "button-style" href="{{ obj.Resume.url }}">View</a></td>
          <td style = "padding:14px;"class = "text-left">{{ obj.Email }}</td>
          <td style = "padding:14px;"class = "text-left">{{ obj.PhoneNumber }}</td>
@@ -220,6 +360,11 @@
            <td style = "padding:14px;"class = "text-left">{{ detailsDict|get_key:'Major' }}</td>
            <td style = "padding:14px;"class = "text-left">{{ detailsDict|get_key:'Skills' }}</td>
            {% endwith %}
+=======
+         <td style = "padding:14px;"class = "text-left"><a class = "button-style" href="{{ obj.Resume.url }}">View</a></td>     
+         <td style = "padding:14px;"class = "text-left">{{ obj.Email }}</td>
+        <td style = "padding:14px;"class = "text-left">{{ obj.PhoneNumber }}</td>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
        </tr>
      {% empty %}
@@ -232,6 +377,17 @@
     </div>
 
     </div>
+<<<<<<< HEAD
 </body>
 </div>
 {% endblock %}
+=======
+    </div>
+
+{% endblock %}
+
+
+
+
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f

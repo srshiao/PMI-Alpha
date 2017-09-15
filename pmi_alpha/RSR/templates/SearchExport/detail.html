@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 
 {% block content %}
+<<<<<<< HEAD
 <script type="text/javascript">
   function openTab(evt, category) {
     var i, tabcontent, tablinks;
@@ -36,11 +37,14 @@
 </div>
 
 <div class="container content-section text-center" style="padding-left:100px">
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 <!-- Personal info block, left hand side -->
 <h1 style = "font-family: Raleway, Arial">
     {{person.Name}}
 </h1>
+<<<<<<< HEAD
 
 
 <div id="Personal" class="tabcontent" style="display:block" >
@@ -75,18 +79,66 @@
       <button type="submit" class = "button-style">Add Comment</button>
       </form>
   </div>
+=======
+<br/>
+<div class = "personal" >
+	<section><b> Personal Info</b><br>
+	<table class = "table-fill" style="max-width:100px;">
+   
+   <tbody class="table-hover">
+     {% for field in person %}
+       <tr>
+         <td style = "padding:14px; max-width: 300px; 
+word-wrap:break-word;" class = "text-left">{{field.0}}</td>
+         <td style = "padding:14px; max-width: 300px; 
+word-wrap:break-word;" class = "text-left"> {{field.1}}</td>
+       </tr>
+     {% empty %}
+       <tr>
+         <td colspan="2">No data</td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+	<br/>
+  
+
+	<a href="{% url 'RSR:person-edit' person.pk %}" class="btn btn-default btn-file">Edit</a>
+  <br/>
+  <br/>
+  <p></p>
+  <br/>
+    <form method="POST" class="post-form">{% csrf_token %}
+      {% render_field form.Comments ROWS=5 COLS=30 class="form-control" style=" width: 300px;height: 100px !important; margin:auto;" placeholder="Comments"%} 
+<br/>
+      <button type="submit" class = "button-style">Add Comment</button>
+      </form>
+    </section>
+</div>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
 <!--Right hand side all tables -->
 
 
+<<<<<<< HEAD
     <div id="Skills" class="tabcontent">
   <table class = "table-fill">
+=======
+<div class = "skills">
+	<section><b> Skills</b><br>
+
+	<table class = "table-fill">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
    <thead>
      <tr>
        <th style = "padding:14px;"class = "text-left">Skill</th>
        <th style = "padding:14px;"class = "text-left">Years Of Experience</th>
+<<<<<<< HEAD
        <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
      </tr>
 
    </thead>
@@ -95,16 +147,20 @@
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.SkillsID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.YearsOfExperience}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:skill-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -126,6 +182,16 @@
 <div id="Past Work" class="tabcontent">
 
   <table class = "table-fill">
+=======
+   </tbody>
+ </table>
+ </section>
+
+<div style = "padding-top:30px;">
+	<section><b> Company</b><br>
+
+	<table class = "table-fill">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
    <thead>
      <tr>
        <th style = "padding:14px;"class = "text-left">Company Name</th>
@@ -134,7 +200,10 @@
         <th style = "padding:14px;"class = "text-left">Start Date</th>
         <th style = "padding:14px;"class = "text-left">End Date</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
+<<<<<<< HEAD
         <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -145,6 +214,7 @@
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.CompanyID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Title}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px; max-width: 150px;
 word-wrap:break-word;"class = "text-left">{{obj.ExperienceOnJob}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.StartDate}}</td>
@@ -157,12 +227,19 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
          </td>
 
 
+=======
+         <td style = "padding:14px;"class = "text-left">{{obj.ExperienceOnJob}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.StartDate}}</td>
+         <td style = "padding:14px;"class = "text-left">{{obj.EndDate}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
       <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -190,10 +267,17 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
       </tr>
    </tbody>
  </table>
+=======
+   </tbody>
+ </table>
+	
+    </section>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 </div>
 
 
 
+<<<<<<< HEAD
 <div id="School" class="tabcontent">
 
   <table class = "table-fill">
@@ -210,6 +294,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <th style = "padding:14px;"class = "text-left">GPA</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
 
+=======
+ <div style = "padding-top:30px;">
+	<section><b> Academics</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">University</th>
+        <th style = "padding:14px;"class = "text-left">Type</th>
+
+       <th style = "padding:14px;"class = "text-left">Matriculation</th>
+       <th style = "padding:14px;"class = "text-left">Major</th>
+
+       <th style = "padding:14px;"class = "text-left">GPA</th>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
      </tr>
 
@@ -221,6 +320,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.SchoolID.DegreeLevel}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.GradDate}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.MajorID}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left"> {{obj.MajorID.Dept}}</td>
          <td style = "width:130px; padding:14px;"class = "text-left"> {{obj.MajorID.MajorMinor}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.GPA}}</td>
@@ -228,12 +328,16 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
              <a href="{% url 'RSR:school-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
+=======
+         <td style = "padding:14px;"class = "text-left"> {{obj.GPA}}</td>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -270,11 +374,26 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
 
 <div id="Course Work" class="tabcontent">
   <table class = "table-fill">
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+
+<div style = "padding-top:30px;">
+	<section><b> Courses</b><br>
+
+	<table class = "table-fill">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
    <thead>
      <tr>
        <th style = "padding:14px;"class = "text-left">Course</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
+<<<<<<< HEAD
         <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -285,16 +404,20 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.CourseID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:course-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -318,6 +441,22 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      <tr>
        <th style = "padding:14px;"class = "text-left">Clearance Level</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+	
+<div style = "padding-top:30px;">
+	<section><b> Clearance</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Clearance Level</th>
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
      </tr>
 
@@ -326,9 +465,13 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      {% for obj in clearance %}
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.ClearanceLevel}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
            <a href="{% url 'RSR:clearance-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
          </td>
+=======
+ 
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
@@ -336,6 +479,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      {% endfor %}
    </tbody>
  </table>
+<<<<<<< HEAD
 </div>
 
 <div id="Languages" class="tabcontent">
@@ -345,6 +489,19 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <th style = "padding:14px;"class = "text-left">Language</th>
        <th style = "width:130px;padding:14px;"class = "text-left">Action</th>
 
+=======
+	
+    </section>
+</div>
+
+<div style = "padding-top:30px;">
+	<section><b> Languages</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Language</th>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -354,17 +511,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      {% for obj in language %}
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.LangID}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:language-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -381,11 +542,28 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
 
 <div id="Side Projects" class="tabcontent">
   <table class = "table-fill">
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+
+<div style = "padding-top:30px;">
+	<section><b> Side Projects</b><br>
+
+	<table class = "table-fill">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
    <thead>
      <tr>
        <th style = "padding:14px;"class = "text-left">Project</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
+<<<<<<< HEAD
        <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
      </tr>
 
    </thead>
@@ -394,17 +572,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.SideID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:sidepro-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
       <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -424,11 +606,25 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
 
 <div id="Awards" class="tabcontent">
   <table class = "table-fill">
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+<div style = "padding-top:30px;">
+	<section><b> Awards</b><br>
+
+	<table class = "table-fill">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
    <thead>
      <tr>
        <th style = "padding:14px;"class = "text-left">Award</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
+<<<<<<< HEAD
        <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -439,17 +635,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.AwardID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:award-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -473,6 +673,22 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <th style = "padding:14px;"class = "text-left">Club/Hobby</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+
+<div style = "padding-top:30px;">
+	<section><b> Clubs & Hobbies</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Name</th>
+        <th style = "padding:14px;"class = "text-left">Description</th>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -483,17 +699,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.CHID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:club-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -518,6 +738,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <th style = "padding:14px;"class = "text-left">Volunteer</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
         <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+<div style = "padding-top:30px;">
+	<section><b> Volunteering</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Name</th>
+        <th style = "padding:14px;"class = "text-left">Description</th>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -528,17 +763,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.VolunID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:volunteer-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -562,6 +801,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <th style = "padding:14px;"class = "text-left">Development</th>
         <th style = "padding:14px;"class = "text-left">Description</th>
         <th style = "padding:14px;"class = "text-left">Action</th>
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+<div style = "padding-top:30px;">
+	<section><b> Professional Developement</b><br>
+
+	<table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Name</th>
+        <th style = "padding:14px;"class = "text-left">Description</th>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
      </tr>
@@ -572,17 +826,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.ProfID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+<<<<<<< HEAD
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:professional-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
          </td>
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
        </tr>
      {% empty %}
        <tr>
          <td colspan="2">No data</td>
        </tr>
      {% endfor %}
+<<<<<<< HEAD
      <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
@@ -602,8 +860,24 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
   <br/>
 </div>
 
+=======
+   </tbody>
+ </table>
+	
+    </section>
+</div>
+</div>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 <!-- t
 odo Awards, Clubs, Volunteering, Professional Dev -->
 
 
+<<<<<<< HEAD
 {% endblock %}
+=======
+
+
+
+
+{% endblock %}
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f

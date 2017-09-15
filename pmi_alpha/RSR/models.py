@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 # -*- coding: utf-8 -*-
 import os
 
@@ -28,11 +32,16 @@ class Document(models.Model):
     uploaduser = models.CharField(max_length=128)
     wordstr = models.TextField()
 
+<<<<<<< HEAD
 
 
 
 
 class Person(models.Model):
+=======
+class Person(models.Model):
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     def get_absolute_url(self):
         return reverse('person_detail', args=[str(self.id)])
 
@@ -63,6 +72,7 @@ class Person(models.Model):
     ('Prospective Intern', 'Prospective Intern'),
 )
 
+<<<<<<< HEAD
     WORKAUTHORIZATION_CHOICES = (
         ('Citizenship', 'Citizenship'),
         ('Permanent Resident', 'Permanent Resident'),
@@ -85,6 +95,24 @@ class Person(models.Model):
     WorkAuthorization = models.CharField(verbose_name = "Work Authorization", max_length=20, choices=WORKAUTHORIZATION_CHOICES, default ='Citizenship')
     Comments = models.CharField(max_length = 500, default = "Add Comment...")
 
+=======
+    Name = models.CharField(verbose_name = "Name", max_length = 50,default = "None")
+    Email = models.CharField(verbose_name = "Email", max_length = 50,default = "None")
+    Address = models.CharField( verbose_name = "Address", max_length = 50,default = "None")
+    ZipCode = models.IntegerField(verbose_name = "Zip Code", default = 0)
+    State = models.CharField(verbose_name ="State", max_length = 25,default = "None")
+    PhoneNumber = models.CharField(verbose_name ="Phone", max_length = 50,default = 0)
+    Resume = models.FileField(upload_to = 'resumes', null = True) # null = True for testing purposes
+    CreationDate = models.DateTimeField(verbose_name ="Created On", auto_now_add=True, blank=True)
+    LastUpdated = models.DateTimeField(verbose_name ="Last Updated", blank = True, auto_now=True, null = True)
+    CreatedBy = models.ForeignKey(settings.AUTH_USER_MODEL, null = True) # null = True for testing purposes
+    Linkedin = models.CharField(verbose_name ="LinkedIn", max_length = 70, default = "None")
+    GitHub = models.CharField(verbose_name ="GitHub", max_length = 70, default = "None")
+    TypeResume = models.CharField(verbose_name = "Resume Type",max_length = 50, choices = TYPERESUME_CHOICES, default = 'Current Employee')
+    Comments = models.CharField(max_length = 500, default = "Add Comment...")
+
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 class OCR(models.Model):
     def get_absolute_url(self):
         return reverse('major_detail', args=[str(self.id)])
@@ -102,6 +130,7 @@ class OCR(models.Model):
     CreatedBy = models.ForeignKey(settings.AUTH_USER_MODEL)
     NewPath = models.ForeignKey(Person, blank=True, null=True)
 
+<<<<<<< HEAD
 
 class Major(models.Model):
     Major_Choices = (('Major', 'Major'),
@@ -109,10 +138,20 @@ class Major(models.Model):
         )
     def get_absolute_url(self):
         return reverse('major_detail', args=[str(self.id)])
+=======
+class Major(models.Model):
+    Major_Choices = (('Major', 'Major'),
+    ('Minor', 'Minor')
+)
+    def get_absolute_url(self):
+        return reverse('major_detail', args=[str(self.id)])
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     def __str__(self):
         return self.Name
 
     def __iter__(self):
+<<<<<<< HEAD
         '''for field in self._meta.get_fields(include_parents=True, include_hidden=False):
             value = getattr(self, field.name, None)
             yield (field, value)'''
@@ -129,6 +168,11 @@ class Major(models.Model):
             # Removing underscore and capitalizing the first word for each field name
             field_name = string.capwords(field_name)
             yield [field_name_1,str(val)]
+=======
+        for field in self._meta.get_fields(include_parents=True, inclue_hidden=False):
+            value = getattr(self, field.name, None)
+            yield (field, value)
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
     Name = models.CharField("Major", max_length=50,default = "None")
     Dept = models.CharField("Department", max_length=50,default = "None")
@@ -154,7 +198,11 @@ class School(models.Model):
 
     Name = models.CharField("School", max_length=50,default = "None")
     DegreeLevel = models.CharField("Degree Level", max_length=50, choices = DEGREELEVEL_CHOICES, default = 'Undergraduate')
+<<<<<<< HEAD
 
+=======
+    Students = models.ManyToManyField(Person, through='PersonToSchool')
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 class Coursework(models.Model):
     def get_absolute_url(self):
@@ -171,7 +219,10 @@ class Coursework(models.Model):
     Name = models.CharField("Coursework", max_length=50)
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 class ProfessionalDevelopment(models.Model):
     def get_absolute_url(self):
         return reverse('ProfessionalDevelopment_detail', args=[str(self.id)])
@@ -185,7 +236,11 @@ class ProfessionalDevelopment(models.Model):
             yield (field, value)
 
     Name = models.CharField("Professional Development", max_length=20,default = "None")
+<<<<<<< HEAD
 
+=======
+    ProfessionalExperience = models.ManyToManyField(Person, through='PersonToProfessionalDevelopment')
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 class SideProject(models.Model):
     def get_absolute_url(self):
@@ -306,6 +361,10 @@ class Volunteering(models.Model):
             yield (field, value)
 
     Name = models.CharField("Volunteering Name", max_length=100,default = "None")
+<<<<<<< HEAD
+=======
+    Volunteer = models.ManyToManyField(Person, through='PersonToVolunteering')
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
 
 
@@ -359,7 +418,11 @@ class PersonToSkills(models.Model):
 
     def __str__(self):
         return self.PersonID.Name + ' - ' + self.SkillsID.Name
+<<<<<<< HEAD
     YearsOfExperience = models.CharField("Years Of Experience", max_length=3)
+=======
+    YearsOfExperience = models.CharField("Years Of Experience", max_length=3,default = 1)
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     SkillsID = models.ForeignKey(Skills,  on_delete=models.CASCADE)
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
 
@@ -390,6 +453,7 @@ class PersonToSchool(models.Model):
     SchoolID = models.ForeignKey(School,  on_delete=models.CASCADE)
     GradDate = models.CharField("Graduation Date", max_length=20,default = "None")
     GPA = models.FloatField("GPA", max_length=20,default = "None")
+<<<<<<< HEAD
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     MajorID = models.ForeignKey(Major,  on_delete=models.CASCADE)
 
@@ -402,3 +466,8 @@ class PersonToSchool(models.Model):
 # if instance.file:
 # if os.path.isfile(instance.file.path):
 #   os.remove(instance.file.path)
+=======
+    #CourseID = models.ForeignKey(Coursework,  on_delete=models.CASCADE)
+    PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
+    MajorID = models.ForeignKey(Major,  on_delete=models.CASCADE)
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f

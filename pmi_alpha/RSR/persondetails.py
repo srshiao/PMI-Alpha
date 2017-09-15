@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+from django.db import models
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.core.urlresolvers import reverse
+from datetime import date, datetime
+from django.dispatch import receiver
+import string
+import os
+import html
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 # Returns a list of strings that contains related informtion about person
 def Detail(person):
     # related_obj_list will be the list I will iterate through to print out each detail
@@ -50,4 +62,8 @@ def Detail(person):
         else:
             related_obj_list.append('There is no '+model+' object')
         related_obj_list.append('</section><br>')
+<<<<<<< HEAD
     return related_obj_list
+=======
+    return related_obj_list
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f

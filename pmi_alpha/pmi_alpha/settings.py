@@ -27,7 +27,11 @@ SECRET_KEY = '3%%glo(mp0z()b*@vnj-0a_liem!%$=&+3-nq%74u(xx!1m_&e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1','pmi-alpha-dev.us-east-1.elasticbeanstalk.com']
+=======
+ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1']
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Application definition
@@ -39,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     #added packages
     'django_tables2',       #Generate tables.
     'django_filters',       #Filter/Search tables
@@ -49,11 +57,15 @@ INSTALLED_APPS = [
     'images',
     'RSR',
     'watson',
+<<<<<<< HEAD
     'widget_tweaks',        #Basic Search
     'dal',                  #autocomplete
     'dal_select2',
     'background_task'      #run code in the background
 
+=======
+    'widget_tweaks',              #Basic Search
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 ]
 
 MIDDLEWARE = [

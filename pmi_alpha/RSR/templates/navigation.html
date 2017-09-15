@@ -3,6 +3,7 @@
                    <!DOCTYPE html>
                    <html lang="en">
                    <style>
+<<<<<<< HEAD
                      input, select, textarea{
     color: #000;
 }
@@ -69,16 +70,30 @@ div.tab button.active {
                     
                     .skills{  
                       
+=======
+                   
+                    .personal {  
+                      float:left; 
+                      width:40%;
+                      margin-left:-50px
+
+                    }
+                    .skills{  
+                        float:right; width:60%;
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                     }
                     .content{position:relative; top:-75px;}
 
                     @media screen and (max-width: 1200px) {
                     .personal {width: 100%; margin-left: 0px; padding-bottom: 30px;}
                     .skills   {width: 100%; margin-left: 0px;}
+<<<<<<< HEAD
                     .comment  {width: 100%; margin-left: 0px; padding-bottom: 30px;}
 
                     
  
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
                     }
                     @media screen and (max-width: 765px ) {
                       .content  {top : 0px;  }
@@ -376,7 +391,11 @@ td.text-right {
                        <title>RSR</title>
 
                        <!-- Bootstrap Core CSS -->
+<<<<<<< HEAD
                        <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+=======
+                       <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
                        <!-- Custom Fonts -->
                        <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -384,7 +403,11 @@ td.text-right {
                        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
                        <!-- Theme CSS -->
+<<<<<<< HEAD
                        <link href="{% static 'css/grayscale.css' %}" rel="stylesheet">
+=======
+                       <link href="{% static 'css/grayscale.min.css' %}" rel="stylesheet">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 
                        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
                        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -421,9 +444,12 @@ td.text-right {
                 <li>
                     <a href="{% url 'RSR:search' %}">Search</a>
                 </li>
+<<<<<<< HEAD
                 <li>
                     <a href="{% url 'RSR:ocrsearch' %}">Resume Regex</a>
                 </li>
+=======
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
   
                 <li>
                     <a href="{% url 'logout' %}">Log Out</a>
@@ -435,7 +461,11 @@ td.text-right {
     <!-- /.container -->
 </nav>
 
+<<<<<<< HEAD
 <section style = "font-family: Raleway, Roboto, helvetica, arial, sans-serif;" id="about">
+=======
+<section style = "font-family: Raleway, Roboto, helvetica, arial, sans-serif;" id="about" class="container content-section text-center">
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
 <div class = "content">
 {% block content %}
 {% endblock %}
@@ -445,6 +475,7 @@ td.text-right {
 <!-- Footer -->
 <footer>
     <div class="container text-center">
+<<<<<<< HEAD
       <br/>
         <br/>
         <br/>
@@ -469,6 +500,9 @@ td.text-right {
         <br/>
         <br/>
         <br/>
+=======
+        <p>Copyright &copy; Paradyme Management 2017</p>
+>>>>>>> ded216f852c651889e7872ae31f367c57d02966f
     </div>
 </footer>
 
