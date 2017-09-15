@@ -9,6 +9,9 @@ class PersonForm(forms.ModelForm):
 
         model = Person
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
         exclude=('Resume',)
         fields = '__all__'
     	
@@ -121,9 +124,12 @@ class PersontoSchoolForm(forms.ModelForm):
 		fields = '__all__'
 
 
+<<<<<<< HEAD
 =======
         fields = '__all__'
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 
 class CommentsForm(forms.ModelForm):
 	Comments = forms.CharField( widget=forms.Textarea )
@@ -138,6 +144,9 @@ class DocumentForm(forms.Form):
     
 	docfile = forms.FileField(widget=forms.FileInput(attrs={'accept':dataconfig}),label='Select a file:')
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 
 class SkillForm(forms.ModelForm):
 	class Meta:
@@ -192,5 +201,8 @@ class MajorForm(forms.ModelForm):
 	class Meta:
 		model = Major
 		fields = '__all__'
+<<<<<<< HEAD
 =======
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab

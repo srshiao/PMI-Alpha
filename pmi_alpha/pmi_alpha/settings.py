@@ -44,9 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
     #added packages
     'django_tables2',       #Generate tables.
     'django_filters',       #Filter/Search tables
@@ -58,6 +61,7 @@ INSTALLED_APPS = [
     'RSR',
     'watson',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'widget_tweaks',        #Basic Search
     'dal',                  #autocomplete
     'dal_select2',
@@ -66,6 +70,12 @@ INSTALLED_APPS = [
 =======
     'widget_tweaks',              #Basic Search
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+    'widget_tweaks',        #Basic Search
+    'dal',                  #autocomplete
+    'dal_select2',
+
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 ]
 
 MIDDLEWARE = [

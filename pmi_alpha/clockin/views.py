@@ -6,9 +6,12 @@ from django.http import Http404
 from django.forms import ModelForm
 from .forms import *
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from django_tables2 import RequestConfig
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
@@ -104,10 +107,15 @@ def clockout(request, work_id):
 		elif hours < 0:
 			new_hours = hours+24
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if new_hours > 9:
 	 			new_hours = 0
 =======
 >>>>>>> ded216f852c651889e7872ae31f367c57d02966f
+=======
+			if new_hours > 9:
+	 			new_hours = 0
+>>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 			obj.duration = new_hours 
 		else:
 			obj.duration = hours
