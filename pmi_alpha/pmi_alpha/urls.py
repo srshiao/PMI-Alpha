@@ -29,8 +29,4 @@ urlpatterns = [
     url(r'^clockin/',include('clockin.urls')),
     url(r'^RSR/',include('RSR.urls')),
 
-<<<<<<< HEAD
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-=======
-]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f

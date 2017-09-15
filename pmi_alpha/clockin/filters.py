@@ -8,12 +8,4 @@ class WorkListFilter(django_filters.FilterSet):
 	class Meta:
 		model = Work
 		fields =  ('intern',)
-<<<<<<< HEAD
-<<<<<<< HEAD
 		order_by = ['intern__FName']
-=======
-		order_by = ['pk']
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
-		order_by = ['intern__FName']
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab

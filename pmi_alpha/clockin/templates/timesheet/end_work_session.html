@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-{% load render_table from django_tables2 %}
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
+
 {% load static %}
 
-
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -15,13 +9,45 @@ div.container {
     display: inline-block;
     position:relative;
     overflow:auto;
+}
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: fixed;
+    top: 30%;
+
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+.form button {
+
+
+  width: 75%;
+  height: 50%;
+  border: 0;
+
+  padding: 15px;
+
+  cursor: pointer;
 
 }
+.divider{
+    width:1px;
+    height:1px;
+    display:inline-block;
+}
+
+
 </style>
 <head>
-
-
-
 <!--
 
 Template 2082 Pure Mix
@@ -37,7 +63,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
     <!-- Site title
    ================================================== -->
-    <title>Paradyme Management Database</title>
+    <title>Paradyme Management Internship</title>
 
     <!-- Bootstrap CSS
    ================================================== -->
@@ -59,7 +85,7 @@ http://www.tooplate.com/view/2082-pure-mix
     <!-- Google web font 
    ================================================== -->   
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+ 
 
 </head>
 <body>
@@ -84,9 +110,8 @@ http://www.tooplate.com/view/2082-pure-mix
             <div class="row">
 
               <div class="brand">
-                <a href="{% url 'home' %}">Paradyme Management</a>
+                <a href="{% url 'home' %}">Paradyme Management Internship</a>
               </div>
-
 
              
 
@@ -98,99 +123,43 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
 
-  <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
-      <a href="{% url 'add' %}"><button type="button" class = "btn btn-default">New Session</a>
-      <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
 
-  </div>
-
-  
-
-<!-- Header section
-================================================== -->
-<section id="header" class="header-one">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
-          <div class="header-thumb">
-              <h1 class="wow fadeIn" data-wow-delay="1.6s">Welcome {{ name.FName }}</h1>
-          </div>
-            </div>
-
-        </div>
-    </div>      
-</section>
 
 
 <!-- Portfolio section
 ================================================== -->
 
-
 <section id="portfolio">
-
+    <div class="container">
+	<h1>
+	Paradymer Sign Out <br>
+	<br>
+	</h1>
+  <h3>
+  Thank You For The Hard Work!
+  </h3>
     <div>
-    Past Time Sheet
-      </div>
-   <div class="container">
-    <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Intern</th>
-        <th>Date</th>
-        <th>Time In</th>
-        <th>Time Out</th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <th>Duration (Hours)</th>
-=======
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
-        <th>Duration (Hours)</th>
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
+    </br>
+
+{% block content %}
+    <h4> Please provide a summary of work completed this session </h4>
+    <form method="POST" class="post-form">{% csrf_token %}
+    </br>
+
+    {% render_field form.summary ROWS=5 COLS=100 class="form-control" placeholder="What work did you do today? (For payroll purposes)" %}
+
+    </br>
+
+</br>
+        <button type="submit" class="save btn btn-default">Clock Out</button>
+        <a href="{% url 'home' %}" class='btn btn-default'>Return to Work</a>
 
 
-      </tr>
-    </thead>
-    <tbody>
-      {% for user1 in filter1 %}
-        <tr>
-        
+ </form>
+{% endblock %}
+    </div>
+</section>
 
-
-          <td>{{ user1.intern}}</td>
-          <td>{{ user1.date}}</td>
-          <td>{{ user1.time_in}}</td>
-          <td>{{ user1.time_out}}</td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
-          <td>
-
-            {{user1.duration}}
-
-          </td>
-<<<<<<< HEAD
-=======
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
-
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="5">No data</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-
-
-
-   </div>
-  </section>
 
 <!-- Footer section
 ================================================== -->

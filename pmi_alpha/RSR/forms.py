@@ -8,13 +8,9 @@ class PersonForm(forms.ModelForm):
     class Meta:
 
         model = Person
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
         exclude=('Resume',)
         fields = '__all__'
-    	
+
 #### EDIT TEAM DO NOT USE THESE, THESE ARE FOR ADD FORMS ###
 class NewPersontoSkillForm(forms.ModelForm):
 
@@ -73,7 +69,7 @@ class NewPersontoProfessionalForm(forms.ModelForm):
 		fields = '__all__'
 
 #### USE BELOW FOR EDIT ###
-	
+
 class PersontoSkillForm(forms.ModelForm):
 	class Meta:
 		model = PersonToSkills
@@ -123,14 +119,6 @@ class PersontoSchoolForm(forms.ModelForm):
 		model = PersonToSchool
 		fields = '__all__'
 
-
-<<<<<<< HEAD
-=======
-        fields = '__all__'
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
-
 class CommentsForm(forms.ModelForm):
 	Comments = forms.CharField( widget=forms.Textarea )
 	class Meta:
@@ -141,18 +129,14 @@ class DocumentForm(forms.Form):
 	pwd = os.path.dirname(__file__)
 	with open(pwd+"/static/config/config.txt") as myfile:
 		dataconfig="".join(line.rstrip() for line in myfile)
-    
+
 	docfile = forms.FileField(widget=forms.FileInput(attrs={'accept':dataconfig}),label='Select a file:')
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 
 class SkillForm(forms.ModelForm):
 	class Meta:
 		model = Skills
 		fields = '__all__'
-		
+
 
 class CompanyForm(forms.ModelForm):
 	class Meta:
@@ -201,8 +185,3 @@ class MajorForm(forms.ModelForm):
 	class Meta:
 		model = Major
 		fields = '__all__'
-<<<<<<< HEAD
-=======
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab

@@ -1,28 +1,14 @@
 {% extends 'navigation.html' %}
 {% load widget_tweaks %}
-<<<<<<< HEAD
-<<<<<<< HEAD
 {% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container content-section text-center">
 
-=======
-{% block content %}
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
-{% load crispy_forms_tags %}
-
-{% block content %}
-<div class="container content-section text-center">
-
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
     <div class = "body">
              <h2 class="cover-heading" style = "font-family: Raleway, Arial">Filter Files</h2>
              <p></p>
              <br />
-<<<<<<< HEAD
-<<<<<<< HEAD
 
   <form method="get">
     <div class="well">
@@ -47,48 +33,6 @@
 
 
 
-=======
-<form method="get">
-<div style = "color:#000" class = "row">
-    <div class="form-group col-sm-4 col-md-4">
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
-
-  <form method="get">
-    <div class="well">
-      <div class="row" style = "color:#000">
-        <div class="form-group col-sm-4 col-md-4">
-          {% render_field documents.form.firstname class="form-control" placeholder="First Name" %}
-        </div>
-        <div class="form-group col-sm-4 col-md-4">
-          {% render_field documents.form.lastname class="form-control" placeholder="Last Name" %}
-        </div>
-        <div class="form-group col-sm-4 col-md-4">
-          {% render_field documents.form.type class="form-control" %}
-        </div>
-      </div>
-      <button type="submit" class="button-style">
-        <span class="glyphicon glyphicon-search"></span> Search
-      </button>
-    </div>
-  </form>
-
-
-
-
-
-<<<<<<< HEAD
-    {% render_field documents.form.type style=" width: 300px; margin:auto;" class="form-control"%} 
-    </div>
-    </div>
-    <br/>
-<div style = "align: center"
-      <button type="submit" class = "button-style">Search</button>
-      </div>
-      </form>
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
       <p></p>
       <br />
       <br />
@@ -101,7 +45,7 @@
             <table class="table-fill">
             {% if documents %}
                <thead>
-               
+
 					<tr>
 						<th style = "padding:14px;" class="text-left">Type</th>
 						<th style = "padding:14px;" class="text-left">Name</th>
@@ -133,7 +77,7 @@
             </table>
             <p> </p>
             <!--back btn-->
-               
+
                <a href="{% url 'RSR:uploaddoc' %}" class = "button-style" type="button"> Go Back</a>
 
             </p>
@@ -145,12 +89,5 @@
             }
             </script>
 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
 </div>
-=======
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
-</div>
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
   {% endblock %}
