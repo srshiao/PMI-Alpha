@@ -15,7 +15,6 @@ CTYPE = (
 	('LH', 'Labor Hour'),
 	('T', 'TNM'),
 	('F','FFP'),
-
 	)
 
 # REMINDER: python manage.py buildwatson whenever you add stuff to models.
