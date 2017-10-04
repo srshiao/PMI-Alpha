@@ -1,25 +1,14 @@
 {% extends 'navigation.html' %}
 {% load widget_tweaks %}
 {% block content %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 <!--ADD THIS DIV CLASS TO ALL-->
 <div class="container content-section text-center">
 
 
-<<<<<<< HEAD
-=======
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 <div style="color:#000">
 	<h3 style = "color:#FFF"> Editing {{person.Name}}'s Personal Info</h3>
 	<br/>
     <form method="POST" class="post-form">{% csrf_token %}
-<<<<<<< HEAD
-<<<<<<< HEAD
 		{% for field in form %}
 			<div style= "color:#FFF">{{field.label_tag}}</div> {% render_field field class="form-control" style=" width: 300px; margin:auto;" %}
 		{% endfor %}
@@ -30,30 +19,4 @@
 
 <!-- DONT FORGET TO CLOSE DIV-->
  </div>
-=======
-	    {% render_field form.Name class="form-control" style=" width: 300px; margin:auto;" placeholder="Name"%} 
-	    {% render_field form.Email class="form-control" style=" width: 300px; margin:auto;" placeholder="Email"%} 
-	    {% render_field form.Address class="form-control" style=" width: 300px; margin:auto;" placeholder="Address"%} 
-	    {% render_field form.State class="form-control" style=" width: 300px; margin:auto;" placeholder="State"%} 
-	    {% render_field form.ZipCode class="form-control" style=" width: 300px; margin:auto;" placeholder="Zip Code"%} 
-	    {% render_field form.PhoneNumber class="form-control" style=" width: 300px; margin:auto;" placeholder="Phone Number"%} 
-	    {% render_field form.Linkedin class="form-control" style=" width: 300px; margin:auto;" placeholder="LinkedIn"%} 
-	    {% render_field form.GitHub class="form-control" style=" width: 300px; margin:auto;" placeholder="GitHub"%} 
-	    {% render_field form.TypeResume class="form-control" style=" width: 300px; margin:auto;"%} 
-=======
-		{% for field in form %}
-			<div style= "color:#FFF">{{field.label_tag}}</div> {% render_field field class="form-control" style=" width: 300px; margin:auto;" %}
-		{% endfor %}
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
-		<br/>
-		<button type="submit" class = "button-style">Edit</button>
-
- </form>
-<<<<<<< HEAD
->>>>>>> ded216f852c651889e7872ae31f367c57d02966f
-=======
-
-<!-- DONT FORGET TO CLOSE DIV-->
- </div>
->>>>>>> 903f24b60272e7eaa88f16e6d4c4b0817793b9ab
 {% endblock %}

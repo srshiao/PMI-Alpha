@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3%%glo(mp0z()b*@vnj-0a_liem!%$=&+3-nq%74u(xx!1m_&e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['pmi-alpha.us-east-1.elasticbeanstalk.com', 'localhost','127.0.0.1','pmi-alpha-dev.us-east-1.elasticbeanstalk.com','paradymetest.us-east-1.elasticbeanstalk.com']
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -308,8 +308,8 @@ class PersonToCompany(models.Model):
     CompanyID = models.ForeignKey(Company,  on_delete=models.CASCADE)
     Title = models.CharField("Title", max_length=100, default="None")
     ExperienceOnJob = models.CharField("Experience on Job", max_length=300, default="None")
-    StartDate = models.DateField("Start Date", default=datetime.now().day)
-    EndDate = models.DateField("End Date", default=datetime.now().day)
+    StartDate = models.DateField("Start Date", default=datetime.now().date)
+    EndDate = models.DateField("End Date", default=datetime.now().date)
     Desc = models.CharField("Company Description", max_length=1000, default="None")
 
 
