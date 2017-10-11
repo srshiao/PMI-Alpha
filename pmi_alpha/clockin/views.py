@@ -19,6 +19,8 @@ from dal import autocomplete
 from django.db.models import Q
 from django.views.generic.edit import UpdateView
 from .filters import *
+from django.conf import settings
+from .config import *
 
 
 def logout_page(request):
@@ -68,12 +70,15 @@ def past_time(request):
 #Clock in function
 def add_new(request):
 	form = ClockinForm(request.POST or None);
+	intern_obj = Intern.objects.filter(username = request.user)
+	name = intern_obj[0]
 	context = {
-		'form' : form
+		'form' : form,
+		'name' : name,
+		'token' : SLACK_BOT_TOKEN,
 	}
 	if form.is_valid():
 		obj = form.save(commit=False)
-		intern_obj = Intern.objects.filter(username = request.user)
 		obj.intern = intern_obj[0]
 		obj.time_in = datetime.datetime.now().time()
 		obj.active_session = True
@@ -88,8 +93,8 @@ def add_new(request):
 def clockout(request, work_id):
 	instance = get_object_or_404(Work, id=work_id)
 	form = ClockoutForm(request.POST or None, instance=instance)
-   
-
+	intern_obj = Intern.objects.filter(username = request.user)
+	name = intern_obj[0]
 	if form.is_valid():
 		obj = form.save(commit=False)
 		obj.time_out = datetime.datetime.now().time()
@@ -113,7 +118,9 @@ def clockout(request, work_id):
 		return HttpResponseRedirect('/clockin/')
 	context = {
 		'form' : form,
-		'pk' : work_id
+		'pk' : work_id,
+		'name' : name,
+		'token' : SLACK_BOT_TOKEN,
 	}
 
 	return render(request, 'timesheet/end_work_session.html', context)
@@ -222,19 +229,15 @@ def add_work(request):
 	return render(request, 'timesheet/admin_add_work_session.html', context)
 
 
-#added by me to experiment
-#@login_required
 class InternAutocomplete(autocomplete.Select2QuerySetView):
 	def get_queryset(self):
-		qs = Intern.objects.order_by('FName').distinct()
+		#qs = Intern.objects.order_by('FName').distinct()
+		qs = Intern.objects.all()
 		if self.q:
 		#qs = qs.filter(FName__exact='Sam')
-			qs = qs.filter(FName__istartswith=self.q)
+
+			qs = (qs.filter(FName__istartswith=self.q) or qs.filter(LName__istartswith=self.q))
 		return qs
-
-		#return render(autocomplete.Select2QuerySetView, 'timesheet/all_work_sessions.html', context)
-
-#experiment until here
 
 #not in current use. will be used as a Constituent Details Page
 #@login_required
