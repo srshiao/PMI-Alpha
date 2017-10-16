@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'widget_tweaks',        #Basic Search
     'dal',                  #autocomplete
     'dal_select2',
-    'background_task'      #run code in the background
+    'background_task',    #run code in the background
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 LOGIN_REDIRECT_URL = 'home'
 

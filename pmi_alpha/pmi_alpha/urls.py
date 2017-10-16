@@ -22,11 +22,13 @@ from django.contrib.auth import views
 
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls, name = 'admin'),
     url(r'^database/', include('database.urls')),
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^clockin/',include('clockin.urls')),
     url(r'^RSR/',include('RSR.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
