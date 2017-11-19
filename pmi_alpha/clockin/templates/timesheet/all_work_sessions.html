@@ -121,7 +121,9 @@ http://www.tooplate.com/view/2082-pure-mix
 </div>
 
   <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
+      <a href="{% url 'home' %}"><button type="button" class = "btn btn-default">Clock-in App</a>
       <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
+
 
   </div>
 <!-- Header section
@@ -133,6 +135,7 @@ http://www.tooplate.com/view/2082-pure-mix
             <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
           <div class="header-thumb">
               <h1 class="wow fadeIn" data-wow-delay="1.6s">Paradyme Interns Time Sheet</h1>
+              <h2 class="wow fadeIn" data-wow-delay="1.6s">Time Sheet</h2>
           </div>
             </div>
 
@@ -150,14 +153,14 @@ http://www.tooplate.com/view/2082-pure-mix
 <section id="portfolio">
     <form method="get">
     <div class="well">
-      <h4 style="margin-top: 0">Filter Interns</h4>
+        <h4 style="margin-top: 0"><strong>Filter Interns</strong></h4>
       <div class="row">
-        <div class="form-group col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+        <div class="form-group col-md-offset-3 col-md-3 col-sm-4">
           {{ filter.form.intern.label_tag }}
 
           {% render_field filter.form.intern class="form-control" %}
         </div>
-        <div class="form-group col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+        <div class="form-group col-md-3 col-sm-4">
           {{ filter.form.date_between.label_tag }}
           {% render_field filter.form.date_between class="form-control" %}
         </div>
@@ -224,14 +227,13 @@ value= {{user.id}}   />
     </thead>
     <tbody>
         <tr>
-            <td id=total_duration>&nbsp;</td>
-
+            <td id=total_duration></td>
         </tr>
 
     </tbody>
   </table>
   <a href="{% url 'add_work' %}" class='btn btn-default'>Add Hours</a>
-
+  <button type = "submit" class = "btn btn-default" name = "report" value = "End Session">Get Report</button>
   <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">Edit</button>
     </form>
 
@@ -252,6 +254,7 @@ value= {{user.id}}   />
  total_duration += parseFloat($(this).html());
  });
  total_duration = parseFloat(total_duration.toFixed(2));
+
  //then output them to the elements
  $("#total_duration").html(total_duration);
 

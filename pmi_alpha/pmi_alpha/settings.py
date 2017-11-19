@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'dal_select2',
     'background_task',    #run code in the background
     'rest_framework',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -167,8 +168,15 @@ REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, '..','www','static')
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
+STATICFILES_DIRS = []
 
-)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'RSR/bundles/local/',  # end with slash
+        'STATS_FILE': os.path.join(BASE_DIR,'..','www', 'webpack-stats-local.json'),
+    }
+}

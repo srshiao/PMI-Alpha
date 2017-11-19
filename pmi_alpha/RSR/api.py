@@ -20,6 +20,7 @@ class SkillCount(APIView):
     renderer_classes = (JSONRenderer, )
     queryset = PersonToSkills.objects.all()
     def get(self, request, format=None):
+        print(request.GET)
         arr =[]
         for skill in Skills.objects.all():
             d = {}

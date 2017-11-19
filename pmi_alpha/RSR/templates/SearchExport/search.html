@@ -47,10 +47,24 @@
     <form action="" method="Get">
 
             <div class="row">
+              <fieldset>
+                <legend style="color:#FFF">Personel</legend>
                 <!-- Search Bar -->
-                <div class="form-group col-sm-12 col-md-12">
-                Search Bar:
+                <div class="form-group col-sm-3 col-md-3">
+                Name:
                 {% render_field personFilter.form.Name class="form-control" %}
+                </div>
+                <div class="form-group col-sm-3 col-md-3">
+                Type:
+                {% render_field personFilter.form.TypeResume class="form-control" %}
+                </div>
+                <div class="form-group col-sm-3 col-md-3">
+                Upload Date:
+                {% render_field personFilter.form.UploadDate class="form-control" %}
+                </div>
+                <div class="form-group col-sm-3 col-md-3">
+                Last Updated Date:
+                {% render_field personFilter.form.LastUpdated class="form-control" %}
                 </div>
             </div>
             <div class="row">

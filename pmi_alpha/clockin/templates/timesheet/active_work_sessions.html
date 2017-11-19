@@ -90,6 +90,10 @@ http://www.tooplate.com/view/2082-pure-mix
 
 
   <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
+      {% if request.user.is_superuser %}
+        <a href="{% url 'adminhome' %}" class='btn btn-default'>Admin Home</a>
+      {% endif %}
+
       <a href="{% url 'past' %}"><button type="button" class = "btn btn-default">Past Logs</a>
       <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
 
@@ -127,7 +131,7 @@ http://www.tooplate.com/view/2082-pure-mix
     <table class="table table-bordered">
     <thead>
       <tr>
-        <th>End Session</th>
+        <th>Session</th>
         <th>Intern</th>
         <th>Date</th>
         <th>Time In</th>
@@ -138,8 +142,8 @@ http://www.tooplate.com/view/2082-pure-mix
         <tr>
         
 <td> 
-                <input type="checkbox" name="checkbox" id="checkbox[]" 
-value= {{user.id}}   />  
+                <input type="hidden" name="checkbox" id="checkbox[]" 
+value= {{user.id}}   checked>Current Session
                 </td> 
 
           <td>{{ user.intern}}</td>
@@ -148,16 +152,22 @@ value= {{user.id}}   />
         </tr>
       {% empty %}
         <tr>
-          <td colspan="5">No data</td>
+          <td colspan="5">No Current Session</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
    </div>
-   <div class = "add">
-      <a href="{% url 'add' %}"><button type="button" class = "btn btn-default">Clock In (Start New Session)</a>
-    </div>
-    <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">End Selected Session</button>
+   {% for user in filter %}
+     <div>
+      <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">Clock out</button>
+     </div>
+   {% empty %}
+     <div class = "add">
+        <a href="{% url 'add' %}"><button type="button" class = "btn btn-default">Clock In (Start New Session)</a>
+     </div>
+   {% endfor %}
+    
     </form>
 
 

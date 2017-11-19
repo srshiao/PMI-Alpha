@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import Work
+from .models import Work, Intern
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_forms.bootstrap import InlineField, FormActions, StrictButton
@@ -42,7 +42,7 @@ class WorkListFormHelper(FormHelper):
 
 
 class ClockoutForm(forms.ModelForm):
-    summary = forms.CharField( widget=forms.Textarea(attrs={'rows': 5, 'cols': 130,'placeholder': 'What work did you do today? (For payroll purposes)'}),validators=[RegexValidator(regex='^.{30,}$', message='The summary length has to be minimum 30 characters', code='nomatch')],label='')
+    summary = forms.CharField( widget=forms.Textarea(attrs={'rows': 5, 'cols': 130,'placeholder': 'What work did you do today? (For payroll purposes)'}),validators=[RegexValidator(regex='^.(?s).{30,}', message='The summary length has to be minimum 30 characters', code='nomatch')],label='')
     class Meta:
 
         model = Work
@@ -54,16 +54,19 @@ class ClockinForm(forms.ModelForm):
         model = Work
         fields = ()
 
-#for report generation functionality
+MONTH_CHOICE=[('0','---'),('01','Jan'),('02','Feb'),('03','Mar'),('04','Apr'),('05','May'),('06','Jun'),('07','Jul'),('08','Aug'),('09','Sep'),('10','Oct'),('11','Nov'),('12','Dec')]
+PAY_PERIOD=[('First Pay Period','First'),('Second Pay Period','Second'),('Both Pay Periods ','Both')]
 
+class InternSummaryForm(forms.ModelForm):
+     class Meta:
+         model = Work
+         fields = ('intern',)
+         widgets = {
+             'intern': autocomplete.ModelSelect2(url='intern-autocomplete')
+         }
+     month = forms.CharField(required=False,label = 'Month',widget=forms.Select(choices=MONTH_CHOICE))
+     pay_period = forms.CharField(label='Pay period',widget=forms.Select(choices=PAY_PERIOD))
+     email=forms.CharField(label='Email',required=False)
 
-class EmailForm(forms.Form):
-
-    email=forms.EmailField()
-    Botcheck = forms.CharField(max_length=5)
-
-#    class Meta:
- #       model = Person
-  #      fields = ('__all__')
 
 

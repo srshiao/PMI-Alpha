@@ -127,10 +127,10 @@ class CommentsForm(forms.ModelForm):
 
 class DocumentForm(forms.Form):
 	pwd = os.path.dirname(__file__)
-	with open(pwd+"/static/config/config.txt") as myfile:
+	with open(pwd+"/static/RSR/config/config.txt") as myfile:
 		dataconfig="".join(line.rstrip() for line in myfile)
 
-	docfile = forms.FileField(widget=forms.FileInput(attrs={'accept':dataconfig}),label='Select a file:')
+	docfile = forms.FileField(widget=forms.FileInput(attrs={'multiple':True,'accept':dataconfig}),label='Select a file:')
 
 class SkillForm(forms.ModelForm):
 	class Meta:
