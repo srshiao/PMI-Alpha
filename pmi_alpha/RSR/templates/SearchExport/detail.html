@@ -90,6 +90,7 @@
      <tr>
        <th style = "padding:14px;"class = "text-left">Skill</th>
        <th style = "padding:14px;"class = "text-left">Years Of Experience</th>
+       <th style = "padding:14px;"class = "text-left">Skill Level</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
      </tr>
 
@@ -99,6 +100,8 @@
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.SkillsID}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.YearsOfExperience}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Level}}</td>
+
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:skill-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 

@@ -2,7 +2,6 @@
 {% extends 'navigation.html' %}
 {% block content %}
 <div class="container content-section text-center">
-
 <title>Resume Filter</title>
     {% load static %}
     <!--for bootstrap-->
@@ -20,6 +19,22 @@
     <script type="text/javascript" src="{% static 'autocomplete_light/vendor/select2/dist/js/select2.full.js' %}"></script>
     <script type="text/javascript" src="{% static 'autocomplete_light/forward.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+      <script type="text/javascript">
+     function myFunction(one,two) {
+        var x = document.getElementById(one);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+         var y = document.getElementById(two);
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
+        }
+       }
+    </script>
 </head>
 <style>
 
@@ -61,10 +76,6 @@
                 <div class="form-group col-sm-3 col-md-3">
                 Upload Date:
                 {% render_field personFilter.form.UploadDate class="form-control" %}
-                </div>
-                <div class="form-group col-sm-3 col-md-3">
-                Last Updated Date:
-                {% render_field personFilter.form.LastUpdated class="form-control" %}
                 </div>
             </div>
             <div class="row">
@@ -109,13 +120,24 @@
             <div class = "row">
                 <fieldset>
                 <legend style="color:#FFF">Skills/Awards</legend>
-                <div class="form-group col-sm-3 col-md-3">
+                <!--<button type="button" onclick="myFunction('skills','skills_and')" style="color:blue"
+                class="form-group col-sm-1 col-md-1">Click me to switch skills</button>-->
+
+                <div id="skills" class="form-group col-sm-3 col-md-3">
                     Skills:
                     {% render_field personFilter.form.Skills class="form-control" %}
+                </div>
+                <div id="skills_and" style="display:none" class="form-group col-sm-3 col-md-3">
+                    Skills_AND:
+                    {% render_field personFilter.form.Skills_AND class="form-control" %}
                 </div>
                 <div class="form-group col-sm-3 col-md-3">
                     Year of experience for skill:
                     {% render_field personFilter.form.YearOfExperienceForSkill class="form-control" %}
+                </div>
+                <div class="form-group col-sm-3 col-md-3">
+                    Skill Level:
+                    {% render_field personFilter.form.Level class="form-control" %}
                 </div>
                 <div class="form-group col-sm-3 col-md-3">
                     Language Spoken:
@@ -172,8 +194,6 @@
                 </div>
                 </fieldset>
              </div>
-
-
             <div align="center">
                 <br/>
             <button type="submit" class="button-style">

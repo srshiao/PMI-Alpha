@@ -71,8 +71,8 @@ class Person(models.Model):
     State = models.CharField(verbose_name = "State", max_length = 25,default = "Not Parsed", blank= True)
     PhoneNumber = models.CharField(verbose_name = "Phone", max_length = 50,default = "Not Parsed", blank= True, null = True)
     Resume = models.FileField(verbose_name = "Resume", upload_to = 'resumes', null = True) # null = True for testing purposes
-    CreationDate = models.DateField(verbose_name = "Created On",auto_now=True)
-    LastUpdated = models.DateField(verbose_name = "Last Updated", blank = True, auto_now=True, null = True)
+    CreationDate = models.DateTimeField(verbose_name = "Created On",auto_now_add=True, blank=True)
+    LastUpdated = models.DateTimeField(verbose_name = "Last Updated", blank = True, auto_now=True, null = True)
     CreatedBy = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "Created By",null = True) # null = True for testing purposes
     Linkedin = models.CharField(verbose_name = "LinkedIn", max_length = 70, default = "Not Parsed", blank= True, null = True)
     GitHub = models.CharField(verbose_name = "GitHub", max_length = 70, default = "Not Parsed", blank= True, null = True)
@@ -306,8 +306,8 @@ class PersonToCompany(models.Model):
     CompanyID = models.ForeignKey(Company,  on_delete=models.CASCADE)
     Title = models.CharField("Title", max_length=100, default="None")
     ExperienceOnJob = models.CharField("Experience on Job", max_length=300, default="None")
-    StartDate = models.DateField("Start Date")
-    EndDate = models.DateField("End Date")
+    StartDate = models.DateField("Start Date", blank = True,null = True)
+    EndDate = models.DateField("End Date",blank = True,null = True)
     Desc = models.CharField("Company Description", max_length=1000, default="None")
 
 
@@ -346,13 +346,25 @@ class PersonToSide(models.Model):
 
 
 class PersonToSkills(models.Model):
-
+    Levels = (
+    ('0','0'),
+    ('1', '1'),
+    ('2', '1'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5','5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10','10')
+)
     def __str__(self):
         return self.PersonID.Name + ' - ' + self.SkillsID.Name
     YearsOfExperience = models.CharField("Years Of Experience", max_length=3,default = 1)
     SkillsID = models.ForeignKey(Skills,  on_delete=models.CASCADE)
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
-
+    Level = models.CharField(verbose_name = "Level",max_length = 50, choices = Levels, default = '0')
 
 class PersonToLanguage(models.Model):
     def __str__(self):
