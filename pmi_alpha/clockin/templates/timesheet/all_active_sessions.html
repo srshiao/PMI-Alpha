@@ -4,8 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-
 <style>
 div.container {
     display: inline-block;
@@ -13,14 +11,6 @@ div.container {
     overflow:auto;
 
 }
-table {
-    display: table;
-    position:relative;
-    border-collapse: separate;
-    border-spacing: 20px;
-    border-color: gray;
-}
-
 </style>
 <head>
  <script type="text/javascript" SRC="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
@@ -31,6 +21,9 @@ table {
     <script type="text/javascript" src="/static/collected/admin/js/vendor/jquery/jquery.js"></script>
 
     <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+
+
 <!--
 
 Template 2082 Pure Mix
@@ -66,8 +59,8 @@ http://www.tooplate.com/view/2082-pure-mix
    ================================================== -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- Google web font
-   ================================================== -->
+    <!-- Google web font 
+   ================================================== -->   
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
 
@@ -98,6 +91,7 @@ http://www.tooplate.com/view/2082-pure-mix
               </div>
 
 
+             
 
             </div>
          </div>
@@ -106,11 +100,18 @@ http://www.tooplate.com/view/2082-pure-mix
    </nav>
 </div>
 
+
   <div  style="position: absolute; top: 25px; right: 15px; text-align:right; display:inline-block;">
-      <a href="{% url 'home' %}"><button type="button" class = "btn btn-default">Clock-in App</a>
+      {% if request.user.is_superuser %}
+        <a href="{% url 'adminhome' %}" class='btn btn-default'>Admin Home</a>
+      {% endif %}
+      <a href="{% url 'my_session' %}"><button type="button" class = "btn btn-default">Clock-in Home</a>
       <a href="{% url 'logout' %}"><button type="button" class = "btn btn-default">Log Out</a>
 
   </div>
+
+  
+
 <!-- Header section
 ================================================== -->
 <section id="header" class="header-one">
@@ -119,12 +120,12 @@ http://www.tooplate.com/view/2082-pure-mix
 
             <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
           <div class="header-thumb">
-              <h1 class="wow fadeIn" data-wow-delay="1.6s">Paradyme Intern Details</h1>
+              <h1 class="wow fadeIn" data-wow-delay="1.6s">All Active Interns</h1>
           </div>
             </div>
 
         </div>
-    </div>
+    </div>      
 </section>
 
 
@@ -132,55 +133,49 @@ http://www.tooplate.com/view/2082-pure-mix
 ================================================== -->
 
 
-
-
 <section id="portfolio">
 
-    <form action = # method = "POST"> {% csrf_token %}
-        <div class="well">
-            <h4 style="margin-top: 0">Details for <strong>{{exp.0.intern}}</strong></h4>
-            <br>
-  <table class="table table-bordered" style="table-layout:fixed;" id = "time" width="100%">
-	<col style="width:5%">
-	<col style="width:15%">
-	<col style="width:15%">
-	<col style="width:10%">
-	<col style="width:10%">
-	<col style="width:10%">
-	<col style="width:35%">
+    <!--div>
+    All Active Users
+      </div!-->
+   <form action = # method = "POST"> {% csrf_token %}
+        
+	<div class="well">
+        <h4 style="margin-top: 0"><strong>All Active Interns</strong></h4>
+        <br>
+      <div class="row">
+        <div class="form-group col-md-offset-5 col-md-1 col-sm-2">
+            {{ form.pay_period.label_tag }}
+            {% render_field form.pay_period class="form-control" %}
+        </div>
+        <div class="form-group col-md-1 col-sm-2">
+            {{ form.month.label_tag }}
+            {% render_field form.month class="form-control" %}
+        </div>
 
+      </div>
+        <div>
+   <div class="container">
+    <table class="table table-bordered" id="time">
     <thead>
       <tr>
-        <th><strong>Edit</strong></th>
-          <th><strong>Intern</strong></th>
-          <th><strong>Date</strong></th>
-          <th><strong>Time In</strong></th>
-          <th><strong>Time Out</strong></th>
-          <th><strong>Duration (Hours)</strong></th>
-          <th><strong>Work Done</strong></th>
+        <th>Intern</th>
+        <th>Date</th>
+        <th>Time In</th>
 
 
       </tr>
     </thead>
     <tbody>
-      {% for user in exp %}
+      {% for user1 in filter %}
         <tr>
-        <td>
-                <input type="radio" required name="checkbox" id="checkbox[]"
-value= {{user.id}}   />
-                </td>
-          <td>{{ user.intern}}</td>
-          <td>{{ user.date}}</td>
-          <td>{{ user.time_in}}</td>
-          <td>{{ user.time_out}}</td>
+        
 
 
-          <td>
+          <td>{{ user1.intern }}</td>
+          <td>{{ user1.date}}</td>
+          <td>{{ user1.time_in}}</td>
 
-            {{user.duration}}
-
-          </td>
-          <td style="word-wrap: break-word;">{{ user.summary }}</input></td>
         </tr>
       {% empty %}
         <tr>
@@ -188,48 +183,11 @@ value= {{user.id}}   />
         </tr>
       {% endfor %}
     </tbody>
-  </table>
-        <br>
+  </table></div>
+	</form>
+   </div>
 
-        <div class="col-md-2 col-sm-1">
-            <span><strong>Total hours:</strong></span>
-            <span id=total_duration></span></div>
-<br><br>
-  <div>
-  <a href="{% url 'add_work' %}" class='btn btn-default'>Add Hours</a>
-  <a href="{% url 'adminhome' %}" class='btn btn-default'>Back</a>
-  <button type = "submit" class = "btn btn-default" name = "mybtn" value = "End Session">Edit</button>
-  </div>
-        </div><br>
-            <div class="row">
-        <div class="form-group col-md-offset-4 col-md-3 col-sm-1">
-            {{ form.email.label_tag }}
-            {% render_field form.email class="form-control" %}
-        </div>
-
-    </form>
-
-     <script type="text/javascript">
-
- //these will hold the totals
- var total_duration = 0;
-
- //reference the rows you want to add
- //this will not include the header row
- var rows = $("#time tr:gt(0)");
- rows.children("td:nth-child(6)").each(function() {
- //each time we add the cell to the total
- total_duration += parseFloat($(this).html());
-  });
-
- //then output them to the elements
- $("#total_duration").html(total_duration);
-
- </script>
-
-</section>
-
-
+  </section>
 
 <!-- Footer section
 ================================================== -->
@@ -240,16 +198,14 @@ value= {{user.id}}   />
             <div class="col-md-12 col-sm-12">
                 <p class="wow fadeInUp"  data-wow-delay="0.3s">Paradyme Internship - Fall 2017 Time Sheet  </p>
 
-
             </div>
             <img src= "{% static 'images/paradyme-green.png' %}" style="height:40px;width:184px;" > </img>
-
         </div>
     </div>
 </footer>
 
 
-<!-- Javascript
+<!-- Javascript 
 ================================================== -->
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>

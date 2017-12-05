@@ -103,12 +103,13 @@ http://www.tooplate.com/view/2082-pure-mix
           <p>Are you sure you want to delete this record?</p>
         <form action="" method="POST">
             {% csrf_token %}
-            <input type="submit" value="Delete" />
-            <input type="button" value="Cancel" onclick="window.location='{% url 'adminhome' %}'"/>
+            <input type="submit" value="Delete" class =" save btn btn-default"/>
+            <input type="button"  value="Cancel" class =" save btn btn-default " onclick="history.back()">
         </form>
 
 {% endblock %}
     </div>
+
 </section>
 
 
