@@ -1,0 +1,4 @@
+#!/home/jared/app/dev/bin/python3
+# EASY-INSTALL-SCRIPT: 'textract==1.6.1','textract'
+__requires__ = 'textract==1.6.1'
+__import__('pkg_resources').run_script('textract==1.6.1', 'textract')

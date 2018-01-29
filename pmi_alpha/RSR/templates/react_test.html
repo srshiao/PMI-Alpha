@@ -1,0 +1,14 @@
+{% extends 'navigation.html' %}
+{% block content %}
+
+
+{% load render_bundle from webpack_loader %}
+<script>
+var urls = [
+  {title:'Month',url:"{% url 'RSR:skill-count'%}"}
+];
+</script>
+<div class="container content-section text-center" id="App1"></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'App1' %}
+{% endblock %}
