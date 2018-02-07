@@ -96,6 +96,10 @@ urlpatterns = [
     # url for autocomplete function for Title class
     url(r'^search/Title-autocomplete/$', Titleautocomplete.as_view(),
         name='Title-autocomplete', ),
+    url(r'^search/Training-autocomplete/$', TrainingAutocomplete.as_view(),
+        name='Training-autocomplete', ),
+    url(r'^search/Certification-autocomplete/$', CertificationAutocomplete.as_view(),
+        name='Certification-autocomplete', ),
 
     url(r'dashboard', dashboard, name='dashboard'),
     url(r'^', include(router.urls)),

@@ -27,6 +27,16 @@ class Document(models.Model):
     uploaduser = models.CharField(max_length=128)
     wordstr = models.TextField()
 
+class Title(models.Model):
+    def __str__(self):
+        return self.Name
+    def __iter__(self):
+        for field in self._meta.get_fields(include_parents=True,inclue_hidden=False):
+            value = getattr(self,field.name,None)
+            yield(field,value)
+
+    Name = models.CharField("Title",max_length=70, default = "None")
+
 class Person(models.Model):
     def get_absolute_url(self):
         return reverse('person_detail', args=[str(self.id)])
@@ -79,6 +89,7 @@ class Person(models.Model):
     TypeResume = models.CharField(verbose_name = "Type",max_length = 50, choices = TYPERESUME_CHOICES, default = 'Current Employee')
     WorkAuthorization = models.CharField(verbose_name = "Work Authorization", max_length=20, choices=WORKAUTHORIZATION_CHOICES, default ='Citizenship')
     Comments = models.CharField(max_length = 500, default = "Add Comment...")
+    Title = models.ForeignKey(Title,on_delete=models.CASCADE)
 
 class OCR(models.Model):
     def get_absolute_url(self):
@@ -192,6 +203,11 @@ class SideProject(models.Model):
     Name = models.CharField("Project", max_length=20,default = "None")
 
 class Trainings(models.Model):
+    INTEREST_LEVEL = (
+        ('Interested', 'Interested'),
+        ('In Progess', 'In Progess'),
+        ('Completed', 'Completed')
+    )
     def __str__(self):
         return self.Name
     def __iter__(self):
@@ -199,8 +215,16 @@ class Trainings(models.Model):
             value = getattr(self,field.name,None)
             yield(field,value)
     Name = models.CharField("Training",max_length=70, default = "None")
+    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
 
 class Certifications(models.Model):
+    INTEREST_LEVEL = (
+        ('Interested', 'Interested'),
+        ('In Progess', 'In Progess'),
+        ('Completed', 'Completed')
+    )
     def __str__(self):
         return self.Name
     def __iter__(self):
@@ -208,7 +232,9 @@ class Certifications(models.Model):
             value = getattr(self,field.name,None)
             yield(field,value)
     Name = models.CharField("Certifications",max_length=70, default = "None")
-
+    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
 
 class Skills(models.Model):
     def get_absolute_url(self):
@@ -423,3 +449,13 @@ class PersonToTraining(models.Model):
         return self.PersonID.Name + ' - ' + self.TrainID.Name
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     TrainID = models.ForeignKey(Trainings,  on_delete=models.CASCADE)
+class TitleToTrain(models.Model):
+    def __str__(self):
+        return self.TitleID.Name + ' - ' + self.TrainID.Name
+    TitleID = models.ForeignKey(Title,  on_delete=models.CASCADE)
+    TrainID = models.ForeignKey(Trainings,  on_delete=models.CASCADE)
+class TitleToCert(models.Model):
+    def __str__(self):
+        return self.TitleID.Name + ' - ' + self.CertID.Name
+    TitleID = models.ForeignKey(Title,  on_delete=models.CASCADE)
+    CertID = models.ForeignKey(Certifications,  on_delete=models.CASCADE)
