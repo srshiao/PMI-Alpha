@@ -28,12 +28,13 @@ class Document(models.Model):
     wordstr = models.TextField()
 
 class Title(models.Model):
+    def __iter__(self):
+        for field in self._meta.get_fields(include_parents=True, inclue_hidden=False):
+            value = getattr(self, field.name, None)
+            yield (field, value)
+            
     def __str__(self):
         return self.Name
-    def __iter__(self):
-        for field in self._meta.get_fields(include_parents=True,inclue_hidden=False):
-            value = getattr(self,field.name,None)
-            yield(field,value)
 
     Name = models.CharField("Title",max_length=70, default = "None")
 
@@ -89,7 +90,7 @@ class Person(models.Model):
     TypeResume = models.CharField(verbose_name = "Type",max_length = 50, choices = TYPERESUME_CHOICES, default = 'Current Employee')
     WorkAuthorization = models.CharField(verbose_name = "Work Authorization", max_length=20, choices=WORKAUTHORIZATION_CHOICES, default ='Citizenship')
     Comments = models.CharField(max_length = 500, default = "Add Comment...")
-    Title = models.ForeignKey(Title,on_delete=models.CASCADE)
+    Title = models.ForeignKey(Title,on_delete=models.CASCADE, blank = True, null =True)
 
 class OCR(models.Model):
     def get_absolute_url(self):
