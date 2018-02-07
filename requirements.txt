@@ -1,27 +1,15 @@
 argcomplete==1.8.2
 asn1crypto==0.23.0
-<<<<<<< HEAD
 awsebcli==3.12.1
-=======
-awsebcli==3.12.0
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 bcrypt==3.1.4
 beautifulsoup4==4.5.3
 blessed==1.14.2
 boto==2.48.0
-<<<<<<< HEAD
 botocore==1.8.36
 bz2file==0.98
 cachetools==2.0.1
 cement==2.8.2
 certifi==2018.1.18
-=======
-botocore==1.7.35
-bz2file==0.98
-cachetools==2.0.1
-cement==2.8.2
-certifi==2017.7.27.1
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 cffi==1.11.2
 chardet==3.0.4
 colorama==0.3.7
@@ -30,29 +18,17 @@ cymem==1.31.2
 cytoolz==0.8.2
 datefinder==0.6.1
 dill==0.2.7.1
-<<<<<<< HEAD
-Django==2.0.1
+Django==2.0.2
 django-autocomplete-light==3.2.10
 django-background-tasks==1.1.11
 django-bootstrap3==9.0.0
 django-compat==1.0.15
-=======
-Django==1.11.6
-django-autocomplete-light==3.2.10
-django-background-tasks==1.1.11
-django-bootstrap3==9.0.0
-django-compat==1.0.14
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 django-crispy-forms==1.7.0
 django-filter==1.1.0
 django-filters==0.2.1
 django-tables2==1.13.0
 django-watson==1.4.3
-<<<<<<< HEAD
-django-webpack-loader==0.2.4
-=======
 django-webpack-loader==0.5.0
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 django-widget-tweaks==1.4.1
 djangorestframework==3.7.1
 docker-py==1.7.2
@@ -61,18 +37,12 @@ docopt==0.6.2
 docutils==0.14
 docx2txt==0.6
 EbookLib==0.15
-<<<<<<< HEAD
 Fabric==1.10.2
-=======
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 Fabric3==1.13.1.post1
 ftfy==4.4.3
 future==0.16.0
 fuzzywuzzy==0.15.1
-<<<<<<< HEAD
 gensim==3.2.0
-=======
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 google==1.9.3
 google-api-python-client==1.6.4
 google-auth==1.1.1
@@ -81,26 +51,16 @@ google-cloud-language==0.29.0
 google-gax==0.15.15
 googleapis-common-protos==1.5.3
 grpcio==1.6.3
-<<<<<<< HEAD
 html5lib==1.0.1
-=======
-html5lib==0.999999999
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 httplib2==0.10.3
 idna==2.6
 jmespath==0.9.3
 lxml==4.1.0
-<<<<<<< HEAD
 msgpack-numpy==0.4.1
 msgpack-python==0.5.1
 murmurhash==0.28.0
 nltk==3.2.5
 numpy==1.14.0
-=======
-murmurhash==0.26.4
-nltk==3.2.5
-numpy==1.13.3
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 oauth2client==4.1.2
 olefile==0.44
 pandas==0.20.3
@@ -108,10 +68,7 @@ paramiko==2.3.1
 pathlib==1.0.1
 pathspec==0.5.0
 Pillow==4.3.0
-<<<<<<< HEAD
 pkg-resources==0.0.0
-=======
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 plac==0.9.6
 ply==3.8
 preshed==1.0.0
@@ -126,41 +83,22 @@ python-crfsuite==0.9.5
 python-dateutil==2.6.1
 python-Levenshtein==0.12.0
 python-pptx==0.6.5
-<<<<<<< HEAD
 pytz==2017.3
 PyYAML==3.12
 regex==2017.4.5
-=======
-pytz==2017.2
-PyYAML==3.12
-regex==2016.1.10
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 requests==2.18.4
 rsa==3.4.2
 scipy==1.0.0
 semantic-version==2.5.0
-<<<<<<< HEAD
 six==1.11.0
 smart-open==1.5.3
 spacy==2.0.5
 SpeechRecognition==3.6.3
 tabulate==0.7.5
 termcolor==1.1.0
-textract==1.6.1
 thinc==6.10.2
 toolz==0.9.0
 tqdm==4.19.5
-=======
-six==1.10.0
-smart-open==1.5.3
-spacy==1.9.0
-SpeechRecognition==3.6.3
-tabulate==0.7.5
-termcolor==1.1.0
-thinc==6.5.2
-toolz==0.8.2
-tqdm==4.19.4
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 ujson==1.35
 uritemplate==3.0.0
 urllib3==1.22
@@ -168,11 +106,7 @@ usaddress==0.5.10
 Wand==0.4.4
 wcwidth==0.1.7
 webencodings==0.5.1
-<<<<<<< HEAD
 websocket-client==0.46.0
-=======
-websocket-client==0.44.0
->>>>>>> e8b92c146119a15da449ca25701f44cee8207ba0
 wrapt==1.10.11
 xlrd==1.0.0
 XlsxWriter==1.0.2
