@@ -4,7 +4,7 @@ def Detail2(person):
     # List of related sets
     model_Names=['PersonToSchool', 'PersonToCourse', 'PersonToProfessionalDevelopment', 'PersonToSide',
                   'PersonToSkills', 'PersonToLanguage' , 'PersonToClearance', 'PersonToCompany', 'PersonToAwards',
-                  'PersonToClubs_Hobbies', 'PersonToVolunteering']
+                  'PersonToClubs_Hobbies', 'PersonToVolunteering','PersonToCert','PersonToTraining']
     for model in model_Names:
         # Adjusting the model_Names to appriorate syntax for related_name reference
         # Related_names are a way to reverse foreign key
@@ -18,5 +18,4 @@ def Detail2(person):
 		# Adds each intermediary table object to list
         	temp_list.append(item)
         related_obj_list[model] = temp_list
-        print(related_obj_list)
     return related_obj_list

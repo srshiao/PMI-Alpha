@@ -32,7 +32,8 @@
   <button class="tablinks" onclick="openTab(event, 'Course Work')">Course Work</button>
   <button class="tablinks" onclick="openTab(event, 'Clearance')">Clearance</button>
   <button class="tablinks" onclick="openTab(event, 'Languages')">Languages</button>
-  <button class="tablinks" onclick="openTab(event, 'Side Projects')">Side Projects</button>
+  <button class="tablinks" onclick="openTab(event, 'Certifications')">Certifications</button>
+  <button class="tablinks" onclick="openTab(event, 'Trainings')">Trainings</button>
   <button class="tablinks" onclick="openTab(event, 'Awards')">Awards</button>
   <button class="tablinks" onclick="openTab(event, 'Clubs')">Clubs/Hobbies</button>
   <button class="tablinks" onclick="openTab(event, 'Volunteering')">Volunteering</button>
@@ -386,21 +387,21 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
  </table>
 </div>
 
-<div id="Side Projects" class="tabcontent">
+<div id="Certifications" class="tabcontent">
   <table class = "table-fill">
    <thead>
      <tr>
-       <th style = "padding:14px;"class = "text-left">Project</th>
-        <th style = "padding:14px;"class = "text-left">Description</th>
+       <th style = "padding:14px;"class = "text-left">Certification</th>
+        <th style = "padding:14px;"class = "text-left">Interest</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
      </tr>
 
    </thead>
    <tbody class="table-hover">
-     {% for obj in side %}
+     {% for obj in certs %}
        <tr>
-         <td style = "padding:14px;"class = "text-left">{{obj.SideID}}</td>
-         <td style = "padding:14px;"class = "text-left"> {{obj.Desc}}</td>
+         <td style = "padding:14px;"class = "text-left">{{obj.CertID.Name}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Interest}}</td>
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:sidepro-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
@@ -415,10 +416,10 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
       <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
-        {% render_field sideform.Name class="form-control" placeholder="Add Project"%}
+        {% render_field sideform.Name class="form-control" placeholder="Add Certification"%}
        </td>
        <td style = "padding:14px;"class = "text-left">
-        {% render_field persontoside.Desc class="form-control" placeholder="Description"%}
+        {% render_field persontoside.Desc class="form-control" placeholder="Interest"%}
        </td>
       <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
         </td>
@@ -428,7 +429,47 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
  </table>
 </div>
 
+<div id="Trainings" class="tabcontent">
+  <table class = "table-fill">
+   <thead>
+     <tr>
+       <th style = "padding:14px;"class = "text-left">Training</th>
+        <th style = "padding:14px;"class = "text-left">Interest</th>
+       <th style = "padding:14px;"class = "text-left">Action</th>
+     </tr>
 
+   </thead>
+   <tbody class="table-hover">
+     {% for obj in training %}
+       <tr>
+         <td style = "padding:14px;"class = "text-left">{{obj.TrainID.Name}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Interest}}</td>
+         <td style = "padding:14px;"class = "text-left">
+             <a href="{% url 'RSR:sidepro-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
+
+         </td>
+
+       </tr>
+     {% empty %}
+       <tr>
+         <td colspan="2">No data</td>
+       </tr>
+     {% endfor %}
+      <tr>
+       <form method="POST" class="post-form">{% csrf_token %}
+       <td style = "padding:14px;"class = "text-left">
+        {% render_field sideform.Name class="form-control" placeholder="Add Training"%}
+       </td>
+       <td style = "padding:14px;"class = "text-left">
+        {% render_field persontoside.Desc class="form-control" placeholder="Interest"%}
+       </td>
+      <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
+        </td>
+      </form>
+      </tr>
+   </tbody>
+ </table>
+</div>
 <div id="Awards" class="tabcontent">
   <table class = "table-fill">
    <thead>

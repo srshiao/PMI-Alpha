@@ -100,6 +100,8 @@ urlpatterns = [
         name='Training-autocomplete', ),
     url(r'^search/Certification-autocomplete/$', CertificationAutocomplete.as_view(),
         name='Certification-autocomplete', ),
+        url(r'^search/School-autocomplete/$', SchoolAutocomplete.as_view(),
+            name='School-autocomplete', ),
 
     url(r'dashboard', dashboard, name='dashboard'),
     url(r'^', include(router.urls)),

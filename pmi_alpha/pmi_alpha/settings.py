@@ -32,6 +32,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',                  #autocomplete
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,8 +48,6 @@ INSTALLED_APPS = [
     'images',
     'RSR',
     'widget_tweaks',        #Basic Search
-    'dal',                  #autocomplete
-    'dal_select2',
     'background_task',    #run code in the background
     'rest_framework',
     'webpack_loader',

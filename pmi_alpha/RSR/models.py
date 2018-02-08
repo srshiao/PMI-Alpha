@@ -32,7 +32,7 @@ class Title(models.Model):
         for field in self._meta.get_fields(include_parents=True, inclue_hidden=False):
             value = getattr(self, field.name, None)
             yield (field, value)
-            
+
     def __str__(self):
         return self.Name
 
@@ -204,11 +204,6 @@ class SideProject(models.Model):
     Name = models.CharField("Project", max_length=20,default = "None")
 
 class Trainings(models.Model):
-    INTEREST_LEVEL = (
-        ('Interested', 'Interested'),
-        ('In Progess', 'In Progess'),
-        ('Completed', 'Completed')
-    )
     def __str__(self):
         return self.Name
     def __iter__(self):
@@ -216,26 +211,18 @@ class Trainings(models.Model):
             value = getattr(self,field.name,None)
             yield(field,value)
     Name = models.CharField("Training",max_length=70, default = "None")
-    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
-    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
-    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
 
 class Certifications(models.Model):
-    INTEREST_LEVEL = (
-        ('Interested', 'Interested'),
-        ('In Progess', 'In Progess'),
-        ('Completed', 'Completed')
-    )
+
     def __str__(self):
         return self.Name
     def __iter__(self):
         for field in self._meta.get_fields(include_parents=True,inclue_hidden=False):
             value = getattr(self,field.name,None)
             yield(field,value)
+
     Name = models.CharField("Certifications",max_length=70, default = "None")
-    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
-    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
-    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
+
 
 class Skills(models.Model):
     def get_absolute_url(self):
@@ -440,16 +427,32 @@ class PersonToSchool(models.Model):
     MajorID = models.ForeignKey(Major,  on_delete=models.CASCADE)
 
 class PersonToCert(models.Model):
+    INTEREST_LEVEL = (
+        ('Interested', 'Interested'),
+            ('In Progess', 'In Progess'),
+            ('Completed', 'Completed')
+        )
     def __str__(self):
-        return self.PersonID.Name + ' - ' + self.CertId.Name
+        return self.PersonID.Name + ' - ' + self.CertID.Name
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     CertID = models.ForeignKey(Certifications,  on_delete=models.CASCADE)
-
+    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
+    
 class PersonToTraining(models.Model):
+    INTEREST_LEVEL = (
+            ('Interested', 'Interested'),
+            ('In Progess', 'In Progess'),
+            ('Completed', 'Completed')
+    )
     def __str__(self):
         return self.PersonID.Name + ' - ' + self.TrainID.Name
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     TrainID = models.ForeignKey(Trainings,  on_delete=models.CASCADE)
+    Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
 class TitleToTrain(models.Model):
     def __str__(self):
         return self.TitleID.Name + ' - ' + self.TrainID.Name

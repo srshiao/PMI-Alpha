@@ -13,6 +13,7 @@ class UploadListFilter(django_filters.FilterSet):
 
 )
 
+
   type = django_filters.ChoiceFilter(choices=TYPERESUME_CHOICES)
   class Meta:
       model = Document
@@ -22,7 +23,11 @@ class UploadListFilter(django_filters.FilterSet):
 
 
 class PersonFilter(django_filters.FilterSet):
-
+    INTEREST_LEVEL = (
+            ('Interested', 'Interested'),
+            ('In Progess', 'In Progess'),
+            ('Completed', 'Completed')
+    )
     WORKAUTHORIZATION_CHOICES = (
         ('Citizenship', 'Citizenship'),
         ('Permanent Resident', 'Permanent Resident'),
@@ -53,12 +58,19 @@ class PersonFilter(django_filters.FilterSet):
     , lookup_expr='icontains')
 
     SchoolAttend = django_filters.ModelChoiceFilter(name='persontoschool__SchoolID', queryset=School.objects.all().order_by('Name'),
-                                                    to_field_name='Name')
+                                          widget=autocomplete.ModelSelect2Multiple(url='RSR:School-autocomplete'))
+
     GraduateDate = django_filters.ModelChoiceFilter(name='persontoschool__GradDate',
                                                     queryset=PersonToSchool.objects.values_list('GradDate',flat=True).
                                                     distinct().order_by('GradDate'),
                                                     to_field_name='GradDate')
     Major = django_filters.ModelChoiceFilter(name='persontoschool__MajorID', queryset=Major.objects.all().order_by('Name').distinct())
+    Certification = django_filters.ModelMultipleChoiceFilter(name='persontocert__CertID',
+                                                  queryset=Certifications.objects.all().order_by('Name').distinct(),
+                                                  widget=autocomplete.ModelSelect2Multiple(url='RSR:Certification-autocomplete'))
+    Training = django_filters.ModelChoiceFilter(name='persontotraining__TrainID',
+                                                  queryset = Trainings.objects.all().order_by('Name').distinct(),
+                                              widget=autocomplete.ModelSelect2Multiple(url='RSR:Training-autocomplete'))
     DegreeLevel = django_filters.ModelChoiceFilter(name='persontoschool__SchoolID__DegreeLevel',
                                                    queryset=School.objects.values_list('DegreeLevel',flat=True).distinct(),
                                                    to_field_name='DegreeLevel')
