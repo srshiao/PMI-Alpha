@@ -57,7 +57,7 @@ class PersonFilter(django_filters.FilterSet):
     UploadDate = django_filters.DateFilter(name='CreationDate',input_formats=['%Y-%m-%d', '%m-%d-%Y', '%Y/%m/%d','%m/%d/%Y', '%Y%m%d', '%m%d%Y']\
     , lookup_expr='icontains')
 
-    SchoolAttend = django_filters.ModelChoiceFilter(name='persontoschool__SchoolID', queryset=School.objects.all().order_by('Name'),
+    SchoolAttend = django_filters.ModelMultipleChoiceFilter(name='persontoschool__SchoolID', queryset=School.objects.all().order_by('Name'),
                                           widget=autocomplete.ModelSelect2Multiple(url='RSR:School-autocomplete'))
 
     GraduateDate = django_filters.ModelChoiceFilter(name='persontoschool__GradDate',
@@ -67,10 +67,10 @@ class PersonFilter(django_filters.FilterSet):
     Major = django_filters.ModelChoiceFilter(name='persontoschool__MajorID', queryset=Major.objects.all().order_by('Name').distinct())
     Certification = django_filters.ModelMultipleChoiceFilter(name='persontocert__CertID',
                                                   queryset=Certifications.objects.all().order_by('Name').distinct(),
-                                                  widget=autocomplete.ModelSelect2Multiple(url='RSR:Certification-autocomplete'))
-    Training = django_filters.ModelChoiceFilter(name='persontotraining__TrainID',
+                                                  )
+    Training = django_filters.ModelMultipleChoiceFilter(name='persontotraining__TrainID',
                                                   queryset = Trainings.objects.all().order_by('Name').distinct(),
-                                              widget=autocomplete.ModelSelect2Multiple(url='RSR:Training-autocomplete'))
+                                            widget=autocomplete.ModelSelect2Multiple(url='RSR:Training-autocomplete') )
     DegreeLevel = django_filters.ModelChoiceFilter(name='persontoschool__SchoolID__DegreeLevel',
                                                    queryset=School.objects.values_list('DegreeLevel',flat=True).distinct(),
                                                    to_field_name='DegreeLevel')
@@ -124,5 +124,5 @@ class PersonFilter(django_filters.FilterSet):
     class Meta:
         model = Person
         fields = ['SchoolAttend', 'GraduateDate', 'Major', 'DegreeLevel', 'GPAlb', 'GPAub','Language', 'Skills',
-                   'YearOfExperienceForSkill', 'ProfessionalDevelopment', 'Award', 'CompanyWorked', 'Title',
-                   'SecurityClearance', 'Volunteering', 'Club_Hobby','TypeResume','UploadDate','Name', 'Skills_AND','Level']
+                   'YearOfExperienceForSkill', 'ProfessionalDevelopment', 'Award', 'CompanyWorked', 'Title','Training',
+                   'SecurityClearance', 'Volunteering', 'Club_Hobby','TypeResume','UploadDate','Name', 'Skills_AND','Level','Certification']
