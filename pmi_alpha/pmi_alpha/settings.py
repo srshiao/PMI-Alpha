@@ -51,6 +51,17 @@ INSTALLED_APPS = [
     'background_task',    #run code in the background
     'rest_framework',
     'webpack_loader',
+    'common',
+    'accounts',
+    'cases',
+    'contacts',
+    'emails',
+    'leads',
+    'activity',
+    'oppurtunity',
+    'planner',
+    'organizations',
+    'simple_pagination',
 ]
 
 MIDDLEWARE = [

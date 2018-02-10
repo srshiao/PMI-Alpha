@@ -29,5 +29,13 @@ urlpatterns = [
     url(r'^clockin/',include('clockin.urls')),
     url(r'^RSR/',include('RSR.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^/CRM', include('common.urls', namespace='common')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^leads/', include('leads.urls', namespace='leads')),
+    url(r'^contacts/', include('contacts.urls', namespace='contacts')),
+    url(r'^organizations/', include('organizations.urls', namespace='organizations')),
+    url(r'^oppurtunities/', include('oppurtunity.urls', namespace='oppurtunities')),
+    url(r'^activities/', include('activity.urls', namespace='activities')),
+    url(r'^cases/', include('cases.urls', namespace='cases')),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
