@@ -152,7 +152,16 @@ class ClubForm(forms.ModelForm):
 	class Meta:
 		model = Clubs_Hobbies
 		fields = '__all__'
+class CertForm(forms.ModelForm):
+    class Meta:
+        model=Certifications
+        fields ='__all__'
+class TraingingForm(forms.ModelForm):
+    class Meta:
+        model=Trainings
+        fields ='__all__'
 
+        
 class VolunteeringForm(forms.ModelForm):
 	class Meta:
 		model = Volunteering

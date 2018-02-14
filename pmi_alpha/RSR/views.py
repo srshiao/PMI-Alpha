@@ -778,6 +778,24 @@ def detail(request,pk):
         return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
 
 
+    trainform= TraingingForm(request.POST)
+    if trainform.is_valid():
+        person = Person.objects.get(pk=pk)
+        person.LastUpdated =datetime.now()
+        train = trainform.save()
+        PersonToTraining.objects.create(PersonID=person,TrainID= train)
+        return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
+
+    certform = CertForm(request.POST)
+
+    if certform.is_valid():
+        print('cert',certform)
+        person = Person.objects.get(pk=pk)
+        person.LastUpdated =datetime.now()
+        cert = certform.save()
+        PersonToCert.objects.create(PersonID=person,CertID= cert)
+        return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
+
     #add Skill
     skillform = SkillForm(request.POST)
     persontoskill = NewPersontoSkillForm(request.POST)
@@ -1109,6 +1127,8 @@ def detail(request,pk):
                 'persontoaward':persontoaward,
                 'training':Training,
                 'certs':Certification,
+                'certform':certform,
+                'trainform':trainform,
                 }
 
     return render(request, 'SearchExport/detail.html', context)

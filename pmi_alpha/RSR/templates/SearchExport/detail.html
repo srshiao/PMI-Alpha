@@ -416,10 +416,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
       <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
-        {% render_field sideform.Name class="form-control" placeholder="Add Certification"%}
-       </td>
-       <td style = "padding:14px;"class = "text-left">
-        {% render_field persontoside.Desc class="form-control" placeholder="Interest"%}
+        {% render_field certform.Name class="form-control" placeholder="Add Certification"%}
        </td>
       <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
         </td>
@@ -458,10 +455,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
       <tr>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
-        {% render_field sideform.Name class="form-control" placeholder="Add Training"%}
-       </td>
-       <td style = "padding:14px;"class = "text-left">
-        {% render_field persontoside.Desc class="form-control" placeholder="Interest"%}
+        {% render_field trainform.Name class="form-control" placeholder="Add Training"%}
        </td>
       <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
         </td>

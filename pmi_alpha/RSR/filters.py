@@ -67,7 +67,7 @@ class PersonFilter(django_filters.FilterSet):
     Major = django_filters.ModelChoiceFilter(name='persontoschool__MajorID', queryset=Major.objects.all().order_by('Name').distinct())
     Certification = django_filters.ModelMultipleChoiceFilter(name='persontocert__CertID',
                                                   queryset=Certifications.objects.all().order_by('Name').distinct(),
-                                                  )
+                                                  widget= autocomplete.ModelSelect2Multiple(url='RSR:Certification-autocomplete') )
     Training = django_filters.ModelMultipleChoiceFilter(name='persontotraining__TrainID',
                                                   queryset = Trainings.objects.all().order_by('Name').distinct(),
                                             widget=autocomplete.ModelSelect2Multiple(url='RSR:Training-autocomplete') )

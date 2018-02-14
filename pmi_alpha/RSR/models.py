@@ -90,7 +90,6 @@ class Person(models.Model):
     TypeResume = models.CharField(verbose_name = "Type",max_length = 50, choices = TYPERESUME_CHOICES, default = 'Current Employee')
     WorkAuthorization = models.CharField(verbose_name = "Work Authorization", max_length=20, choices=WORKAUTHORIZATION_CHOICES, default ='Citizenship')
     Comments = models.CharField(max_length = 500, default = "Add Comment...")
-    Title = models.ForeignKey(Title,on_delete=models.CASCADE, blank = True, null =True)
 
 class OCR(models.Model):
     def get_absolute_url(self):
@@ -438,8 +437,8 @@ class PersonToCert(models.Model):
     CertID = models.ForeignKey(Certifications,  on_delete=models.CASCADE)
     Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
     Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
-    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
-    
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True,null=True)
+
 class PersonToTraining(models.Model):
     INTEREST_LEVEL = (
             ('Interested', 'Interested'),
@@ -452,7 +451,7 @@ class PersonToTraining(models.Model):
     TrainID = models.ForeignKey(Trainings,  on_delete=models.CASCADE)
     Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
     Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
-    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True)
+    Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True,null=True)
 class TitleToTrain(models.Model):
     def __str__(self):
         return self.TitleID.Name + ' - ' + self.TrainID.Name
