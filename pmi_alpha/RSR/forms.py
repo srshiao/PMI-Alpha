@@ -12,6 +12,16 @@ class PersonForm(forms.ModelForm):
         fields = '__all__'
 
 #### EDIT TEAM DO NOT USE THESE, THESE ARE FOR ADD FORMS ###
+class NewPersonToCertForm(forms.ModelForm):
+    class Meta:
+        model = PersonToCert
+        fields = ('Interest','Completion_date')
+
+class NewPersonToTrainForm(forms.ModelForm):
+    class Meta:
+        model = PersonToTraining
+        fields = ('Interest','Completion_date')
+
 class NewPersontoSkillForm(forms.ModelForm):
 
     class Meta:
@@ -160,8 +170,6 @@ class TraingingForm(forms.ModelForm):
     class Meta:
         model=Trainings
         fields ='__all__'
-
-        
 class VolunteeringForm(forms.ModelForm):
 	class Meta:
 		model = Volunteering

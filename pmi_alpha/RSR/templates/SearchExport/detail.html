@@ -393,6 +393,8 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      <tr>
        <th style = "padding:14px;"class = "text-left">Certification</th>
         <th style = "padding:14px;"class = "text-left">Interest</th>
+        <th style = "padding:14px;"class = "text-left">Completion_date</th>
+
        <th style = "padding:14px;"class = "text-left">Action</th>
      </tr>
 
@@ -402,6 +404,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.CertID.Name}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Interest}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Completion_date}}</td>
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:sidepro-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
@@ -418,6 +421,12 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <td style = "padding:14px;"class = "text-left">
         {% render_field certform.Name class="form-control" placeholder="Add Certification"%}
        </td>
+       <td>
+         {% render_field persontocertform.Interest class="form-control" placeholder="Add Certification"%}
+      </td>
+      <td>
+        {% render_field persontocertform.Completion_date class="form-control" placeholder="Add Completion Date"%}
+     </td>
       <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
         </td>
       </form>
@@ -432,6 +441,7 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
      <tr>
        <th style = "padding:14px;"class = "text-left">Training</th>
         <th style = "padding:14px;"class = "text-left">Interest</th>
+        <th style = "padding:14px;"class = "text-left">Completion Date</th>
        <th style = "padding:14px;"class = "text-left">Action</th>
      </tr>
 
@@ -441,6 +451,8 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.TrainID.Name}}</td>
          <td style = "padding:14px;"class = "text-left"> {{obj.Interest}}</td>
+         <td style = "padding:14px;"class = "text-left"> {{obj.Completion_date}}</td>
+
          <td style = "padding:14px;"class = "text-left">
              <a href="{% url 'RSR:sidepro-edit' obj.pk %}" class="btn btn-default btn-file">Edit</a>
 
@@ -456,6 +468,12 @@ word-wrap:break-word;"class = "text-left"> {{obj.Desc}}</td>
        <form method="POST" class="post-form">{% csrf_token %}
        <td style = "padding:14px;"class = "text-left">
         {% render_field trainform.Name class="form-control" placeholder="Add Training"%}
+       </td>
+       <td style = "padding:14px;"class = "text-left">
+        {% render_field persontotrainform.Interest class="form-control" placeholder="Add Training"%}
+       </td>
+       <td style = "padding:14px;"class = "text-left">
+        {% render_field persontotrainform.Completion_date class="form-control" placeholder="Add Training"%}
        </td>
       <td style = "padding:14px;"class = "text-left"><button type="submit" style = "margin:auto" class = "btn btn-default btn-file">Add</button>
         </td>

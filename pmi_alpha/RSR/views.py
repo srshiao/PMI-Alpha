@@ -763,8 +763,8 @@ def detail(request,pk):
     Award = detail_dic['PersonToAwards']
     Certification = detail_dic['PersonToCert']
     Training = detail_dic['PersonToTraining']
-    print('Trainings',Certification)
-    print('yo')
+    print('Certs',Certification)
+    print('Training',Training)
     form = CommentsForm(request.POST or None, instance=person)
 
 
@@ -777,24 +777,37 @@ def detail(request,pk):
 
         return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
 
+    print(request.POST)
 
-    trainform= TraingingForm(request.POST)
-    if trainform.is_valid():
-        person = Person.objects.get(pk=pk)
-        person.LastUpdated =datetime.now()
-        train = trainform.save()
-        PersonToTraining.objects.create(PersonID=person,TrainID= train)
-        return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
-
-    certform = CertForm(request.POST)
-
+    persontocertform = NewPersonToCertForm(request.POST,prefix = 'personcert')
+    certform = CertForm(request.POST,prefix='cert')
     if certform.is_valid():
         print('cert',certform)
         person = Person.objects.get(pk=pk)
         person.LastUpdated =datetime.now()
         cert = certform.save()
-        PersonToCert.objects.create(PersonID=person,CertID= cert)
+        if persontocertform.is_valid():
+            p2c = persontocertform.save(commit= False)
+            p2c.PersonID = person
+            p2c.CertID = cert
+            p2c.save()
         return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
+
+
+    trainform= TraingingForm(request.POST,prefix='train')
+    persontotrainform = NewPersonToTrainForm(request.POST,prefix = 'persontrain')
+
+    if trainform.is_valid():
+        person = Person.objects.get(pk=pk)
+        person.LastUpdated =datetime.now()
+        train = trainform.save()
+        if persontotrainform.is_valid():
+            p2t = persontotrainform.save(commit=False)
+            p2t.PersonID =person
+            p2t.TrainID = train
+            p2t.save()
+        return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
+
 
     #add Skill
     skillform = SkillForm(request.POST)
@@ -1129,6 +1142,8 @@ def detail(request,pk):
                 'certs':Certification,
                 'certform':certform,
                 'trainform':trainform,
+                'persontocertform':persontocertform,
+                'persontotrainform':persontotrainform,
                 }
 
     return render(request, 'SearchExport/detail.html', context)
