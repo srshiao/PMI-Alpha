@@ -28,11 +28,6 @@ class Document(models.Model):
     wordstr = models.TextField()
 
 class Title(models.Model):
-    def __iter__(self):
-        for field in self._meta.get_fields(include_parents=True, inclue_hidden=False):
-            value = getattr(self, field.name, None)
-            yield (field, value)
-
     def __str__(self):
         return self.Name
 
