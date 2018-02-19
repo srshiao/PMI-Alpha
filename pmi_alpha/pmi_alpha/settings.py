@@ -117,17 +117,19 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
         'default': {
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME':'django_db',
-            'USER': 'root',
-            'PASSWORD': 'Uileduw2',
-            'HOST': '',
-            'PORT': '',
-            'OPTIONS': {
-                'sql_mode': 'traditional',
-            }
+            if 1==1:
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            else:
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME':'django_db',
+                'USER': 'root',
+                'PASSWORD': 'Uileduw2',
+                'HOST': '',
+                'PORT': '',
+                'OPTIONS': {
+                    'sql_mode': 'traditional',
+                }
         }
     }
 
