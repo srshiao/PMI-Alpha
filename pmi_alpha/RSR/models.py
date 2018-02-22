@@ -152,7 +152,7 @@ class School(models.Model):
         ('Graduate', 'Graduate')
     )
 
-    Name = models.CharField("School", max_length=50,default = "None")
+    Name = models.CharField("School", max_length=150,default = "None")
     DegreeLevel = models.CharField("Degree Level", max_length=50, choices = DEGREELEVEL_CHOICES, default = 'Undergraduate')
 
 class Coursework(models.Model):

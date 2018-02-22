@@ -9,7 +9,7 @@
 	<br/>
     <form method="POST" class="post-form">{% csrf_token %}
 			<div style= "color:#FFF">Person:</div>{% render_field form.PersonID class="form-control" placeholder="Add Certification"  style=" width: 300px; margin:auto;"%}
-			<div style= "color:#FFF">Certification</div>{% render_field form.TrainID class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
+			<div style= "color:#FFF">Certification</div>{% render_field form.CertID class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
 			<div style= "color:#FFF">Progess</div>{% render_field form.Interest class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
 			<div style= "color:#FFF">Start Date</div>{% render_field form.Start_date class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
 			<div style= "color:#FFF">Completion Date</div>{% render_field form.Completion_date class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
