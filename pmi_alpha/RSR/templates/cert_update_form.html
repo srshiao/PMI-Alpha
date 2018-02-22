@@ -1,0 +1,28 @@
+{% extends 'navigation.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<!--ADD THIS DIV CLASS TO ALL-->
+<div class="container content-section text-center">
+
+<div style="color:#000">
+		<h3 style = "color:#FFF"> Editing {{person.PersonID.Name}}'s Certification Info</h3>
+	<br/>
+    <form method="POST" class="post-form">{% csrf_token %}
+			<div style= "color:#FFF">Person:</div>{% render_field form.PersonID class="form-control" placeholder="Add Certification"  style=" width: 300px; margin:auto;"%}
+			<div style= "color:#FFF">Certification</div>{% render_field form.TrainID class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
+			<div style= "color:#FFF">Progess</div>{% render_field form.Interest class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
+			<div style= "color:#FFF">Start Date</div>{% render_field form.Start_date class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
+			<div style= "color:#FFF">Completion Date</div>{% render_field form.Completion_date class="form-control" placeholder="Add Certification" style=" width: 300px; margin:auto;"%}
+
+
+		<br/>
+        <button type="submit" class="save btn btn-default">Save</button>
+
+    </form>
+	 </p><form action="{% url 'RSR:sidepro-delete' pk %}" method="post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 <input onclick="return confirm('Are you sure you want to delete this certfication project?')" class = "btn btn-default btn-file" type="submit" value="Delete" />
+     </form>
+</div>
+
+{% endblock %}
