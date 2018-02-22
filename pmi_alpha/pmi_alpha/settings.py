@@ -115,7 +115,7 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
 else:
-    if 1==0:
+    if 1==1:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
@@ -183,7 +183,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/RSR/main'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 REPOSITORY_ROOT = os.path.dirname(BASE_DIR)

@@ -111,7 +111,7 @@ def personel_information(resume):
     resume_file = resume
     resume_file2 = resume_file.lower()
     #change path
-    personel['name'] = extract_name(resume)
+    personel['name'] = extract_name(resume)[0:40]
 
     personel['email'] = extract_email(resume)
     personel['phone'] = extract_phone_number(resume)

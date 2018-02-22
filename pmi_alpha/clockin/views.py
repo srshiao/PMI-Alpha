@@ -31,10 +31,10 @@ from django.db.models import Count
 
 def logout_page(request):
     logout(request)
-    return HttpResponseRedirect('/clockin/')
+    return HttpResponseRedirect('/RSR/main')
 
 
-#TGENERATES MAIN PAGE. TABLE. 
+#TGENERATES MAIN PAGE. TABLE.
 @login_required
 def work_list(request):
 	filter = Work.objects.filter(user=request.user).filter(active_session=True)
@@ -88,7 +88,7 @@ def all_active(request):
 	context = {
 		'filter':filter,
 	}
-	
+
 	return render(request, 'timesheet/all_active_sessions.html', context)
 
 @login_required
@@ -173,7 +173,7 @@ def clockout(request, work_id):
 		obj.active_session = False
 		my_date = datetime.date.today()
 		delta = datetime.datetime.combine(my_date,obj.time_out) - datetime.datetime.combine(my_date,obj.time_in)
-	
+
 		totalseconds = delta.total_seconds()
 		hours = totalseconds/3600
 		if hours > 8:
@@ -182,7 +182,7 @@ def clockout(request, work_id):
 			new_hours = hours+24
 			if new_hours > 8:
 	 			new_hours = 0
-			obj.duration = new_hours 
+			obj.duration = new_hours
 		else:
 			obj.duration = hours
 		obj.duration = float(obj.duration)
@@ -207,7 +207,7 @@ def edit_hours(request,work_id):
 
 	instance = get_object_or_404(Work, id=work_id)
 	form = WorkForm(request.POST or None, instance=instance)
-   
+
 
 	if form.is_valid():
 		obj = form.save(commit=False)
@@ -221,7 +221,7 @@ def edit_hours(request,work_id):
 			obj.duration = 0
 		elif hours < 0:
 			new_hours = hours+24
-			obj.duration = new_hours 
+			obj.duration = new_hours
 		else:
 			obj.duration = hours
 		obj.duration = float(obj.duration)
@@ -250,7 +250,7 @@ def add_work(request):
 		return HttpResponseRedirect('/clockin/')
 	intern_obj = Intern.objects.filter(username = request.user)
 	name = intern_obj.first()
-	
+
 	form = WorkForm(request.POST or None);
 	obj = form.save(commit=False)
 	context = {
@@ -352,5 +352,3 @@ def adminhome(request):
 			return HttpResponseRedirect(url)
 
 	return render(request, 'timesheet/admin_home.html',context = {'form': form,'exp':exp1})
-
-

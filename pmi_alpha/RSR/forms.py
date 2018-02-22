@@ -85,6 +85,15 @@ class PersontoSkillForm(forms.ModelForm):
 		model = PersonToSkills
 		fields = '__all__'
 
+class PersontoCertForm(forms.ModelForm):
+    class Meta:
+        model = PersonToCert
+        fields = '__all__'
+class PersontoTrainForm(forms.ModelForm):
+    class Meta:
+        model = PersonToTraining
+        fields = '__all__'
+
 class PersontoCompanyForm(forms.ModelForm):
 	class Meta:
 		model = PersonToCompany

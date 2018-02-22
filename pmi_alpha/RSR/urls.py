@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^logout/$', views.logout_page, name = 'logout'),
     #Search/Export Team
     url(r'^edit_skill/(?P<skill_id>\d+)/$', views.skill_edit, name='skill-edit'),
+    url(r'^edit_cert/(?P<cert_id>\d+)/$', views.cert_edit, name='cert-edit'),
+    url(r'^edit_train/(?P<train_id>\d+)/$', views.train_edit, name='train-edit'),
     url(r'^edit_company/(?P<company_id>\d+)/$', views.company_edit, name='company-edit'),
     url(r'^edit_school/(?P<school_id>\d+)/$', views.school_edit, name='school-edit'),
     url(r'^edit_course/(?P<course_id>\d+)/$', views.course_edit, name='course-edit'),

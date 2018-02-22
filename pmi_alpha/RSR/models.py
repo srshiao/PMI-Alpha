@@ -210,6 +210,7 @@ class Certifications(models.Model):
 
     def __str__(self):
         return self.Name
+
     def __iter__(self):
         for field in self._meta.get_fields(include_parents=True,inclue_hidden=False):
             value = getattr(self,field.name,None)
@@ -431,7 +432,7 @@ class PersonToCert(models.Model):
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     CertID = models.ForeignKey(Certifications,  on_delete=models.CASCADE)
     Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
-    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",null=True, blank=True)
     Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True,null=True)
 
 class PersonToTraining(models.Model):
@@ -445,8 +446,9 @@ class PersonToTraining(models.Model):
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     TrainID = models.ForeignKey(Trainings,  on_delete=models.CASCADE)
     Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
-    Start_date  = models.DateTimeField(verbose_name = "Start Date",auto_now_add=True, blank=True)
+    Start_date  = models.DateTimeField(verbose_name = "Start Date",null=True, blank=True)
     Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True,null=True)
+
 class TitleToTrain(models.Model):
     def __str__(self):
         return self.TitleID.Name + ' - ' + self.TrainID.Name

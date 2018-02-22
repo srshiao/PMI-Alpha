@@ -338,7 +338,6 @@ def uploaddoc(request):
             temp_doc.type = request.POST['type']
             temp_doc.uploaduser = request.user.username
             temp_doc.save()
-            print('whats up doc', temp_doc.docfile.path)
             if ".doc" in temp_doc.docfile.path:
                 print (temp_doc.docfile.path)
                 temp_doc.wordstr = parse_word_file(temp_doc.docfile.path)
@@ -346,14 +345,10 @@ def uploaddoc(request):
                 temp_doc.save(update_fields=['wordstr'])
 
                 ### UNCOMMENT THESE LINES FOR MAC/LINUX USERS: OCR/TEXTRACT
-
             else:
-
                 temp_doc.wordstr = textract.process(temp_doc.docfile.path).decode("utf-8")
-
                 if len(temp_doc.wordstr) < 50:
                     img=IMG(filename=temp_doc.docfile.path,resolution=200)
-
                     img.save(filename='temp.jpg')
                     utf8_text = get_string('temp.jpg')
                     os.remove('temp.jpg')
@@ -390,6 +385,48 @@ def person_edit(request, person_id):
     	'person':instance
     }
     return render(request, 'person_update_form.html', context)
+
+
+@user_passes_test(lambda u: u.groups.filter(name='RSR').exists())
+def cert_edit(request, cert_id):
+
+    instance= get_object_or_404(PersonToCert,id=cert_id)
+    form = PersontoCertForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        person = Person.objects.get(pk=instance.PersonID.pk)
+        print(person)
+        person.LastUpdated = datetime.now()
+        person.save(update_fields=['LastUpdated'])
+        form.save()
+        return HttpResponseRedirect(reverse('RSR:detail', args=[instance.PersonID.pk]))
+    context = {
+        'form': form,
+        'pk':cert_id,
+        'person': instance
+    }
+
+    return render(request,'cert_update_form.html',context)
+
+@user_passes_test(lambda u: u.groups.filter(name='RSR').exists())
+def train_edit(request, train_id):
+
+    instance= get_object_or_404(PersonToTraining,id=train_id)
+    form = PersontoTrainForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        person = Person.objects.get(pk=instance.PersonID.pk)
+        print(person)
+        person.LastUpdated = datetime.now()
+        person.save(update_fields=['LastUpdated'])
+        form.save()
+        return HttpResponseRedirect(reverse('RSR:detail', args=[instance.PersonID.pk]))
+    context = {
+        'form': form,
+        'pk':train_id,
+        'person': instance
+    }
+
+    return render(request,'train_update_form.html',context)
+
 
 @user_passes_test(lambda u: u.groups.filter(name='RSR').exists())
 def skill_edit(request, skill_id):
@@ -789,6 +826,7 @@ def detail(request,pk):
         if persontocertform.is_valid():
             p2c = persontocertform.save(commit= False)
             p2c.PersonID = person
+            p2c.Start_date = datetime.now()
             p2c.CertID = cert
             p2c.save()
         return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
@@ -805,6 +843,7 @@ def detail(request,pk):
             p2t = persontotrainform.save(commit=False)
             p2t.PersonID =person
             p2t.TrainID = train
+            p2t.Start_date =datetime.now()
             p2t.save()
         return HttpResponseRedirect(reverse('RSR:detail', args=[person.pk]))
 
