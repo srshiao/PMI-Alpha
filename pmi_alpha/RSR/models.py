@@ -76,10 +76,10 @@ class Person(models.Model):
     ZipCode = models.IntegerField(verbose_name = "Zip Code", default = 0, blank= True)
     State = models.CharField(verbose_name = "State", max_length = 25,default = "Not Parsed", blank= True)
     PhoneNumber = models.CharField(verbose_name = "Phone", max_length = 50,default = "Not Parsed", blank= True, null = True)
-    Resume = models.FileField(verbose_name = "Resume", upload_to = 'resumes', null = True) # null = True for testing purposes
+    Resume = models.ForeignKey(Document,on_delete=models.CASCADE ) # null = True for testing purposes
     CreationDate = models.DateTimeField(verbose_name = "Created On",auto_now_add=True, blank=True)
     LastUpdated = models.DateTimeField(verbose_name = "Last Updated", blank = True, auto_now=True, null = True)
-    CreatedBy = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "Created By",null = True,on_delete=models.CASCADE) # null = True for testing purposes
+    CreatedBy = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name = "Created By",blank = True,null = True,on_delete=models.CASCADE) # null = True for testing purposes
     Linkedin = models.CharField(verbose_name = "LinkedIn", max_length = 70, default = "Not Parsed", blank= True, null = True)
     GitHub = models.CharField(verbose_name = "GitHub", max_length = 70, default = "Not Parsed", blank= True, null = True)
     TypeResume = models.CharField(verbose_name = "Type",max_length = 50, choices = TYPERESUME_CHOICES, default = 'Current Employee')

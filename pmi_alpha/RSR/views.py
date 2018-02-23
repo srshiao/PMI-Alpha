@@ -101,8 +101,7 @@ def load_parsing_files():
          res2vec.save(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..','..','www','Parsing','vector_models1')))
 
 @background(schedule=timezone.now())
-def parse_back(words,doc,doc_type):
-    print('After',words,doc,doc_type)
+def parse_back(words,doc_id,doc_type):
     parsed_json  = parse_file(words)
     #either load json, or recieve json file
     js = parsed_json
@@ -140,7 +139,7 @@ def parse_back(words,doc,doc_type):
             person.Linkedin = js['person'][key]
         elif key == "github":
             person.GitHub = js['person'][key]
-    person.Resume = doc
+    person.Resume = Document.objects.get(pk = doc_id)
     person.TypeResume = doc_type
     person.save()
     for label in js:
@@ -332,7 +331,6 @@ def uploaddoc(request):
         form = DocumentForm()
         print(request.FILES)
         files = request.FILES.getlist('docfile')
-        print("File list",files)
         for f in files:
             temp_doc = Document(docfile = f)
             temp_doc.type = request.POST['type']
@@ -356,7 +354,9 @@ def uploaddoc(request):
                     temp_doc.save(update_fields=['wordstr'])
 
                 temp_doc.save(update_fields=['wordstr'])
-            parse_back(temp_doc.wordstr,temp_doc.docfile.path,temp_doc.type)
+            print("temp:" ,temp_doc.docfile)
+
+            parse_back(temp_doc.wordstr,temp_doc.pk,temp_doc.type)
     else:
         form = DocumentForm()
     documents = Document.objects.all()

@@ -196,7 +196,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..','www','static')
 STATICFILES_DIRS = []
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
+MEDIA_ROOT = os.path.join(REPOSITORY_ROOT,'media/')
 
 
 WEBPACK_LOADER = {

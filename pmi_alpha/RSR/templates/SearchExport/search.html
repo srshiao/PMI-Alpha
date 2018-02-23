@@ -235,7 +235,7 @@
        <tr>
          <td style = "padding:14px;"class = "text-left">{{obj.TypeResume}}</td>
          <td style = "padding:14px;"class = "text-left"> <a  style = "color:#ff7e00;"href="{% url 'RSR:detail' obj.pk %}">{{obj.Name}}</a></td>
-         <td style = "padding:14px;"class = "text-left"><a class = "button-style" href="{{ obj.Resume.url }}">View</a></td>
+         <td style = "padding:14px;"class = "text-left"><a class = "button-style" href="{{ obj.Resume.docfile.url }}">View</a></td>
          <td style = "padding:14px;"class = "text-left">{{ obj.Email }}</td>
          <td style = "padding:14px;"class = "text-left">{{ obj.PhoneNumber }}</td>
            {% with obj|preview_details as detailsDict %}
