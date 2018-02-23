@@ -51,17 +51,17 @@ INSTALLED_APPS = [
     'background_task',    #run code in the background
     'rest_framework',
     'webpack_loader',
-    # 'common',
-    # 'accounts',
-    # 'cases',
-    # 'contacts',
-    # 'emails',
-    # 'leads',
-    # 'activity',
-    # 'oppurtunity',
-    # 'planner',
-    # 'organizations',
-    # 'simple_pagination',
+    'common',
+    'accounts',
+    'cases',
+    'contacts',
+    'emails',
+    'leads',
+    'activity',
+    'oppurtunity',
+    'planner',
+    'organizations',
+    'simple_pagination',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ ROOT_URLCONF = 'pmi_alpha.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

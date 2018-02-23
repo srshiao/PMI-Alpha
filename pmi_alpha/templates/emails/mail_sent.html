@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'crm/base.html' %}
 {% load staticfiles %}
 {% load paginate %}
 {% block breadcrumb %}
@@ -43,7 +43,7 @@
               <label for="exampleInputEmail1">Name</label>
               <input type="text" class="form-control" placeholder="Name" value="{{request.GET.name}}" name="name">
             </div>
-           </div> 
+           </div>
             <div class="filter_col col-md-3">
              <div class="form-group">
               <label for="exampleInputEmail1">From Date</label>
@@ -132,7 +132,6 @@
 'format': 'YYYY-MM-DD',
   });
 </script>
-{% endblock js_block %} 
+{% endblock js_block %}
   </body>
 </html>
-  

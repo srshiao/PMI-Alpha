@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'crm/base.html' %}
 {% load staticfiles %}
 {% block breadcrumb %}
 
@@ -130,7 +130,7 @@
                           {% for k in countries%}
                             <option required="required" value="{{ k.id }}" {%ifequal k.id post.address.country %}selected {% endifequal %}>{{ k.name }}</option>
                           {% endfor %}
-                        
+
                         </select>
                       <!-- <input type="text" class="form-control country_class" placeholder="Country" id="bcountry" name="country" value="{{ edit.billing_address.country }}" /> -->
                     </div>
@@ -411,7 +411,7 @@
      $(".shipping_block").find("#id_ship-country").val(country)
    });
 
-  
+
    $(document).ready(function(){
      console.log("working");
        $("#accountid").click(function (){

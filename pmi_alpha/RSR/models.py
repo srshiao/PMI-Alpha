@@ -331,7 +331,7 @@ class PersonToCompany(models.Model):
     PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
     CompanyID = models.ForeignKey(Company,  on_delete=models.CASCADE)
     Title = models.CharField("Title", max_length=100, default="None")
-    ExperienceOnJob = models.CharField("Experience on Job", max_length=300, default="None")
+    ExperienceOnJob = models.CharField("Experience on Job", max_length=1000, default="None")
     StartDate = models.DateField("Start Date", blank = True,null = True)
     EndDate = models.DateField("End Date",blank = True,null = True)
     Desc = models.CharField("Company Description", max_length=1000, default="None")

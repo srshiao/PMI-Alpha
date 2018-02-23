@@ -161,7 +161,7 @@ def extract_School(resume,ent):
         school_info = {}
         major_info = {}
         school_name,school_grad = s
-        school_info['name'] = school_name
+        school_info['name'] = school_name[0:100]
         school['gradDate'] = school_grad
         print("ERIC CODE",s)
         print('name',school_name)
