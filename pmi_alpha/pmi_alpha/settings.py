@@ -129,6 +129,20 @@ else:
                 }
             }
         }
+    elif 1==0:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME':'ebdb',
+                'USER': 'jross428',
+                'PASSWORD': 'Uileduw2',
+                'HOST': 'aa126avf92yml0r.csbucglvuwdm.us-east-1.rds.amazonaws.com',
+                'PORT': '3306',
+                'OPTIONS': {
+                    'sql_mode': 'traditional',
+                }
+            }
+        }
     else:
         DATABASES = {
             'default': {
