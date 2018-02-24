@@ -104,7 +104,7 @@
             debug: true,
             placeholder: '',
             minimumInputLength: 0,
-            allowClear: ! $(this).is('required'),
+            allowClear: ! $(this).is('[required]'),
             templateResult: template,
             templateSelection: template,
             ajax: ajax,
@@ -142,6 +142,7 @@
         });
 
     });
+    window.__dal__initListenerIsSet = true;
     $('[data-autocomplete-light-function]:not([id*="__prefix__"])').each(function() {
         window.__dal__initialize(this);
     });
