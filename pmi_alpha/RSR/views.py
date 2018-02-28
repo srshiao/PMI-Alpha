@@ -6,9 +6,7 @@ from itertools import chain
 from gensim.models import Word2Vec
 from gensim.models import Phrases
 from gensim.models.word2vec import LineSentence
-
 import os
-
 # Create your views here.
 #=======
 # -*- coding: utf-8 -*-
@@ -141,7 +139,11 @@ def parse_back(words,doc_id,doc_type):
             person.GitHub = js['person'][key]
     person.Resume = Document.objects.get(pk = doc_id)
     person.TypeResume = doc_type
-    person.save()
+    try:
+        person.save()
+    except DataError:
+        person.Name person.Name[0:20]
+        person.save()
     for label in js:
         if label == "skills":
             for key in js[label]:
@@ -150,8 +152,12 @@ def parse_back(words,doc_id,doc_type):
                 query_set=query_set.filter(Name=key["skill"])
                 #if skill does not exist create skill
                 if not query_set:
-                    query_set = Skills(Name = key["skill"])
-                    query_set.save()
+                    try:
+                        query_set = Skills(Name = key["skill"])
+                        query_set.save()
+                    except DataError:
+                        query_set = Skills(Name = key["skill"][0:19])
+                        query_set.save()
                 #if skill does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -167,8 +173,12 @@ def parse_back(words,doc_id,doc_type):
                 query_set=query_set.filter(Name=key["company"])
                 #if company does not exist create skill
                 if not query_set:
-                    query_set = Company(Name = key["company"])
-                    query_set.save()
+                    try:
+                        query_set = Company(Name = key["company"])
+                        query_set.save()
+                    except DataError:
+                        query_set = Company(Name = key["company"][0:90])
+                        query_set.save()
                 #if company does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -188,8 +198,12 @@ def parse_back(words,doc_id,doc_type):
                 query_set=query_set.filter(Name=key["school"]["name"]).filter(DegreeLevel = key["school"]["degreeLevel"])
                 #if School does not exist create skill
                 if not query_set:
-                    query_set = School(Name = key["school"]["name"], DegreeLevel = key["school"]["degreeLevel"])
-                    query_set.save()
+                    try:
+                        query_set = School(Name = key["school"]["name"], DegreeLevel = key["school"]["degreeLevel"])
+                        query_set.save()
+                    except DataError:
+                        query_set = School(Name = key["school"]["name"][0:140], DegreeLevel = key["school"]["degreeLevel"])
+                        query_set.save()
                 #if School does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -198,7 +212,10 @@ def parse_back(words,doc_id,doc_type):
                 query_set_1=Major.objects.all()
                 query_set_1=query_set_1.filter(Name=key["major"]["major"]).filter(Dept__icontains = key["major"]["dept"]).filter(MajorMinor__icontains = key["major"]["major/minor"])
                 if not query_set_1:
-                    query_set_1 = Major(Name = key["major"]["major"], Dept = key["major"]["dept"], MajorMinor = key["major"]["major/minor"])
+                    try:
+                        query_set_1 = Major(Name = key["major"]["major"], Dept = key["major"]["dept"], MajorMinor = key["major"]["major/minor"])
+                    except DataError:
+                        query_set_1 = Major(Name = key["major"]["major"][0:45], Dept = key["major"]["dept"], MajorMinor = key["major"]["major/minor"])
                     query_set_1.save()
                 #if School does exist, grab first match from queryset
                 else:

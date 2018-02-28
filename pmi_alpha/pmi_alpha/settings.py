@@ -121,7 +121,7 @@ else:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME':'django_db',
                 'USER': 'root',
-                'PASSWORD': "test",
+                'PASSWORD': "Uileduw2",
                 'HOST': '',
                 'PORT': '',
                 'OPTIONS': {
@@ -135,7 +135,7 @@ else:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME':'ebdb',
                 'USER': 'jross428',
-                'PASSWORD': '',
+                'PASSWORD': 'Uileduw2',
                 'HOST': 'aa126avf92yml0r.csbucglvuwdm.us-east-1.rds.amazonaws.com',
                 'PORT': '3306',
                 'OPTIONS': {
