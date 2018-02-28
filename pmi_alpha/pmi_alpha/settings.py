@@ -121,7 +121,7 @@ else:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME':'django_db',
                 'USER': 'root',
-                'PASSWORD': 'Uileduw2',
+                'PASSWORD': "test",
                 'HOST': '',
                 'PORT': '',
                 'OPTIONS': {
