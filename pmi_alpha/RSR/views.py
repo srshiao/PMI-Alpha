@@ -1223,13 +1223,8 @@ def parse_word_file(filepath):
 @user_passes_test(lambda u: u.groups.filter(name='RSR').exists())
 def search(request):
     arr = []
-    print(request.GET)
-    print('test',Person.objects.filter(persontoschool__SchoolID = 29))
     query_set = Person.objects.order_by('Name').distinct()
     personFilter = PersonFilter(request.GET, query_set)
-    print(personFilter.qs)
-    print('form',personFilter.form)
-    print(personFilter.form.errors)
     if len(request.GET) != 0:
         if request.GET.get('Skills', '')!='' and request.GET.get('YearOfExperienceForSkill', '')!='':
             for p in personFilter.qs:

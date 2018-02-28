@@ -135,7 +135,7 @@ else:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME':'ebdb',
                 'USER': 'jross428',
-                'PASSWORD': 'Uileduw2',
+                'PASSWORD': '',
                 'HOST': 'aa126avf92yml0r.csbucglvuwdm.us-east-1.rds.amazonaws.com',
                 'PORT': '3306',
                 'OPTIONS': {
