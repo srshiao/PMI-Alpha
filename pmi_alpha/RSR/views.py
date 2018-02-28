@@ -142,7 +142,7 @@ def parse_back(words,doc_id,doc_type):
     try:
         person.save()
     except DataError:
-        person.Name person.Name[0:20]
+        person.Name = person.Name[0:20]
         person.save()
     for label in js:
         if label == "skills":
