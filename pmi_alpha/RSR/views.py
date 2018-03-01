@@ -17,7 +17,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.forms import ModelForm
-from  django.core.exceptions import *
+from django.core.exceptions import *
 from RSR.models import *
 from RSR.forms import *
 from django.shortcuts import get_object_or_404
