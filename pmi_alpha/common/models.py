@@ -1,42 +1,46 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+from django.contrib.auth.models import User
 
 from common.utils import COUNTRIES
 
 
 
-class CRMUser(models.Model):
-    username = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(max_length=255, unique=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(('date joined'), auto_now_add=True)
+class CRMUser(User):
+    class Meta:
+        proxy = True
 
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
-
-    objects = UserManager()
-
-    def get_short_name(self):
-        return self.username
-
-    def __unicode__(self):
-        return self.email
-
-    def has_perm(self, perm, obj=None):
-        if CRMUser.is_admin:
-            return True
-        else:
-            return False
-
-    def has_module_perms(self, app_label):
-        if CRMUser.is_admin:
-            return True
-        else:
-            return False
+    # username = models.CharField(max_length=100, unique=True)
+    # email = models.EmailField(max_length=255, unique=True)
+    # is_active = models.BooleanField(default=True)
+    #is_admin = models.BooleanField(default=False)
+    # is_staff = models.BooleanField(default=False)
+    # date_joined = models.DateTimeField(('date joined'), auto_now_add=True)
+    #
+    #
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['username']
+    #
+    # objects = UserManager()
+    #
+    # def get_short_name(self):
+    #     return self.username
+    #
+    # def __unicode__(self):
+    #     return self.email
+    #
+    # def has_perm(self, perm, obj=None):
+    #     if CRMUser.is_admin:
+    #         return True
+    #     else:
+    #         return False
+    #
+    # def has_module_perms(self, app_label):
+    #     if CRMUser.is_admin:
+    #         return True
+    #     else:
+    #         return False
 
 
 

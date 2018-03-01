@@ -39,7 +39,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = CRMUser
-        fields = ('email', 'password', 'username', 'is_active', 'is_admin','is_staff')
+        fields = ('email', 'password', 'username', 'is_active','is_staff')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.

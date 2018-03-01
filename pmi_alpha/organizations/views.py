@@ -72,7 +72,7 @@ def add_organization(request):
         else:
             if request.is_ajax():
                 return JsonResponse({'error': True, 'organization_errors': form.errors})
-            return render(request, 'organizations/create_org.html', {
+            return render(request, 'organizations/create_organization.html', {
                           'organization_form': form,
                           'address_form': address_form,
                           'users': users,
@@ -82,7 +82,7 @@ def add_organization(request):
                           'teams_list': teams_list
             })
     else:
-        return render(request, 'organizations/create_org.html', {
+        return render(request, 'organizations/create_organization.html', {
                       'organization_form': form,
                       'address_form': address_form,
                       'users': users,

@@ -115,7 +115,7 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
 else:
-    if 1==0:
+    if 1==1:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
@@ -129,7 +129,7 @@ else:
                 }
             }
         }
-    elif 1==1:
+    elif 1==0:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
