@@ -334,7 +334,7 @@ class PersonToCompany(models.Model):
     ExperienceOnJob = models.CharField("Experience on Job", max_length=1000, default="None")
     StartDate = models.DateField("Start Date", blank = True,null = True)
     EndDate = models.DateField("End Date",blank = True,null = True)
-    Desc = models.CharField("Company Description", max_length=1000, default="None")
+    Desc = models.CharField("Company Description", max_length=3000, default="None")
 
 
 class PersonToAwards(models.Model):

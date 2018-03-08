@@ -101,9 +101,9 @@ def check_phone_number2(resume):
 
 def extract_phone_number(resume):
     try:
-        return check_phone_number1(resume)
+        return check_phone_number1(resume)[0:10]
     except:
-        return check_phone_number2(resume)
+        return check_phone_number2(resume)[0:10]
 
 #aux function to get all personel information
 def personel_information(resume):
@@ -509,7 +509,7 @@ def extract_address (text):
     result = re.search(regex, text)
     if result:
         result = result.group()
-    return result
+    return result[0:50]
 
 #Parse the address components
 def parse_address(result):
@@ -967,7 +967,7 @@ def check_phone_number(string_to_search):
         if result:
             result = result.groups()
             result = "-".join(result)
-        return result
+        return result[0:10]
     except:
         return 0000000000
 

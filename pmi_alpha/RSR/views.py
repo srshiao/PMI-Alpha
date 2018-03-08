@@ -104,11 +104,6 @@ def parse_back(words,doc_id,doc_type):
     parsed_json  = parse_file(words)
     #either load json, or recieve json file
     js = parsed_json
-    try:
-        Skills.objects.create(Name="testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest")
-    except DataError as e:
-        print(e)
-        print("String to long will cut")
     #iterate through json file
     print('\n\n',js,'\n\n')
     #initialize person out side of for loop/if statements so we can use it later
@@ -142,6 +137,7 @@ def parse_back(words,doc_id,doc_type):
             person.Linkedin = js['person'][key]
         elif key == "github":
             person.GitHub = js['person'][key]
+    print("DOC ",doc_id)        
     person.Resume = Document.objects.get(pk = doc_id)
     person.TypeResume = doc_type
     try:
@@ -160,9 +156,10 @@ def parse_back(words,doc_id,doc_type):
                     try:
                         query_set = Skills(Name = key["skill"])
                         query_set.save()
-                    except DataError:
-                        query_set = Skills(Name = key["skill"][0:19])
-                        query_set.save()
+
+                    except Exception as e:
+                        print(e)
+                        print("Could not add skill ",key["skill"])
                 #if skill does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -181,9 +178,9 @@ def parse_back(words,doc_id,doc_type):
                     try:
                         query_set = Company(Name = key["company"])
                         query_set.save()
-                    except DataError:
-                        query_set = Company(Name = key["company"][0:90])
-                        query_set.save()
+                    except Exception as e:
+                        print(e)
+                        print("Could not add ",key["company"])
                 #if company does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -206,9 +203,9 @@ def parse_back(words,doc_id,doc_type):
                     try:
                         query_set = School(Name = key["school"]["name"], DegreeLevel = key["school"]["degreeLevel"])
                         query_set.save()
-                    except DataError:
-                        query_set = School(Name = key["school"]["name"][0:140], DegreeLevel = key["school"]["degreeLevel"])
-                        query_set.save()
+                    except Exception as e:
+                        print(e)
+                        print("Could not add ",key["school"])
                 #if School does exist, grab first match from queryset
                 else:
                     query_set = query_set[0]
@@ -219,8 +216,9 @@ def parse_back(words,doc_id,doc_type):
                 if not query_set_1:
                     try:
                         query_set_1 = Major(Name = key["major"]["major"], Dept = key["major"]["dept"], MajorMinor = key["major"]["major/minor"])
-                    except DataError:
-                        query_set_1 = Major(Name = key["major"]["major"][0:45], Dept = key["major"]["dept"], MajorMinor = key["major"]["major/minor"])
+                    except Exception as e:
+                        print(e)
+                        print("Could not add skill ",key["major"])
                     query_set_1.save()
                 #if School does exist, grab first match from queryset
                 else:
@@ -369,9 +367,9 @@ def uploaddoc(request):
                 temp_doc.wordstr = textract.process(temp_doc.docfile.path).decode("utf-8")
                 if len(temp_doc.wordstr) < 50:
                     img=IMG(filename=temp_doc.docfile.path,resolution=200)
-                    img.save(filename='temp.jpg')
-                    utf8_text = get_string('temp.jpg')
-                    os.remove('temp.jpg')
+                    img.save(filename='~/temp.jpg')
+                    utf8_text = get_string('~/temp.jpg')
+                    os.remove('~/temp.jpg')
                     temp_doc.wordstr = utf8_text.decode("utf-8")
                     temp_doc.save(update_fields=['wordstr'])
 
