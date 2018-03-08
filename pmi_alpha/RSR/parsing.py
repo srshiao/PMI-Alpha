@@ -508,8 +508,8 @@ def extract_address (text):
     regex = re.compile(r"[0-9]+ .*[.,-]? .*[.,-]? ([A-Z]{2}|\w+)[.,-]? [0-9]{5}(-[0-9]{4})?")
     result = re.search(regex, text)
     if result:
-        result = result.group()
-    return result[0:50]
+        result = result.group()[0:50]
+    return result
 
 #Parse the address components
 def parse_address(result):
