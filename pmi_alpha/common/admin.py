@@ -37,7 +37,6 @@ class UserAdmin(BaseUserAdmin):
 # unregister the Group model from admin.
 
 admin.site.register(CRMUser)
-admin.site.unregister(Group)
 admin.site.register(Address)
 admin.site.register(Team)
 admin.site.register(Comment)

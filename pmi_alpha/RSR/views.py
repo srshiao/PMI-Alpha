@@ -10,7 +10,7 @@ import os
 # Create your views here.
 #=======
 # -*- coding: utf-8 -*-
-from django.db import DataError
+from _mysql_exceptions import *
 from django.shortcuts import render
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -104,7 +104,11 @@ def parse_back(words,doc_id,doc_type):
     parsed_json  = parse_file(words)
     #either load json, or recieve json file
     js = parsed_json
-
+    try:
+        Skills.objects.create(Name="testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest")
+    except DataError as e:
+        print(e)
+        print("String to long will cut")
     #iterate through json file
     print('\n\n',js,'\n\n')
     #initialize person out side of for loop/if statements so we can use it later
@@ -142,7 +146,7 @@ def parse_back(words,doc_id,doc_type):
     person.TypeResume = doc_type
     try:
         person.save()
-    except DataError:
+    except Error.DataError:
         person.Name = person.Name[0:20]
         person.save()
     for label in js:

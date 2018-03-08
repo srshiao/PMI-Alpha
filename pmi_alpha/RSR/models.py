@@ -231,7 +231,7 @@ class Skills(models.Model):
             value = getattr(self, field.name, None)
             yield (field, value)
 
-    Name = models.CharField("Skills", max_length=20,default = "None")
+    Name = models.CharField("Skills", max_length=60,default = "None")
 
 
 class LanguageSpoken(models.Model):
