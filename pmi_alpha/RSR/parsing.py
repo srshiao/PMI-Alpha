@@ -768,6 +768,7 @@ def extract_all_skills(resume):
     #Evaluate the accuracy
     nltk.classify.accuracy(classifier, test_set)
     skills =[]
+    extracted_skills = []
     for sent in normalized_resume:
         for (i,_) in enumerate(sent):
             if classifier.classify(extract_features(sent, i,skill_list))=='skill':

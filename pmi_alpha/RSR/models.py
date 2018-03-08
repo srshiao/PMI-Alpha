@@ -448,7 +448,10 @@ class PersonToTraining(models.Model):
     Interest = models.CharField("Interest", max_length=50, choices = INTEREST_LEVEL, default = 'Interested')
     Start_date  = models.DateTimeField(verbose_name = "Start Date",null=True, blank=True)
     Completion_date = models.DateTimeField(verbose_name = "Completion Date", blank=True,null=True)
-
+class PersonToTitle(models.Model):
+    PersonID = models.ForeignKey(Person,  on_delete=models.CASCADE)
+    TitleID = models.ForeignKey(Title,  on_delete=models.CASCADE)
+    
 class TitleToTrain(models.Model):
     def __str__(self):
         return self.TitleID.Name + ' - ' + self.TrainID.Name

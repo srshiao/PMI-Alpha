@@ -390,7 +390,23 @@ def uploaddoc(request):
         form = DocumentForm()
     documents = Document.objects.all()
     return render(request,'index.html',{'documents': documents,'form':form})
-
+    
+@background
+def do_ocr(doc_pk):
+    words = ''
+    img=IMG(filename=temp_doc.docfile.path,resolution=200)
+    cur = os.path.dirname(os.path.abspath(__file__))
+    img.save(filename=os.path.join(cur,'temp.jpg'))
+    r = re.compile(r'temp-')
+    for f in os.listdir(cur):
+        print("File :",f)
+        if r.match(f):
+            print("parsing ",f)
+            utf8_text = get_string(os.path.join(cur,f))
+            os.remove(os.path.join(cur,f))
+            words = words+utf8_text
+    temp_doc.wordstr = words
+    temp_doc.save(update_fields=['wordstr'])
 
 #edit function
 @user_passes_test(lambda u: u.groups.filter(name='RSR').exists())
