@@ -7,6 +7,7 @@ from gensim.models import Word2Vec
 from gensim.models import Phrases
 from gensim.models.word2vec import LineSentence
 import os
+import re
 # Create your views here.
 #=======
 # -*- coding: utf-8 -*-
@@ -137,7 +138,7 @@ def parse_back(words,doc_id,doc_type):
             person.Linkedin = js['person'][key]
         elif key == "github":
             person.GitHub = js['person'][key]
-    print("DOC ",doc_id)        
+    print("DOC ",doc_id)
     person.Resume = Document.objects.get(pk = doc_id)
     person.TypeResume = doc_type
     try:
@@ -366,11 +367,19 @@ def uploaddoc(request):
             else:
                 temp_doc.wordstr = textract.process(temp_doc.docfile.path).decode("utf-8")
                 if len(temp_doc.wordstr) < 50:
+                    words = ''
                     img=IMG(filename=temp_doc.docfile.path,resolution=200)
-                    img.save(filename='~/temp.jpg')
-                    utf8_text = get_string('~/temp.jpg')
-                    os.remove('~/temp.jpg')
-                    temp_doc.wordstr = utf8_text.decode("utf-8")
+                    cur = os.path.dirname(os.path.abspath(__file__))
+                    img.save(filename=os.path.join(cur,'temp.jpg'))
+                    r = re.compile(r'temp-')
+                    for f in os.listdir(cur):
+                        print("File :",f)
+                        if r.match(f):
+                            print("parsing ",f)
+                            utf8_text = get_string(os.path.join(cur,f))
+                            os.remove(os.path.join(cur,f))
+                            words = words+utf8_text
+                    temp_doc.wordstr = words
                     temp_doc.save(update_fields=['wordstr'])
 
                 temp_doc.save(update_fields=['wordstr'])
